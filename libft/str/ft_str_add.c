@@ -12,6 +12,10 @@
 
 #include "libft.h"
 
+/*
+** Comme ft_strjoin mais ignore les NULL.
+*/
+
 char		*ft_str_add(char *s1, char *s2)
 {
 	if (!s1)
