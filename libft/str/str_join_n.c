@@ -15,7 +15,7 @@
 /*
 ** Join n chaines de caracteres
 ** Exemple :
-** char *new = strjoin(3, "Hello ", "World ", "!");
+** char *new = str_join_n(3, "Hello ", "World ", "!");
 */
 
 static void		va_fill_tab(va_list ptrs, char **tab, int n)
