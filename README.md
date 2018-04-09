@@ -35,4 +35,4 @@ errorf("Could not read from file %s", filename);
 Toutes les fonctions du `man 3 printf`:
 `(v)(d/s/as)(n)printf();`
 
-+ d'autres trucs pas très utiles
+Et d'autres trucs pas très utiles
