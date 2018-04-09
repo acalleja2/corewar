@@ -5,7 +5,8 @@ Fonctions custom
 ### Malloc
 `malloc()` ça pue donc on a `ealloc()`
 ### Variadiques
-* ```C
+*
+```C
 void				*freen(int n, ...);
 ```
 Free n pointeurs.
