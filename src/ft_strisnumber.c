@@ -3,9 +3,11 @@
 int			ft_strisnumber(char *str)
 {
 	size_t	i;
+	size_t len;
 
 	i = 0;
-	while (i < ft_strlen(str))
+	len = ft_strlen(str);
+	while (i < len)
 	{
 		if (!ft_isdigit(str[i]))
 			return (0);
