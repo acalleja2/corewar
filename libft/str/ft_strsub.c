@@ -17,9 +17,9 @@ char	*ft_strsub(char const *s, unsigned int start, size_t len)
 	char	*substring;
 	size_t	pos;
 
-	substring = (char*)ealloc((len + 1) * sizeof(char));
-	if (!substring || !s)
+	if (!s)
 		return (NULL);
+	substring = (char*)ealloc((len + 1) * sizeof(char));
 	pos = 0;
 	while (pos < len)
 	{

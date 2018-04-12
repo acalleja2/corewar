@@ -20,8 +20,6 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	if (!s)
 		return (NULL);
 	newstring = (char*)ealloc((ft_strlen(s) + 1) * sizeof(char));
-	if (!newstring)
-		return (NULL);
 	pos = 0;
 	while (s[pos])
 	{

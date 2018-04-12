@@ -18,8 +18,6 @@ char	*ft_strnew(size_t size)
 	char	*cpy;
 
 	ptr = (char*)ealloc(sizeof(char) * size + 1);
-	if (!ptr)
-		return (NULL);
 	cpy = ptr;
 	while (size)
 	{

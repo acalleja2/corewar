@@ -70,8 +70,7 @@ char		**ft_strsplit(const char *str, char sep)
 		{
 			lin++;
 			col = 0;
-			if (!(tab[lin] = (char*)ealloc(sizeof(char) * w_len(str, p, sep))))
-				return (NULL);
+			tab[lin] = (char*)ealloc(sizeof(char) * w_len(str, p, sep));
 			while (str[p] && str[p] != sep)
 				tab[lin][col++] = str[p++];
 			tab[lin][col] = '\0';

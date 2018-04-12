@@ -62,8 +62,7 @@ char			*ft_strtrim(const char *s)
 	if (!pos)
 		return ((char*)s);
 	len = ft_tls(s);
-	if (!(new = (char*)ealloc(len + 1 * sizeof(char))))
-		return (NULL);
+	new = (char*)ealloc(len + 1 * sizeof(char));
 	if (!len)
 	{
 		*new = '\0';
