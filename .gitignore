@@ -4,5 +4,6 @@
 *.a
 *.out
 *.dSYM
+*.cor
 tags
 Session.vim
