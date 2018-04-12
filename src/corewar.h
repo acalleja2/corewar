@@ -41,6 +41,9 @@ typedef struct	s_proc
 	struct s_proc	*next;
 }				t_proc;
 
+/*
+** init_t_args.c
+*/
 void			ft_init_t_args(t_args *args);
 
 /*
