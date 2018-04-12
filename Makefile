@@ -18,7 +18,12 @@ SRC = ft_error_parse.c \
 	  main.c \
 	  parseargs.c \
 	  parser.c \
-	  corewar_engine.c \
+	  parse_n.c \
+	  parse_binary_output_mode.c\
+	  parse_name.c \
+	  parse_text_output_mode.c \
+	  parse_utilities.c \
+	  #corewar_engine.c \
 	  error_file.c
 
 # Prefixes sources

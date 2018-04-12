@@ -33,14 +33,38 @@ typedef struct		s_proc {
 
 void	ft_init_t_args(t_args *args);
 
+/*
+** parse_text_output_mode.c
+*/
 void		ft_d(int argc, char *argv[], int *i, t_args *args);
 void		ft_s(int argc, char *argv[], int *i, t_args *args);
 void		ft_v(int argc, char *argv[], int *i, t_args *args);
+
+/*
+** parse_binary_mode.c
+*/
 void		ft_b(int argc, char *argv[], int *i, t_args *args);
+
+/*
+** parse_name.c
+*/
 void		ft_parse_name(char *argv[], int *i, t_args *args);
-void		ft_n(int argc, char *argv[], int *i, t_args *args);
+
 void		print_args(t_args *args);
 void		ft_parseargs(int argc, char *argv[], t_args *args);
+int			ft_valid_process(int candidate, t_args *args);
+
+/*
+** parse_n.c
+*/
+void		ft_n_name(char *argv[], int *i, t_args *args);
+void		ft_n_curse(int argc, char *argv[], int *i, t_args *args);
+void		ft_n(int argc, char *argv[], int *i, t_args *args);
+
+/*
+** parse_utilies.c
+*/
+void		print_args(t_args *args);
 
 void		ft_error_parse();
 
@@ -49,5 +73,7 @@ void		ft_error_file(char *champ);
 void		ft_corewar_engine(t_args *args);
 
 int			ft_strisnumber(char *str);
+
+
 
 #endif
