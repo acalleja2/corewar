@@ -15,7 +15,7 @@ void	ft_print_list(t_proc *proc)
 /*
 ** Fonction de test
 */
-void		ft_print_process(t_process *p)
+void		ft_print_proc(t_proc *p)
 {
 	ft_printf("process_nbr: %d, fd: %d,filename %s\n", p->process_nbr, p->fd,
 			p->filename);
@@ -24,7 +24,7 @@ void		ft_print_process(t_process *p)
 /*
 ** Add a process to the list of processes to be executed each cycle
 */
-void	ft_lstpush(t_proc *processes, t_process *elem)
+void	ft_lstpush(t_proc *processes, t_proc *elem)
 {
 	t_proc	*new;
 
@@ -41,7 +41,7 @@ void	ft_lstpush(t_proc *processes, t_process *elem)
 ** Gives it its process_nbr (id), open file in fd, and gives default values
 ** to pc and carry
 */
-void	ft_init_process(int flag, t_args *args, t_process *process)
+void	ft_init_proc(int flag, t_args *args, t_proc *process)
 {
 	char	*file;
 
@@ -60,19 +60,19 @@ void	ft_init_process(int flag, t_args *args, t_process *process)
 /*
 ** Create the first two processes and push them in the list of processes
 */
-void	ft_create_first_processes(t_args *args, t_proc *processes)
+void	ft_create_first_proces(t_args *args, t_proc *processes)
 {
-	t_process	*process1;
-	t_process	*process2;
+	t_proc	*process1;
+	t_proc	*process2;
 
-	process1 = (t_process*)ealloc(sizeof(t_process));
-	process2 = (t_process*)ealloc(sizeof(t_process));
+	process1 = (t_proc*)ealloc(sizeof(t_proc));
+	process2 = (t_proc*)ealloc(sizeof(t_proc));
 	if (args->process1 == args->process2)
 		args->process2 = args->process1 + 1;
-	ft_init_process(1, args, process1);
-	ft_init_process(2, args, process2);
-	ft_print_process(process1);
-	ft_print_process(process2);
+	ft_init_proc(1, args, process1);
+	ft_init_proc(2, args, process2);
+	ft_print_proc(process1);
+	ft_print_proc(process2);
 	ft_lstpush(processes, process1);
 	ft_lstpush(processes, process2);
 	ft_print_list(processes);
@@ -85,10 +85,10 @@ void	ft_corewar_engine(t_args *args)
 	int				counter;
 	t_proc			*processes;
 
+	printf("ENGINE!!!!\n");
 	processes = (t_proc*)ealloc(sizeof(t_proc));
 	processes->next = NULL;
-	processes->process = NULL;
-	ft_create_first_processes(args, processes);
+	ft_create_first_proces(args, processes);
 	ft_print_list(processes);
 	counter = CYCLE_TO_DIE + CYCLE_DELTA;
 	while ((counter -= CYCLE_DELTA)) {
