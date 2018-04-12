@@ -1,13 +1,8 @@
-Changer t_args pour include un nombre variable de champions (voir op.h)
 Changer t_process pour en faire un liste (inclure le next directement dedans)
 Initialisation des process dans boucle.
-Implementer Check argsdans parseargs pour verifier numero process valides et
+Implementer Check args dans parseargs pour verifier numero process valides et
 noms valides (entre autres pas de doublons) => permetra de generaliser
 l'initialisation des process.
-Changer l'option v lors du parsing, et verif des bits sets avec masks.
 
-
-00000010 = 2
-00000100 = 4
-00001000 = 8
-00010000 = 16
+OK: Changer l'option v lors du parsing, et verif des bits sets avec masks.
+OK: Changer t_args pour include un nombre variable de champions (voir op.h)
