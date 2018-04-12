@@ -5,19 +5,22 @@
 #ifndef COREWAR_H
 #define COREWAR_H
 
+ #define FALSE 0
+ #define TRUE 1
+
 typedef struct	s_args {
 	int			dump;
 	int			cycles;
 	int			verbosity;
 	int			binary_output;
 	int			ncurses;
-	int			process1;
-	int			process2;
-	char		*champ1;
-	char		*champ2;
+	int			index;
+	int			process_max;
+	int			*process;
+	char		**champions;
 } 				t_args;
 
-typedef struct		s_process {
+typedef struct		s_proc {
 	int				process_nbr;
 	char			*filename;
 	int				fd;
@@ -25,18 +28,6 @@ typedef struct		s_process {
 	unsigned char	pc;
 	unsigned char	carry;
 	int				alive;
-}					t_process;
-
-/*
-typedef struct		s_cbuffer {
-	unsigned char	*buffer;
-	unsigned char	*head;
-	unsigned char	*tail;
-}
-*/
-
-typedef struct		s_proc {
-	t_process		*process;
 	struct s_proc	*next;
 }					t_proc;
 
