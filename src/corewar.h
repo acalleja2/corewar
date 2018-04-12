@@ -16,7 +16,7 @@ typedef struct	s_args
 	int			binary_output;
 	int			ncurses;
 	int			index;
-	int			process_max;
+	int			process_curr;
 	int			*process;
 	char		**champions;
 } 				t_args;
@@ -41,6 +41,9 @@ typedef struct	s_proc
 	struct s_proc	*next;
 }				t_proc;
 
+/*
+** init_t_args.c
+*/
 void			ft_init_t_args(t_args *args);
 
 /*
