@@ -6,7 +6,7 @@
 /*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/11 18:24:23 by acalleja          #+#    #+#             */
-/*   Updated: 2018/04/11 19:25:56 by acalleja         ###   ########.fr       */
+/*   Updated: 2018/04/12 14:12:10 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int		main(int argc, char **argv)
 	ins = NULL;
 	if (argc != 2)
 		return (print_usage());
-	if ((fd = fopen(argv[1], "O_RDONLY") < 0))
+	if ((fd = open(argv[1], O_RDONLY)) < 0)
 		return (print_usage());
 	line_reader(fd, &lab, &ins);
 	return (0);

@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strndup.c                                       :+:      :+:    :+:   */
+/*   check_ins.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/27 09:36:53 by acalleja          #+#    #+#             */
-/*   Updated: 2018/04/11 13:32:53 by acalleja         ###   ########.fr       */
+/*   Created: 2018/04/12 18:57:52 by acalleja          #+#    #+#             */
+/*   Updated: 2018/04/12 20:56:49 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-char		*ft_strn_dup(char *s1, int n)
+int		check_opcode(t_instru *ins)
 {
 	int		i;
-	char	*tab;
 
 	i = 0;
-	tab = (char *)ealloc(sizeof(char) * n + 1);
-	if (tab == NULL)
-		return (NULL);
-	while (i < n)
+	while (i < 16)
 	{
-		tab[i] = s1[i];
+		if (ft_strcmp(op_tab[i].name, ins->opcode) == 0)
+			return (1);
 		i++;
 	}
-	tab[i] = '\0';
-	return (tab);
+	return (0);
 }

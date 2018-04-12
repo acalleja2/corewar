@@ -6,7 +6,7 @@
 /*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/11 11:22:45 by acalleja          #+#    #+#             */
-/*   Updated: 2018/04/11 18:55:12 by acalleja         ###   ########.fr       */
+/*   Updated: 2018/04/12 20:38:13 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,14 @@ void	pars_label(char *str, t_label **lab)
 		i++;
 	}
 	if (str[i] == '\0')
-		error_syntax();
+		error_label();
 	if (str[i] == LABEL_CHAR)
 	{
 		if (ret)
-			error_syntax();
+			error_label();
 		label = ft_strn_dup(str, i);
 		del_seq(str, 0, i + 1);
-		while (str[i] == ' ' || str[i] == '\t')
+		while (str[0] == ' ' || str[0] == '\t')
 			del_pos(str, 0);
 	}
 	create_lab_lst(lab, label);

@@ -1,33 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pars_opcode.c                                      :+:      :+:    :+:   */
+/*   debug.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/11 14:23:05 by acalleja          #+#    #+#             */
-/*   Updated: 2018/04/12 18:57:29 by acalleja         ###   ########.fr       */
+/*   Created: 2018/04/12 14:16:52 by acalleja          #+#    #+#             */
+/*   Updated: 2018/04/12 15:40:34 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-void	pars_opcode(char *str, t_instru **ins)
+void	print_lab(t_label *lab)
 {
-	char	**tab2;
-	char	**tab;
-	int		i;
-
-	i = 0;
-	while (str[i] == ' ' || str[i] == '\t')
-		del_pos(str, 0);
-	tab2 = ft_strsplit(str, ' ');
-	tab = ft_strsplit(tab2[0], '\t');
-	(*ins)->opcode = ft_strdup(tab[0]);
-	while (i < ft_strlen(tab[0]))
+	while (lab)
 	{
-		del_pos(str, 0);
-		i++;
+		ft_printf(" %s ", lab->name);
+		lab = lab->next;
 	}
-	free_tab(tab);
+}
+
+void	print_par(t_param *par)
+{
+	while (par)
+	{
+		ft_printf(" %s ", par->name);
+		par = par->next;
+	}
+}
+
+void	print_ins(t_instru *ins)
+{
+	while (ins)
+	{
+		ft_printf("label =");
+		print_lab(ins->lab);
+		ft_printf(" || ");
+		ft_printf("param =");
+		print_par(ins->par);
+		ft_printf(" || opcode = %s\n", ins->opcode);
+		ins = ins->next;
+	}
 }

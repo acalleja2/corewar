@@ -6,7 +6,7 @@
 /*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/11 15:23:55 by acalleja          #+#    #+#             */
-/*   Updated: 2018/04/11 15:44:48 by acalleja         ###   ########.fr       */
+/*   Updated: 2018/04/12 17:36:51 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,18 @@ void	create_lab_lst(t_label **lab, char *str)
 	if (!str)
 		return;
 	tmp = *lab;
-	while (tmp->next)
-		tmp = tmp->next;
 	if (!*lab)
 	{
-		*lab = (t_label *)malloc(sizeof(t_label));
+		*lab = (t_label *)ealloc(sizeof(t_label));
 		(*lab)->name = ft_strdup(str);
 		free(str);
 		(*lab)->next = NULL;
 	}
 	else
 	{
-		last = (t_label *)malloc(sizeof(t_label));
+		while (tmp->next)
+			tmp = tmp->next;
+		last = (t_label *)ealloc(sizeof(t_label));
 		(last)->name = ft_strdup(str);
 		free(str);
 		(last)->next = NULL;
