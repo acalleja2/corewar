@@ -15,7 +15,7 @@ typedef struct	s_args {
 	int			binary_output;
 	int			ncurses;
 	int			index;
-	int			process_max;
+	int			process_curr;
 	int			*process;
 	char		**champions;
 } 				t_args;

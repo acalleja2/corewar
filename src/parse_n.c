@@ -8,13 +8,11 @@ void		ft_n_name(char *argv[], int *i, t_args *args)
 	if (ft_valid_process(ft_atoi(argv[*i + 1]), args))
 	{
 		args->process[args->index] = ft_atoi(argv[*i + 1]);
-		if (args->process[args->index] > args->process_max)
-			args->process_max = args->process[args->index];
 	}
 	else
 	{
-		args->process[args->index] = args->process_max + 1;
-		args->process_max += 1;
+		args->process[args->index] = args->process_curr + 1;
+		args->process_curr += 1;
 	}
 	args->champions[args->index] = ft_strdup(argv[*i + 2]);
 	args->index += 1;

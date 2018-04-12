@@ -3,6 +3,10 @@ Initialisation des process dans boucle.
 Implementer Check args dans parseargs pour verifier numero process valides et
 noms valides (entre autres pas de doublons) => permetra de generaliser
 l'initialisation des process.
+Gerer les process invalides (inferieurs a process_min)
+Voir si reverse l'ordre des process nbr pour l'execution puisque le dernier
+process (process nbr le plus grand0 est execute en premier, ou si on les
+insere dans l'ordre decroissante dans la liste.
 
 OK: Changer l'option v lors du parsing, et verif des bits sets avec masks.
 OK: Changer t_args pour include un nombre variable de champions (voir op.h)
