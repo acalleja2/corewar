@@ -3,13 +3,15 @@ PROGS = corewar
 
 # Compilation
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra -g
+CFLAGS = -Wall -Wextra -g \
+		 # -Werror
 
 # Directories
 SRCDIR = src
-OBJDIR = Objects
+OBJDIR = objects
 INCDIR = includes
-LIBDIR = .
+LIBDIR = ./libft
+BUILDDIR = ./build
 
 INC = corewar.h
 SRC = ft_error_parse.c \
@@ -18,8 +20,15 @@ SRC = ft_error_parse.c \
 	  main.c \
 	  parseargs.c \
 	  parser.c \
+	  parse_n.c \
+	  parse_binary_output_mode.c\
+	  parse_name.c \
+	  parse_text_output_mode.c \
+	  parse_utilities.c \
 	  corewar_engine.c \
-	  error_file.c
+	  champion_initialization.c \
+	  champ_list_tools.c
+	  # error_file.c
 
 # Prefixes sources
 SRCS = $(addprefix $(SRCDIR)/, $(SRC))
@@ -38,31 +47,30 @@ OBJS_DIRS = $(sort $(dir $(OBJS)))
 
 all: $(PROGS)
 
-$(PROGS): build $(OBJS)
-	@make -C libft
-	@mv libft/$(LIB) ./
-	@$(CC) $(CFLAGS) -o $(PROGS) $(OBJS) $(LIBS)
+$(PROGS): $(OBJDIR) $(OBJS)
+	make -C libft
+	$(CC) $(CFLAGS) -o $(PROGS) $(OBJS) $(LIBS)
 
-build:
-	@mkdir -p $(OBJDIR)
+$(OBJDIR):
+	mkdir -p $(OBJDIR)
 
 clean:
-	@make -C libft clean
-	@rm -rf $(LIB)
-	@rm -rf $(OBJDIR)
+	make -C libft clean
+	rm -rf $(LIB)
+	rm -rf $(OBJDIR)
 
 .PHONY:fclean
 fclean: clean
-	@make -C libft fclean
-	@rm -rf $(LIB)
-	@rm -rf $(OBJDIR)
-	@rm -rf $(PROGS)
+	make -C libft fclean
+	rm -rf $(LIB)
+	rm -rf $(OBJDIR)
+	rm -rf $(PROGS)
 
 .PHONY:re
 re: fclean all
 
 $(LIBDIR)/%.a:
-	@make -s -C $(@D)
+	make -s -C $(@D)
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c
-	@$(CC) -c -o $@ $< -I$(INCDIR) $(CFLAGS)
+	$(CC) -c -o $@ $< -I$(INCDIR) $(CFLAGS)
