@@ -17,8 +17,6 @@ void	*ft_memalloc(size_t size)
 	unsigned char	*ptr;
 
 	ptr = (unsigned char*)ealloc(size);
-	if (!ptr)
-		return (NULL);
 	ft_memset(ptr, 0, size);
 	return (ptr);
 }

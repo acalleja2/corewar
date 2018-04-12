@@ -20,8 +20,6 @@ char	*ft_strmap(char const *s, char (*f)(char))
 	if (!s)
 		return (NULL);
 	newstring = (char*)ealloc((ft_strlen(s) + 1) * sizeof(char));
-	if (!newstring)
-		return (NULL);
 	cpy = newstring;
 	while (*s)
 	{

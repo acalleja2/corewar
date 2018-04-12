@@ -53,13 +53,11 @@ char			*str_join_n(int n, ...)
 	int			pos;
 	char		*res;
 
-	if (NULL == (tab = ealloc(n * sizeof(char*))))
-		return (NULL);
+	tab = ealloc(n * sizeof(char*));
 	va_start(ptrs, n);
 	va_fill_tab(ptrs, tab, n);
 	va_end(ptrs);
-	if (NULL == (res = ealloc(total_len(tab, n) + 1)))
-		return (freen(1, tab));
+	res = ealloc(total_len(tab, n) + 1);
 	pos = 0;
 	res[0] = '\0';
 	while (pos < n)

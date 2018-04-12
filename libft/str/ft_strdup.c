@@ -18,8 +18,6 @@ char	*ft_strdup(const char *s)
 	size_t	pos;
 
 	dup = (char*)ealloc(ft_strlen(s) + 1);
-	if (!dup)
-		return (NULL);
 	pos = 0;
 	while (s[pos])
 	{
