@@ -8,7 +8,8 @@
  #define FALSE 0
  #define TRUE 1
 
-typedef struct	s_args {
+typedef struct	s_args
+{
 	int			dump;
 	int			cycles;
 	int			verbosity;
@@ -20,7 +21,16 @@ typedef struct	s_args {
 	char		**champions;
 } 				t_args;
 
-typedef struct	s_proc {
+typedef struct	s_champion
+{
+	struct s_champion	*next;
+	char				*code;
+	char				*filename;
+	int					id;
+}				t_champion;
+
+typedef struct	s_proc
+{
 	int				process_nbr;
 	char			*filename;
 	int				fd;
@@ -31,7 +41,7 @@ typedef struct	s_proc {
 	struct s_proc	*next;
 }				t_proc;
 
-void	ft_init_t_args(t_args *args);
+void			ft_init_t_args(t_args *args);
 
 /*
 ** parse_text_output_mode.c
@@ -73,10 +83,17 @@ int				ft_strisnumber(char *str);
 ** corewar_engine.c
 */
 void			ft_corewar_engine(t_args *args);
-void			create_proc_list(t_args *args, t_proc **processes);
+int				create_champ_list(t_args *args, t_champion **champs);
 
 /*
-** process_initialization.c
+** champion_initialization.c
 */
+t_champion		*init_champion(int id, char *filename);
+int				get_champ_code(t_champion *new, char *filename);
+
+/*
+** champ_list_tools.c
+*/
+void			champ_list_append(t_champion **list, t_champion *new);
 
 #endif
