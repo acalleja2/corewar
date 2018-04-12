@@ -1,9 +1,10 @@
+#include "corewar.h"
 /*
 ** Ajoute un process a la fin de la liste (ouais c'est obvious)
 */
-void			proc_list_append(t_proc **list, t_proc *new)
+void			champ_list_append(t_champion **list, t_champion *new)
 {
-	t_proc		*current;
+	t_champion	*current;
 
 	if (*list == NULL)
 	{
