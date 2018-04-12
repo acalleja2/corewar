@@ -52,7 +52,7 @@ void		ft_s(int argc, char *argv[], int *i, t_args *args)
 ** dans arg => c'est le niveau de verbosite lors de l'affichage
 ** Si -v, mais pas bon argument, affiche usage et exit;
 ** Si pas -v, on retourne au parsing voir si c'est autre chose
-** -V n'accepte que les valeurs 0,1,2,4,8,16, pour le reste, exit + usage
+** -v utilise des masques binaires definis dans corewar.h
 */
 void		ft_v(int argc, char *argv[], int *i, t_args *args)
 {
@@ -65,8 +65,6 @@ void		ft_v(int argc, char *argv[], int *i, t_args *args)
 	if (!ft_strisnumber(argv[*i + 1]))
 		ft_error_parse();
 	nbr = ft_atoi(argv[*i + 1]);
-	if (nbr != 0 && nbr != 1 && nbr != 2 && nbr != 4 && nbr != 8 && nbr != 16)
-		ft_error_parse();
 	args->verbosity = nbr;
 	*i += 2;
 }
@@ -144,7 +142,7 @@ void		ft_n(int argc, char *argv[], int *i, t_args *args)
 ** A chaque tour de boucle, verifie si arg est valide ou pas.
 ** Si l'arg est valide, le place dans la strucut t_arg.
 ** Si l'argument ne correspond a aucun argument valide, affiche l'usage et exit.
-** On peut prendre les arguments dans n'import quel ordre tant aue le format
+** On peut prendre les arguments dans n'import quel ordre tant que le format
 ** est valide.
 */
 void		ft_parseargs(int argc, char *argv[], t_args *args)
