@@ -40,7 +40,7 @@ int		create_champ_list(t_args *args, t_champion **champs)
 
 	i = 0;
 	count = 0;
-	while ((args->champions)[i] != NULL)
+	while (i < MAX_PLAYERS && (args->champions)[i] != NULL)
 	{
 		ft_printf("adding champion %s\n", (args->champions)[i]);
 		new = init_champion(count, (args->champions)[i]);
