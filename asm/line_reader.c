@@ -6,7 +6,7 @@
 /*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/11 18:28:31 by acalleja          #+#    #+#             */
-/*   Updated: 2018/04/12 20:33:44 by acalleja         ###   ########.fr       */
+/*   Updated: 2018/04/12 23:16:47 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,10 @@ void	line_reader(int fd, t_label **lab, t_instru **ins)
 {
 	char		*line;
 	t_instru	*tmp;
+	header_t	*head;
 
+	head = (header_t *)ealloc(sizeof(header_t));
+	check_header(line, fd, head);
 	while (get_next_line(fd, &line) == 1)
 	{
 		str_replace(line, COMMENT_CHAR, '\0');

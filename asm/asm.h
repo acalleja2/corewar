@@ -6,7 +6,7 @@
 /*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/11 11:11:51 by acalleja          #+#    #+#             */
-/*   Updated: 2018/04/12 20:38:41 by acalleja         ###   ########.fr       */
+/*   Updated: 2018/04/12 22:34:39 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,9 @@ typedef struct		s_instru
 	struct s_instru	*next;
 }					t_instru;
 
+void				check_header(char *str, int fd, header_t *head);
+int					pars_name(char *str, header_t *head, int fd);
+int					pars_desc(char *str, header_t *head, int fd);
 int					check_opcode(t_instru *ins);
 void				del_lst_lab(t_label **lab);
 void				print_lab(t_label *lab);
@@ -58,6 +61,7 @@ void				print_ins(t_instru *ins);
 void				str_replace(char *str, char c, char new_c);
 int					label_chars(char c, char *str);
 void				error_label(void);
+void				error_header(void);
 void				error_opcode(char *str);
 void				error_param(char *str);
 void				del_pos(char *str, int pos);
