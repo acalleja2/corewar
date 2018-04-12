@@ -6,7 +6,7 @@
 /*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/11 11:58:12 by acalleja          #+#    #+#             */
-/*   Updated: 2018/04/12 20:38:45 by acalleja         ###   ########.fr       */
+/*   Updated: 2018/04/12 22:24:27 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,12 @@
 void	error_label(void)
 {
 	ft_printf("Invalid Label Syntaxe.\n");
+	exit(0);
+}
+
+void	error_header(void)
+{
+	ft_printf("Invalid Header.\n");
 	exit(0);
 }
 
