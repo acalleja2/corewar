@@ -17,7 +17,8 @@ void	ft_print_list(t_proc *proc)
 */
 void		ft_print_process(t_process *p)
 {
-	ft_printf("process_nbr: %d, fd: %d,\n", p->process_nbr, p->fd);
+	ft_printf("process_nbr: %d, fd: %d,filename %s\n", p->process_nbr, p->fd,
+			p->filename);
 }
 
 /*
@@ -44,6 +45,8 @@ void	ft_init_process(int flag, t_args *args, t_process *process)
 {
 	char	*file;
 
+	printf("\\\\\n");
+	print_args(args);
 	process->pc = 0;
 	process->carry = 0;
 	process->process_nbr = (flag == 1) ? args->process1 : args->process2;
@@ -51,6 +54,7 @@ void	ft_init_process(int flag, t_args *args, t_process *process)
 	process->fd = open(file, O_RDONLY);
 	if (process->fd == -1)
 		ft_error_file((flag == 1) ? args->champ1 : args->champ2);
+	process->filename = ft_strdup(file);
 }
 
 /*
@@ -66,11 +70,12 @@ void	ft_create_first_processes(t_args *args, t_proc *processes)
 	if (args->process1 == args->process2)
 		args->process2 = args->process1 + 1;
 	ft_init_process(1, args, process1);
-	ft_init_process(2, args, process1);
+	ft_init_process(2, args, process2);
 	ft_print_process(process1);
 	ft_print_process(process2);
 	ft_lstpush(processes, process1);
 	ft_lstpush(processes, process2);
+	ft_print_list(processes);
 }
 
 
