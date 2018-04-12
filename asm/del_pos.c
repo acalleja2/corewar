@@ -1,24 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_meealloc.c                                      :+:      :+:    :+:   */
+/*   del_pos.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: florenzo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/06 17:33:47 by florenzo          #+#    #+#             */
-/*   Updated: 2017/11/09 17:35:07 by florenzo         ###   ########.fr       */
+/*   Created: 2018/04/11 12:14:36 by acalleja          #+#    #+#             */
+/*   Updated: 2018/04/11 12:46:10 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "asm.h"
 
-void	*ft_memalloc(size_t size)
+void	del_pos(char *str, int pos)
 {
-	unsigned char	*ptr;
+	while (str[pos + 1])
+	{
+		str[pos] = str[pos + 1];
+		pos++;
+	}
+	str[pos] = '\0';
+}
 
-	ptr = (unsigned char*)ealloc(size);
-	if (!ptr)
-		return (NULL);
-	ft_memset(ptr, 0, size);
-	return (ptr);
+void	del_seq(char *str, int pos, int seq)
+{
+	int		i;
+
+	i = 0;
+	while (i < seq)
+	{
+		del_pos(str, pos);
+		i++;
+	}
 }

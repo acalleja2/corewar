@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_meealloc.c                                      :+:      :+:    :+:   */
+/*   pars_opcode.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: florenzo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/06 17:33:47 by florenzo          #+#    #+#             */
-/*   Updated: 2017/11/09 17:35:07 by florenzo         ###   ########.fr       */
+/*   Created: 2018/04/11 14:23:05 by acalleja          #+#    #+#             */
+/*   Updated: 2018/04/11 18:59:14 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "asm.h"
 
-void	*ft_memalloc(size_t size)
+void	pars_opcode(char *str, t_instru **ins)
 {
-	unsigned char	*ptr;
+	char	**tab;
+	int		i;
 
-	ptr = (unsigned char*)ealloc(size);
-	if (!ptr)
-		return (NULL);
-	ft_memset(ptr, 0, size);
-	return (ptr);
+	i = 0;
+	tab = ft_strsplit(str, ' ');
+	(*ins)->opcode = ft_strdup(tab[0]);
+	while (i < ft_strlen(tab[0]))
+	{
+		del_pos(str, 0);
+		i++;
+	}
+	free_tab(tab);
 }

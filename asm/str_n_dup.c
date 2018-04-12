@@ -1,24 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_meealloc.c                                      :+:      :+:    :+:   */
+/*   ft_strndup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: florenzo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/06 17:33:47 by florenzo          #+#    #+#             */
-/*   Updated: 2017/11/09 17:35:07 by florenzo         ###   ########.fr       */
+/*   Created: 2017/11/27 09:36:53 by acalleja          #+#    #+#             */
+/*   Updated: 2018/04/11 13:32:53 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "asm.h"
 
-void	*ft_memalloc(size_t size)
+char		*ft_strn_dup(char *s1, int n)
 {
-	unsigned char	*ptr;
+	int		i;
+	char	*tab;
 
-	ptr = (unsigned char*)ealloc(size);
-	if (!ptr)
+	i = 0;
+	tab = (char *)ealloc(sizeof(char) * n + 1);
+	if (tab == NULL)
 		return (NULL);
-	ft_memset(ptr, 0, size);
-	return (ptr);
+	while (i < n)
+	{
+		tab[i] = s1[i];
+		i++;
+	}
+	tab[i] = '\0';
+	return (tab);
 }

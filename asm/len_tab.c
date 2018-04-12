@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_meealloc.c                                      :+:      :+:    :+:   */
+/*   len_tab.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: florenzo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/06 17:33:47 by florenzo          #+#    #+#             */
-/*   Updated: 2017/11/09 17:35:07 by florenzo         ###   ########.fr       */
+/*   Created: 2018/04/11 15:08:40 by acalleja          #+#    #+#             */
+/*   Updated: 2018/04/11 15:12:39 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "asm.h"
 
-void	*ft_memalloc(size_t size)
+int		len_tab(char **tab)
 {
-	unsigned char	*ptr;
+	int		i;
 
-	ptr = (unsigned char*)ealloc(size);
-	if (!ptr)
-		return (NULL);
-	ft_memset(ptr, 0, size);
-	return (ptr);
+	i = 0;
+	while (tab[i])
+		i++;
+	return (i);
 }

@@ -1,24 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_meealloc.c                                      :+:      :+:    :+:   */
+/*   error_syntax.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: florenzo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/06 17:33:47 by florenzo          #+#    #+#             */
-/*   Updated: 2017/11/09 17:35:07 by florenzo         ###   ########.fr       */
+/*   Created: 2018/04/11 11:58:12 by acalleja          #+#    #+#             */
+/*   Updated: 2018/04/11 12:12:39 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "asm.h"
 
-void	*ft_memalloc(size_t size)
+void	error_syntax(void)
 {
-	unsigned char	*ptr;
-
-	ptr = (unsigned char*)ealloc(size);
-	if (!ptr)
-		return (NULL);
-	ft_memset(ptr, 0, size);
-	return (ptr);
+	ft_printf("Invalid Syntaxe\n");
+	exit(0);
 }
