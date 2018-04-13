@@ -19,8 +19,9 @@ int				get_champ_code(t_champion *new, char *filename)
 	if (get_magic_number(fd, new, filename)
 			|| get_program_name(fd, new, filename)
 			|| no_null_byte(fd, new, filename)
-			|| get_instruction_count(fd, new, filename)
-			|| get_program_desc(fd, new, filename))
+			|| get_byte_count(fd, new, filename)
+			|| get_program_desc(fd, new, filename)
+			|| no_null_byte(fd, new, filename))
 		error = 1;
 	if (close(fd) < 0)
 		errorf("Could not close file %s", filename);

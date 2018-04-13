@@ -71,7 +71,7 @@ int			no_null_byte(int fd, t_champion *new, char *filename)
 	return (0);
 }
 
-int			get_instruction_count(int fd, t_champion *new, char *filename)
+int			get_byte_count(int fd, t_champion *new, char *filename)
 {
 	char	buf[4];
 	int		readres;
@@ -81,11 +81,11 @@ int			get_instruction_count(int fd, t_champion *new, char *filename)
 		return (1);
 	swap_chars(buf, buf + 3);
 	swap_chars(buf + 1, buf + 2);
-	new->instructions = *(int*)buf;
-	if (new->instructions > CHAMP_MAX_SIZE)
+	new->bytes = *(int*)buf;
+	if (new->bytes > CHAMP_MAX_SIZE)
 	{
-		ft_printf("Champion %s from file %s says his program weights %i instructions, it's over %i\n",
-				new->name, filename, new->instructions, CHAMP_MAX_SIZE);
+		ft_printf("Champion %s from file %s says his program weights %i bytes, it's over %i\n",
+				new->name, filename, new->bytes, CHAMP_MAX_SIZE);
 		return (1);
 	}
 	return (0);
