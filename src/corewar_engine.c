@@ -13,10 +13,10 @@ void	ft_print_list(t_champion *champ)
 	}
 	while (champ != NULL)
 	{
-		ft_printf("Champion %s from file %s has id %i\n"
-				ITALIC "%s\n" CLEAR,
+		ft_printf("Champion %s from file %s has id %i and weights "
+				"%i bytes\n" ITALIC "%s\n" CLEAR,
 				champ->name, champ->filename, champ->id,
-				champ->comment);
+				champ->bytes, champ->comment);
 		champ = champ->next;
 	}
 }

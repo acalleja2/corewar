@@ -29,7 +29,7 @@ typedef struct	s_champion
 	char				*comment;
 	char				*filename;
 	int					id;
-	int					instructions;
+	int					bytes;
 }				t_champion;
 
 typedef struct	s_proc
@@ -109,7 +109,7 @@ int				error_reading(int readres, int expected, char *filename);
 int				get_magic_number(int fd, t_champion *new, char *filename);
 int				get_program_name(int fd, t_champion *new, char *filename);
 int				no_null_byte(int fd, t_champion *new, char *filename);
-int				get_instruction_count(int fd, t_champion *new, char *filename);
+int				get_byte_count(int fd, t_champion *new, char *filename);
 int				get_program_desc(int fd, t_champion *new, char *filename);
 
 #endif

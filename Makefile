@@ -47,7 +47,7 @@ OBJS_DIRS = $(sort $(dir $(OBJS)))
 # Rules
 
 all: $(PROGS)
-$(OBJ): corewar.h
+$(OBJS): src/corewar.h
 $(PROGS): $(OBJDIR) $(OBJS)
 	make -C libft
 	$(CC) $(CFLAGS) -o $(PROGS) $(OBJS) $(LIBS)
