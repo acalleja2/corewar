@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   add_param_size.c                                   :+:      :+:    :+:   */
+/*   count_size_tot.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/13 16:05:16 by acalleja          #+#    #+#             */
-/*   Updated: 2018/04/13 22:02:45 by acalleja         ###   ########.fr       */
+/*   Created: 2018/04/13 19:50:35 by acalleja          #+#    #+#             */
+/*   Updated: 2018/04/13 19:57:40 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-void	add_param_size(t_instru **tmp, int ret, int rank)
+int		count_size_tot(t_instru *tmp)
 {
-	if (ret == T_REG)
+	int		count;
+
+	count = 0;
+	while (tmp)
 	{
-		(*tmp)->size += 1;
+		count += tmp->size;
+		tmp = tmp->next;
 	}
-	else if (ret == T_IND)
-	{
-		(*tmp)->size += 2;
-	}
-	else 
-	{
-		if (op_tab[rank].nb_direct == 0)
-			(*tmp)->size += 4;
-		else
-			(*tmp)->size += 2;
-	}
+	return (count);
 }

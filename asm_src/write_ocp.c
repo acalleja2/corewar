@@ -1,32 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   add_param_size.c                                   :+:      :+:    :+:   */
+/*   write_ocp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/13 16:05:16 by acalleja          #+#    #+#             */
-/*   Updated: 2018/04/13 22:02:45 by acalleja         ###   ########.fr       */
+/*   Created: 2018/04/13 22:27:18 by acalleja          #+#    #+#             */
+/*   Updated: 2018/04/13 23:00:19 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-void	add_param_size(t_instru **tmp, int ret, int rank)
+char	write_ocp(int ret, int i)
 {
+	char	octet;
+
+	octet = 0;
 	if (ret == T_REG)
 	{
-		(*tmp)->size += 1;
+		octet |= 1;
+		octet = octet << (6 - i * 2);
 	}
-	else if (ret == T_IND)
+	else if (ret == T_DIR)
 	{
-		(*tmp)->size += 2;
+		octet |= 3;
+		octet = octet << (6 - i * 2);
 	}
-	else 
+	else
 	{
-		if (op_tab[rank].nb_direct == 0)
-			(*tmp)->size += 4;
-		else
-			(*tmp)->size += 2;
+		octet |= 2;
+		octet = octet << (6 - i * 2);
 	}
+	return (octet);
 }

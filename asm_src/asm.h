@@ -6,7 +6,7 @@
 /*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/11 11:11:51 by acalleja          #+#    #+#             */
-/*   Updated: 2018/04/13 18:47:50 by acalleja         ###   ########.fr       */
+/*   Updated: 2018/04/13 22:52:38 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,16 @@ typedef struct		s_instru
 	t_param			*par;
 	int				size;
 	struct s_instru	*next;
-
 }					t_instru;
 
+void				rev_instruc(int size, int fd);
+int					count_size_tot(t_instru *tmp);
+void				rev_magic(header_t *head, int fd);
+void				add_empty_oct(int nb, int fd);
 void				add_size(t_instru **tmp, int rank);
 void				add_param_size(t_instru **tmp, int ret, int rank);
-void				check_param(t_instru *ins, t_label *lab, char *str);
+void				check_param(t_instru *ins, t_label *lab, char *str,
+					char octet);
 void				check_nb_param(t_instru *ins);
 int					search_rank_op(char *str);
 int					count_lst_lab(t_label *lab);
