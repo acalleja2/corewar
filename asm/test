@@ -1,1 +1,5 @@
-entree:liv	%42
+.name		"42"
+.comment	"yo les gars"
+
+tir:	sti r1,%42,%1
+entree: live %:entre

@@ -6,7 +6,7 @@
 /*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/11 11:11:51 by acalleja          #+#    #+#             */
-/*   Updated: 2018/04/12 22:34:39 by acalleja         ###   ########.fr       */
+/*   Updated: 2018/04/13 16:18:45 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,19 @@ typedef struct		s_instru
 	t_label			*lab;
 	char			*opcode;
 	t_param			*par;
+	int				size;
 	struct s_instru	*next;
+
 }					t_instru;
 
+void				add_size(t_instru **tmp, int rank);
+void				add_param_size(t_instru **tmp, int ret, int rank);
+void				check_param(t_instru *ins, t_label *lab, char *str);
+void				check_nb_param(t_instru *ins);
+int					search_rank_op(char *str);
+int					count_lst_lab(t_label *lab);
+int					count_lst_ins(t_instru *ins);
+int					count_lst_par(t_param *par);
 void				check_header(char *str, int fd, header_t *head);
 int					pars_name(char *str, header_t *head, int fd);
 int					pars_desc(char *str, header_t *head, int fd);
@@ -63,7 +73,7 @@ int					label_chars(char c, char *str);
 void				error_label(void);
 void				error_header(void);
 void				error_opcode(char *str);
-void				error_param(char *str);
+void				error_param();
 void				del_pos(char *str, int pos);
 void				del_seq(char *str, int pos, int seq);
 char				*ft_strn_dup(char *str, int n);
@@ -76,5 +86,11 @@ void				create_lab_lst(t_label **lab, char *str);
 void				create_param_lst(t_param **par, char *str);
 void				create_instru_lst(t_instru **ins);
 void				line_reader(int fd, t_label **lab, t_instru **ins);
+int					all_digit(char *str);
+int					is_reg(char *str);
+int					is_direct(char *str, t_instru *beg, t_label *lab,
+					t_instru *tmp);
+int					is_indirect(char *str, t_instru *beg, t_label *lab,
+					t_instru *tmp);
 
 #endif
