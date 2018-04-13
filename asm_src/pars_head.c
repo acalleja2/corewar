@@ -6,7 +6,7 @@
 /*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/12 21:45:34 by acalleja          #+#    #+#             */
-/*   Updated: 2018/04/12 23:26:01 by acalleja         ###   ########.fr       */
+/*   Updated: 2018/04/13 19:07:58 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int		pars_name(char *str, header_t *head, int fd)
 			}
 		}
 		if (ft_strlen(nm) <= PROG_NAME_LENGTH)
-			ft_strcpy(head->comment, nm);
+			ft_strcpy(head->prog_name, nm);
 		else
 			error_header();
 		return (1);
@@ -102,7 +102,7 @@ int		pars_desc(char *str, header_t *head, int fd)
 			}
 		}
 		if (ft_strlen(nm) <= COMMENT_LENGTH)
-			ft_strcpy(head->prog_name, nm);
+			ft_strcpy(head->comment, nm);
 		else
 			error_header();
 		return (1);

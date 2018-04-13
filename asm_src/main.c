@@ -6,7 +6,7 @@
 /*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/11 18:24:23 by acalleja          #+#    #+#             */
-/*   Updated: 2018/04/12 14:12:10 by acalleja         ###   ########.fr       */
+/*   Updated: 2018/04/13 18:31:36 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int		print_usage(void)
 int		main(int argc, char **argv)
 {
 	int			fd;
+	char		**name;
 	t_label		*lab;
 	t_instru	*ins;
 
@@ -30,6 +31,13 @@ int		main(int argc, char **argv)
 		return (print_usage());
 	if ((fd = open(argv[1], O_RDONLY)) < 0)
 		return (print_usage());
-	line_reader(fd, &lab, &ins);
+	name = ft_strsplit(argv[1], '.');
+	if (len_tab(name) != 2 || ft_strcmp(name[1], "s"))
+	{
+		free_tab(name);
+		return (print_usage());
+	}
+	line_reader(fd, &lab, &ins, name[0]);
+	free_tab(name);
 	return (0);
 }

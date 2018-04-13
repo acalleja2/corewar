@@ -2,4 +2,4 @@
 .comment	"yo les gars"
 
 tir:	sti r1,%42,%1
-entree: live %:entre
+entree: live %:entree

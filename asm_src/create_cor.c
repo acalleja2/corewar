@@ -1,37 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_syntax.c                                     :+:      :+:    :+:   */
+/*   create_cor.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/11 11:58:12 by acalleja          #+#    #+#             */
-/*   Updated: 2018/04/13 18:30:46 by acalleja         ###   ########.fr       */
+/*   Created: 2018/04/13 18:19:34 by acalleja          #+#    #+#             */
+/*   Updated: 2018/04/13 19:01:32 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-void	error_label(void)
+void	create_cor(char *file, t_instru *ins, header_t *head)
 {
-	ft_printf("Invalid Label Syntaxe.\n");
-	exit(0);
-}
+	int		fd;
+	char	*name;
 
-void	error_header(void)
-{
-	ft_printf("Invalid Header.\n");
-	exit(0);
-}
-
-void	error_opcode(char *str)
-{
-	ft_printf("Invalid Opcode '%s'.\n", str);
-	exit(0);
-}
-
-void	error_param()
-{
-	ft_printf("Invalid Parametres.\n");
-	exit(0);
+	name = ft_strjoin(file, ".cor");
+	ft_printf("Writing output program to %s\n", name);
+	fd = open(name, O_CREAT | O_RDWR, 0666);
+	printf("magic = %d, name = %s, comment = %s\n", head->magic, head->prog_name, head->comment);
+	write(fd, head, sizeof(header_t));
 }

@@ -6,13 +6,13 @@
 /*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/11 18:28:31 by acalleja          #+#    #+#             */
-/*   Updated: 2018/04/13 15:49:38 by acalleja         ###   ########.fr       */
+/*   Updated: 2018/04/13 18:47:52 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-void	line_reader(int fd, t_label **lab, t_instru **ins)
+void	line_reader(int fd, t_label **lab, t_instru **ins, char *file)
 {
 	char		*line;
 	t_instru	*tmp;
@@ -48,4 +48,5 @@ void	line_reader(int fd, t_label **lab, t_instru **ins)
 		free(line);
 	}
 	check_param(*ins, *lab, str);
+	create_cor(file, *ins, head);
 }

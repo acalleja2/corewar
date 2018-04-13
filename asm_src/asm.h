@@ -6,7 +6,7 @@
 /*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/11 11:11:51 by acalleja          #+#    #+#             */
-/*   Updated: 2018/04/13 16:18:45 by acalleja         ###   ########.fr       */
+/*   Updated: 2018/04/13 18:47:50 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,12 +85,14 @@ void				pars_param(char *str, t_instru **ins);
 void				create_lab_lst(t_label **lab, char *str);
 void				create_param_lst(t_param **par, char *str);
 void				create_instru_lst(t_instru **ins);
-void				line_reader(int fd, t_label **lab, t_instru **ins);
+void				line_reader(int fd, t_label **lab, t_instru **ins,
+					char *file);
 int					all_digit(char *str);
 int					is_reg(char *str);
 int					is_direct(char *str, t_instru *beg, t_label *lab,
 					t_instru *tmp);
 int					is_indirect(char *str, t_instru *beg, t_label *lab,
 					t_instru *tmp);
+void				create_cor(char *file, t_instru *ins, header_t *head);
 
 #endif
