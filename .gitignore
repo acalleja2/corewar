@@ -5,6 +5,7 @@
 *.out
 *.dSYM
 *.cor
+asm
 corewar
 tags
 Session.vim
