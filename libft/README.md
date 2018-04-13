@@ -1,5 +1,3 @@
-# Corewar
-
 ## Libft
 Fonctions custom
 ### Malloc
