@@ -25,8 +25,11 @@ typedef struct	s_champion
 {
 	struct s_champion	*next;
 	char				*code;
+	char				*name;
+	char				*comment;
 	char				*filename;
 	int					id;
+	int					instructions;
 }				t_champion;
 
 typedef struct	s_proc
@@ -98,5 +101,15 @@ int				get_champ_code(t_champion *new, char *filename);
 ** champ_list_tools.c
 */
 void			champ_list_append(t_champion **list, t_champion *new);
+
+/*
+** get_stuff.c
+*/
+int				error_reading(int readres, int expected, char *filename);
+int				get_magic_number(int fd, t_champion *new, char *filename);
+int				get_program_name(int fd, t_champion *new, char *filename);
+int				no_null_byte(int fd, t_champion *new, char *filename);
+int				get_instruction_count(int fd, t_champion *new, char *filename);
+int				get_program_desc(int fd, t_champion *new, char *filename);
 
 #endif

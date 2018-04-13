@@ -109,7 +109,8 @@ MISCSRC = misc/ft_putchar.c \
 		  misc/ft_tolower.c \
 		  misc/ft_toupper.c \
 		  misc/freen.c \
-		  misc/errorf.c
+		  misc/errorf.c \
+		  misc/swap_chars.c
 MISCOBJ = $(MISCSRC:%.c=%.o)
 
 OBJ = $(MEMOBJ) $(IFSOBJ) $(STROBJ) $(PRINTFOBJ) $(GNLOBJ) $(MISCOBJ)

@@ -25,6 +25,9 @@
 # include "get_next_line.h"
 # define TRUE 1
 # define FALSE 0
+# define CLEAR "\e[0m"
+# define BOLD "\e[1m"
+# define ITALIC "\e[3m"
 # define BLACK "\e[30m"
 # define RED "\e[31m"
 # define GREEN "\e[32m"
@@ -33,7 +36,6 @@
 # define MAGENTA "\e[35m"
 # define CYAN "\e[36m"
 # define WHITE "\e[37m"
-# define CLEAR "\e[0m"
 
 /*
 ** str/
@@ -114,5 +116,6 @@ int					ft_tolower(int c);
 int					ft_toupper(int c);
 int					errorf(char *format, ...);
 void				*freen(int n, ...);
+void				swap_chars(char *a, char *b);
 
 #endif

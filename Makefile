@@ -27,7 +27,8 @@ SRC = ft_error_parse.c \
 	  parse_utilities.c \
 	  corewar_engine.c \
 	  champion_initialization.c \
-	  champ_list_tools.c
+	  champ_list_tools.c \
+	  get_stuff.c
 	  # error_file.c
 
 # Prefixes sources
@@ -46,7 +47,7 @@ OBJS_DIRS = $(sort $(dir $(OBJS)))
 # Rules
 
 all: $(PROGS)
-
+$(OBJ): corewar.h
 $(PROGS): $(OBJDIR) $(OBJS)
 	make -C libft
 	$(CC) $(CFLAGS) -o $(PROGS) $(OBJS) $(LIBS)

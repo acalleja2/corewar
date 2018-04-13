@@ -1,4 +1,5 @@
 #include "corewar.h"
+
 /*
 ** Ajoute un process a la fin de la liste (ouais c'est obvious)
 */

@@ -13,7 +13,10 @@ void	ft_print_list(t_champion *champ)
 	}
 	while (champ != NULL)
 	{
-		ft_printf("%s\n", champ->filename);
+		ft_printf("Champion %s from file %s has id %i\n"
+				ITALIC "%s\n" CLEAR,
+				champ->name, champ->filename, champ->id,
+				champ->comment);
 		champ = champ->next;
 	}
 }
@@ -42,7 +45,6 @@ int		create_champ_list(t_args *args, t_champion **champs)
 	count = 0;
 	while (i < MAX_PLAYERS && (args->champions)[i] != NULL)
 	{
-		ft_printf("adding champion %s\n", (args->champions)[i]);
 		new = init_champion(count, (args->champions)[i]);
 		i += 1;
 		if (new == NULL)
