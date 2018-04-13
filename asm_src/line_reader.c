@@ -6,7 +6,7 @@
 /*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/11 18:28:31 by acalleja          #+#    #+#             */
-/*   Updated: 2018/04/13 18:47:52 by acalleja         ###   ########.fr       */
+/*   Updated: 2018/04/13 22:52:30 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	line_reader(int fd, t_label **lab, t_instru **ins, char *file)
 	t_instru	*tmp;
 	header_t	*head;
 	char		*str;
+	char		octet;
 
 	head = (header_t *)ealloc(sizeof(header_t));
 	check_header(line, fd, head);
@@ -47,6 +48,6 @@ void	line_reader(int fd, t_label **lab, t_instru **ins, char *file)
 		}
 		free(line);
 	}
-	check_param(*ins, *lab, str);
+	check_param(*ins, *lab, str, octet);
 	create_cor(file, *ins, head);
 }

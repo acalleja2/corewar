@@ -6,14 +6,17 @@
 /*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/13 11:32:57 by acalleja          #+#    #+#             */
-/*   Updated: 2018/04/13 16:04:44 by acalleja         ###   ########.fr       */
+/*   Updated: 2018/04/13 20:35:16 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-int		is_reg(char *str)
+int		is_reg(char *s)
 {
+	char	*str;
+
+	str = ft_strdup(s);
 	if (str[0] != 'r')
 		return (0);
 	del_pos(str, 0);
@@ -22,11 +25,13 @@ int		is_reg(char *str)
 	return (T_REG);
 }
 
-int		is_direct(char *str, t_instru *beg, t_label *lab, t_instru *tmp)
+int		is_direct(char *s, t_instru *beg, t_label *lab, t_instru *tmp)
 {
 	t_label		*l;
+	char	*str;
 
-	if (str[0] != DIRECT_CHAR)
+	str = ft_strdup(s);
+	if (str[0] != DIRECT_CHAR || str[0] == 'r')
 		return (0);
 	del_pos(str, 0);
 	if (str[0] != LABEL_CHAR)
@@ -62,10 +67,14 @@ int		is_direct(char *str, t_instru *beg, t_label *lab, t_instru *tmp)
 	return (0);
 }
 
-int		is_indirect(char *str, t_instru *beg, t_label *lab, t_instru *tmp)
+int		is_indirect(char *s, t_instru *beg, t_label *lab, t_instru *tmp)
 {
 	t_label		*l;
+	char	*str;
 
+	str = ft_strdup(s);
+	if (str[0] == 'r')
+		return (0);
 	if (str[0] != LABEL_CHAR)
 	{
 		if (str[0] == '-')

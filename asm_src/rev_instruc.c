@@ -1,32 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   add_param_size.c                                   :+:      :+:    :+:   */
+/*   rev_instruc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/13 16:05:16 by acalleja          #+#    #+#             */
-/*   Updated: 2018/04/13 22:02:45 by acalleja         ###   ########.fr       */
+/*   Created: 2018/04/13 21:49:59 by acalleja          #+#    #+#             */
+/*   Updated: 2018/04/13 21:51:56 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-void	add_param_size(t_instru **tmp, int ret, int rank)
+void	rev_instruc(int size, int fd)
 {
-	if (ret == T_REG)
-	{
-		(*tmp)->size += 1;
-	}
-	else if (ret == T_IND)
-	{
-		(*tmp)->size += 2;
-	}
-	else 
-	{
-		if (op_tab[rank].nb_direct == 0)
-			(*tmp)->size += 4;
-		else
-			(*tmp)->size += 2;
-	}
+	write(fd, ((char*)&(size)) + 3, 1);
+	write(fd, ((char*)&(size)) + 2, 1);
+	write(fd, ((char*)&(size)) + 1, 1);
+	write(fd, ((char*)&(size)), 1);
 }
