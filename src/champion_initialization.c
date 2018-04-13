@@ -1,10 +1,10 @@
 #include "corewar.h"
 
 /*
-** Pour l'instant on ouvre juste le fichier
-** TODO recuperer le code
+** On
+** 
 */
-int				get_champ_code(t_champion *new, char *filename)
+int				get_champ_data(t_champion *new, char *filename)
 {
 	int			fd;
 	int			error;
@@ -21,7 +21,8 @@ int				get_champ_code(t_champion *new, char *filename)
 			|| no_null_byte(fd, new, filename)
 			|| get_byte_count(fd, new, filename)
 			|| get_program_desc(fd, new, filename)
-			|| no_null_byte(fd, new, filename))
+			|| no_null_byte(fd, new, filename)
+			|| get_champ_code(fd, new, filename))
 		error = 1;
 	if (close(fd) < 0)
 		errorf("Could not close file %s", filename);
@@ -43,7 +44,7 @@ t_champion		*init_champion(int id, char *filename)
 	new->name = NULL;
 	new->comment = NULL;
 	new->filename = filename;
-	if (get_champ_code(new, filename))
+	if (get_champ_data(new, filename))
 		return (freen(4, new, new->code, new->name, new->comment));
 	new->id = id;
 	ft_printf("succesfully created champion %s\n", filename);

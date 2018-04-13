@@ -10,6 +10,7 @@
 
 typedef struct	s_args
 {
+	char		**champions;
 	int			dump;
 	int			cycles;
 	int			verbosity;
@@ -18,13 +19,13 @@ typedef struct	s_args
 	int			index;
 	int			process_curr;
 	int			*process;
-	char		**champions;
+	int			champ_number;
 } 				t_args;
 
 typedef struct	s_champion
 {
 	struct s_champion	*next;
-	char				*code;
+	unsigned char		*code;
 	char				*name;
 	char				*comment;
 	char				*filename;
@@ -34,20 +35,32 @@ typedef struct	s_champion
 
 typedef struct	s_proc
 {
-	int				process_nbr;
-	char			*filename;
-	int				fd;
-	unsigned char	*registres[REG_NUMBER * REG_SIZE];
+	struct s_proc	*next;
+	int				starting_pos;
+	int				champion_id;
+	int				alive;
+	unsigned char	*registers[REG_NUMBER * REG_SIZE];
 	unsigned char	pc;
 	unsigned char	carry;
-	int				alive;
-	struct s_proc	*next;
 }				t_proc;
+
+/*
+** Le tableau map est la map sur laquelle se battent les champions
+** Le tableau owner sert pour le visu, il se souvient de l'id du dernier
+** process qui a ecrit sur la case de memoire correspondante
+*/
+
+typedef struct	s_mem
+{
+	unsigned char	map[MEM_SIZE];
+	char			owner[MEM_SIZE];
+	t_proc			*first;
+}				t_mem;
 
 /*
 ** init_t_args.c
 */
-void			ft_init_t_args(t_args *args);
+void			ft_init_t_args(t_args *args, t_mem *mem);
 
 /*
 ** parse_text_output_mode.c
@@ -82,25 +95,27 @@ void			ft_n(int argc, char *argv[], int *i, t_args *args);
 void			print_args(t_args *args);
 void			ft_error_parse();
 void			ft_error_file(char *champ);
-void			ft_corewar_engine(t_args *args);
 int				ft_strisnumber(char *str);
 
 /*
-** corewar_engine.c
+** setup_champs.c
 */
-void			ft_corewar_engine(t_args *args);
+void			setup_champions(t_args *args, t_champion **champs);
 int				create_champ_list(t_args *args, t_champion **champs);
 
 /*
 ** champion_initialization.c
 */
 t_champion		*init_champion(int id, char *filename);
-int				get_champ_code(t_champion *new, char *filename);
+int				get_champ_data(t_champion *new, char *filename);
 
 /*
 ** champ_list_tools.c
 */
 void			champ_list_append(t_champion **list, t_champion *new);
+void			ft_print_champ_list(t_champion *champ);
+int				champ_list_len(t_champion **list);
+void			champ_list_free(t_champion **list);
 
 /*
 ** get_stuff.c
@@ -111,5 +126,29 @@ int				get_program_name(int fd, t_champion *new, char *filename);
 int				no_null_byte(int fd, t_champion *new, char *filename);
 int				get_byte_count(int fd, t_champion *new, char *filename);
 int				get_program_desc(int fd, t_champion *new, char *filename);
+int				get_champ_code(int fd, t_champion *new, char *filename);
+
+/*
+** mem_load.c
+*/
+
+void			mem_load(t_mem *mem, t_champion *current, int starting_pos);
+void			add_process(t_mem *mem, t_champion *current, int starting_pos);
+void			load_champs_and_setup_processes(t_args *args, t_champion **champs, t_mem *mem);
+
+/*
+** mem_tools.c
+*/
+
+void			mem_set_byte(t_mem *mem, unsigned char const byte, int const pos, int const id);
+void			print_mem(t_mem *mem);
+
+/*
+** proc_list_tools.c
+*/
+
+t_proc			*proc_new(int id, int starting_pos);
+void			proc_list_add(t_mem *mem, t_proc *new);
+void			print_proc_list(t_mem *mem);
 
 #endif

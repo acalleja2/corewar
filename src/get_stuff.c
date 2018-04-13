@@ -103,3 +103,32 @@ int			get_program_desc(int fd, t_champion *new, char *filename)
 	new->comment = ft_strdup(buf);
 	return (0);
 }
+
+int			get_champ_code(int fd, t_champion *new, char *filename)
+{
+	char	buf[CHAMP_MAX_SIZE + 1];
+	int		readres;
+
+	readres = read(fd, buf, CHAMP_MAX_SIZE + 1);
+	if (readres < 0)
+	{
+		errorf("Could not read from file %s", filename);
+		return (1);
+	}
+	if (readres < new->bytes)
+	{
+		ft_printf("Champion %s from file %s announced his code would "
+				"weight %i bytes but it seems to be only %i long\n",
+				new->name, filename, new->bytes, readres);
+		return (1);
+	}
+	if (readres > new->bytes)
+	{
+		ft_printf("Champion %s from file %s announced his code would "
+				"weight %i bytes but it is longer\n",
+				new->name, filename, new->bytes);
+		return (1);
+	}
+	new->code = mem_dup(buf, new->bytes);
+	return (0);
+}

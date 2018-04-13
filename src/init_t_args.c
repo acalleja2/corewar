@@ -3,7 +3,7 @@
 /*
 ** intialize les valeurs de args a des valeurs par defaut
 */
-void	ft_init_t_args(t_args *args)
+void	ft_init_t_args(t_args *args, t_mem *mem)
 {
 		args->dump = -1;
 		args->cycles = -1;
@@ -16,4 +16,7 @@ void	ft_init_t_args(t_args *args)
 		ft_bzero(args->champions, sizeof(char *) * MAX_PLAYERS);
 		args->process = (int *)ealloc(sizeof(int) * MAX_PLAYERS);
 		ft_bzero(args->process, sizeof(int) * MAX_PLAYERS);
+		ft_bzero(mem->map, MEM_SIZE);
+		ft_memset(mem->owner, (char)-1, MEM_SIZE);
+		mem->first = NULL;
 }

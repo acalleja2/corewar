@@ -25,10 +25,13 @@ SRC = ft_error_parse.c \
 	  parse_name.c \
 	  parse_text_output_mode.c \
 	  parse_utilities.c \
-	  corewar_engine.c \
+	  setup_champs.c \
 	  champion_initialization.c \
 	  champ_list_tools.c \
-	  get_stuff.c
+	  get_stuff.c \
+	  mem_load.c \
+	  mem_tools.c \
+	  proc_list_tools.c
 	  # error_file.c
 
 # Prefixes sources
