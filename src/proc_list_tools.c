@@ -8,7 +8,7 @@ t_proc		*proc_new(int id, int starting_pos)
 	new->next = NULL;
 	new->starting_pos = starting_pos;
 	new->champion_id = id;
-	new->alive = 0;
+	new->live = 0;
 	new->registers[REG_SIZE - 1] = (unsigned char)id;
 	new->pc = 0;
 	new->carry = 0;
