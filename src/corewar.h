@@ -20,6 +20,7 @@ typedef struct	s_args
 	int			process_curr;
 	int			*process;
 	int			champ_number;
+	int			talk;
 } 				t_args;
 
 typedef struct	s_champion
@@ -170,5 +171,10 @@ void	ft_free_t_args(t_args *args);
 
 void			vm_loop(t_mem *mem, t_champion *champs);
 void			exec_cycle(t_mem *mem, t_champion *champs);
+
+/*
+** parse_talk.c
+*/
+void			ft_t(char *argv[], int *i, t_args *args);
 
 #endif
