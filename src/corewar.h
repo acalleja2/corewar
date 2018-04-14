@@ -55,6 +55,9 @@ typedef struct	s_mem
 	unsigned char	map[MEM_SIZE];
 	char			owner[MEM_SIZE];
 	t_proc			*first;
+	int				cycle;
+	int				cycle_to_die;
+	int				since_last_check;
 }				t_mem;
 
 /*
@@ -150,5 +153,6 @@ void			print_mem(t_mem *mem);
 t_proc			*proc_new(int id, int starting_pos);
 void			proc_list_add(t_mem *mem, t_proc *new);
 void			print_proc_list(t_mem *mem);
+void			proc_list_free(t_mem *mem);
 
 #endif

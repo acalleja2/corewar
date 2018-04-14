@@ -34,3 +34,17 @@ void			print_proc_list(t_mem *mem)
 		current = current->next;
 	}
 }
+
+void			proc_list_free(t_mem *mem)
+{
+	t_proc		*current;
+	t_proc		*tmp;
+
+	current = mem->first;
+	while (current != NULL)
+	{
+		tmp = current->next;
+		free(current);
+		current = tmp;
+	}
+}
