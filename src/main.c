@@ -1,9 +1,6 @@
 #include "corewar.h"
 
-void			(*const g_tab[17])(t_mem *mem,
-		t_proc *process,
-		t_champion *champs,
-		t_args *args) = {
+void			(*const g_tab[17])(t_proc *process, t_data *data) = {
 	NULL,
 	ins_live,
 	ins_ld,
@@ -25,15 +22,13 @@ void			(*const g_tab[17])(t_mem *mem,
 int		main(int argc, char *argv[])
 {
 	t_args		args;
-	t_champion	*champs;
 	t_mem		mem;
+	t_data		data;
 
 	ft_init_t_args(&args, &mem);
 	ft_parseargs(argc, argv, &args);
-	setup_champions(&args, &champs);
-	ft_print_champ_list(champs);
-	mem.champs = champs;
-	mem.args = &args;
+	setup_champions(&args, &data);
+	ft_print_champ_list(data.champs);
 	if (args.champ_number == 0)
 	{
 		ft_printf("No valid champions found, aborting...\n");

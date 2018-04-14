@@ -1,5 +1,5 @@
 #include "corewar.h"
 
-void		ins_xor(t_mem *mem, t_proc *process, t_champion *champs, t_args *args)
+void		ins_xor(t_proc *process, t_data *data)
 {
 }

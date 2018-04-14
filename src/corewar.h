@@ -80,26 +80,25 @@ typedef struct	s_data
 	t_proc		*processes;
 }				t_data;
 
-extern void		(*const g_tab[17])(t_mem *mem,
-		t_proc *process,
-		t_champion *champs,
-		t_args *args);
-void			ins_live(t_mem *mem, t_proc *process, t_champion *champs, t_args *args);
-void			ins_ld(t_mem *mem, t_proc *process, t_champion *champs, t_args *args);
-void			ins_st(t_mem *mem, t_proc *process, t_champion *champs, t_args *args);
-void			ins_add(t_mem *mem, t_proc *process, t_champion *champs, t_args *args);
-void			ins_sub(t_mem *mem, t_proc *process, t_champion *champs, t_args *args);
-void			ins_and(t_mem *mem, t_proc *process, t_champion *champs, t_args *args);
-void			ins_or(t_mem *mem, t_proc *process, t_champion *champs, t_args *args);
-void			ins_xor(t_mem *mem, t_proc *process, t_champion *champs, t_args *args);
-void			ins_zjmp(t_mem *mem, t_proc *process, t_champion *champs, t_args *args);
-void			ins_ldi(t_mem *mem, t_proc *process, t_champion *champs, t_args *args);
-void			ins_sti(t_mem *mem, t_proc *process, t_champion *champs, t_args *args);
-void			ins_fork(t_mem *mem, t_proc *process, t_champion *champs, t_args *args);
-void			ins_lld(t_mem *mem, t_proc *process, t_champion *champs, t_args *args);
-void			ins_lldi(t_mem *mem, t_proc *process, t_champion *champs, t_args *args);
-void			ins_lfork(t_mem *mem, t_proc *process, t_champion *champs, t_args *args);
-void			ins_aff(t_mem *mem, t_proc *process, t_champion *champs, t_args *args);
+extern void		(*const g_tab[17])(t_proc *process,
+		t_data *data);
+
+void			ins_live(t_proc *process, t_data *data);
+void			ins_ld(t_proc *process, t_data *data);
+void			ins_st(t_proc *process, t_data *data);
+void			ins_add(t_proc *process, t_data *data);
+void			ins_sub(t_proc *process, t_data *data);
+void			ins_and(t_proc *process, t_data *data);
+void			ins_or(t_proc *process, t_data *data);
+void			ins_xor(t_proc *process, t_data *data);
+void			ins_zjmp(t_proc *process, t_data *data);
+void			ins_ldi(t_proc *process, t_data *data);
+void			ins_sti(t_proc *process, t_data *data);
+void			ins_fork(t_proc *process, t_data *data);
+void			ins_lld(t_proc *process, t_data *data);
+void			ins_lldi(t_proc *process, t_data *data);
+void			ins_lfork(t_proc *process, t_data *data);
+void			ins_aff(t_proc *process, t_data *data);
 
 /*
 ** init_t_args.c

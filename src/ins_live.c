@@ -1,6 +1,6 @@
 #include "corewar.h"
 
-void		ins_live(t_mem *mem, t_proc *process, t_champion *champs, t_args *args)
+void		ins_live(t_proc *process, t_data *data)
 {
 	unsigned char	tmp[4];
 	int				id;
