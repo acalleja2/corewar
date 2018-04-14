@@ -34,6 +34,7 @@ int				get_champ_data(t_champion *new, char *filename)
 ** initialise la structure.
 ** Si une erreur survient renvoie NULL.
 */
+
 t_champion		*init_champion(int id, char *filename)
 {
 	t_champion		*new;
@@ -47,6 +48,7 @@ t_champion		*init_champion(int id, char *filename)
 	if (get_champ_data(new, filename))
 		return (freen(4, new, new->code, new->name, new->comment));
 	new->id = id;
+	new->last_seen_alive = 0;
 	ft_printf("succesfully created champion %s\n", filename);
 	return (new);
 }

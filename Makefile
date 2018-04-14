@@ -35,8 +35,25 @@ SRC = ft_error_parse.c \
 	  free_args.c \
 	  vm_loop.c \
 	  check_alive.c \
-	  parse_talk.c
-	  # error_file.c
+	  parse_talk.c \
+	  print_winner.c \
+	  ins_live.c \
+	  ins_ld.c \
+	  ins_st.c \
+	  ins_add.c \
+	  ins_sub.c \
+	  ins_and.c \
+	  ins_or.c \
+	  ins_xor.c \
+	  ins_zjmp.c \
+	  ins_ldi.c \
+	  ins_sti.c \
+	  ins_fork.c \
+	  ins_lld.c \
+	  ins_lldi.c \
+	  ins_lfork.c \
+	  ins_aff.c
+# error_file.c
 
 # Prefixes sources
 SRCS = $(addprefix $(SRCDIR)/, $(SRC))
@@ -47,7 +64,7 @@ LIBS = $(addprefix $(LIBDIR)/, $(LIB))
 LIBS_DIRS = $(sort $(dir $(LIBS)))
 
 OBJS = $(addprefix $(OBJDIR)/, $(SRC:.c=.o))
-OBJS_DIRS = $(sort $(dir $(OBJS)))
+	OBJS_DIRS = $(sort $(dir $(OBJS)))
 
 .PHONY: clean fclean $(NAME)
 

@@ -1,12 +1,20 @@
-#include "../libft/libft.h"
-#include "op.h"
-#include <fcntl.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   corewar.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: florenzo <florenzo@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/04/14 17:10:11 by florenzo          #+#    #+#             */
+/*   Updated: 2018/04/14 17:10:11 by florenzo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef COREWAR_H
-#define COREWAR_H
-
- #define FALSE 0
- #define TRUE 1
+# define COREWAR_H
+# include "../libft/libft.h"
+# include "op.h"
+# include <fcntl.h>
 
 typedef struct	s_args
 {
@@ -21,7 +29,7 @@ typedef struct	s_args
 	int			*process;
 	int			champ_number;
 	int			talk;
-} 				t_args;
+}				t_args;
 
 typedef struct	s_champion
 {
@@ -64,14 +72,53 @@ typedef struct	s_mem
 	int				checks_since_last_decrement;
 }				t_mem;
 
+void			ins_live(t_mem *mem, t_proc *process, t_champion *champs);
+void			ins_ld(t_mem *mem, t_proc *process, t_champion *champs);
+void			ins_st(t_mem *mem, t_proc *process, t_champion *champs);
+void			ins_add(t_mem *mem, t_proc *process, t_champion *champs);
+void			ins_sub(t_mem *mem, t_proc *process, t_champion *champs);
+void			ins_and(t_mem *mem, t_proc *process, t_champion *champs);
+void			ins_or(t_mem *mem, t_proc *process, t_champion *champs);
+void			ins_xor(t_mem *mem, t_proc *process, t_champion *champs);
+void			ins_zjmp(t_mem *mem, t_proc *process, t_champion *champs);
+void			ins_ldi(t_mem *mem, t_proc *process, t_champion *champs);
+void			ins_sti(t_mem *mem, t_proc *process, t_champion *champs);
+void			ins_fork(t_mem *mem, t_proc *process, t_champion *champs);
+void			ins_lld(t_mem *mem, t_proc *process, t_champion *champs);
+void			ins_lldi(t_mem *mem, t_proc *process, t_champion *champs);
+void			ins_lfork(t_mem *mem, t_proc *process, t_champion *champs);
+void			ins_aff(t_mem *mem, t_proc *process, t_champion *champs);
+
+void			(*const g_tab[17])(t_mem *mem,
+		t_proc *process,
+		t_champion *champs) = {
+	NULL,
+	ins_live,
+	ins_ld,
+	ins_st,
+	ins_add,
+	ins_sub,
+	ins_and,
+	ins_or,
+	ins_xor,
+	ins_zjmp,
+	ins_ldi,
+	ins_sti,
+	ins_fork,
+	ins_lld,
+	ins_lldi,
+	ins_lfork,
+	ins_aff};
 /*
 ** init_t_args.c
 */
+
 void			ft_init_t_args(t_args *args, t_mem *mem);
 
 /*
 ** parse_text_output_mode.c
 */
+
 void			ft_d(int argc, char *argv[], int *i, t_args *args);
 void			ft_s(int argc, char *argv[], int *i, t_args *args);
 void			ft_v(int argc, char *argv[], int *i, t_args *args);
@@ -79,24 +126,27 @@ void			ft_v(int argc, char *argv[], int *i, t_args *args);
 /*
 ** parse_binary_mode.c
 */
+
 void			ft_b(int argc, char *argv[], int *i, t_args *args);
 
 /*
 ** parse_name.c
 */
+
 void			ft_parse_name(char *argv[], int *i, t_args *args);
 void			print_args(t_args *args);
 void			ft_parseargs(int argc, char *argv[], t_args *args);
 int				ft_valid_process(int candidate, t_args *args);
-        		
-/*      		
+
+/*
 ** parse_n.c
 */
+
 void			ft_n_name(char *argv[], int *i, t_args *args);
 void			ft_n_curse(int argc, char *argv[], int *i, t_args *args);
 void			ft_n(int argc, char *argv[], int *i, t_args *args);
-        		
-/*      		
+
+/*
 ** parse_utilies.c
 */
 void			print_args(t_args *args);
@@ -169,7 +219,7 @@ void	ft_free_t_args(t_args *args);
 ** vm_loop.c
 */
 
-void			vm_loop(t_mem *mem, t_champion *champs);
+void			vm_loop(t_mem *mem, t_champion *champs, t_args *args);
 void			exec_cycle(t_mem *mem, t_champion *champs);
 
 /*
@@ -185,5 +235,11 @@ void			ft_t(char *argv[], int *i, t_args *args);
 int				mem_check_alive(t_mem *mem, t_champion *champs);
 int				count_all_lives(t_mem *mem);
 void			clean_dead_processes(t_mem *mem);
+
+/*
+** print_winner.c
+*/
+
+void			print_winner(t_champion *champ, t_args *args);
 
 #endif

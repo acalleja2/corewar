@@ -1,5 +1,18 @@
 #include "corewar.h"
 
+void			process_exec(t_mem *mem, t_proc *process, t_champion *champs)
+{
+	unsigned char		instruction;
+
+	if (process->time_to_wait > 0)
+	{
+		process->time_to_wait -= 1;
+		return ;
+	}
+	instruction = mem_get_byte(mem, process, 0);
+	switch_instruction(mem, process, champs, instruction);
+}
+
 void			exec_cycle(t_mem *mem, t_champion *champs)
 {
 	t_proc		*current;
@@ -7,20 +20,20 @@ void			exec_cycle(t_mem *mem, t_champion *champs)
 	current = mem->first;
 	while (current != NULL)
 	{
-		/* process_exec(mem, current, champs); */
+		process_exec(mem, current, champs);
 		current = current->next;
 	}
 }
 
-void			vm_loop(t_mem *mem, t_champion *champs)
+void			vm_loop(t_mem *mem, t_champion *champs, t_args *args)
 {
 	while (42)
 	{
-		/* exec_cycle(mem, champs); */
+		exec_cycle(mem, champs);
 		if (mem->since_last_check == mem->cycle_to_die)
 			if (!mem_check_alive(mem, champs))
 			{
-				/* print_winner(champs); */
+				print_winner(champs, args);
 				break ;
 			}
 		mem->cycle += 1;
