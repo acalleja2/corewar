@@ -31,6 +31,7 @@ typedef struct	s_champion
 	char				*filename;
 	int					id;
 	int					bytes;
+	int					last_seen_alive;
 }				t_champion;
 
 typedef struct	s_proc
@@ -38,8 +39,9 @@ typedef struct	s_proc
 	struct s_proc	*next;
 	int				starting_pos;
 	int				champion_id;
-	int				alive;
-	unsigned char	*registers[REG_NUMBER * REG_SIZE];
+	int				live;
+	int				time_to_wait;
+	unsigned char	registers[REG_NUMBER * REG_SIZE];
 	unsigned char	pc;
 	unsigned char	carry;
 }				t_proc;
@@ -58,6 +60,7 @@ typedef struct	s_mem
 	int				cycle;
 	int				cycle_to_die;
 	int				since_last_check;
+	int				checks_since_last_decrement;
 }				t_mem;
 
 /*
