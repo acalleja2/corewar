@@ -9,4 +9,5 @@ void		ft_t(char *argv[], int *i, t_args *args)
 		args->talk = 1;
 	else
 		ft_error_parse();
+	*i += 1;
 }

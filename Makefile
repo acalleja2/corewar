@@ -34,7 +34,8 @@ SRC = ft_error_parse.c \
 	  proc_list_tools.c \
 	  free_args.c \
 	  vm_loop.c \
-	  check_alive.c
+	  check_alive.c \
+	  parse_talk.c
 	  # error_file.c
 
 # Prefixes sources

@@ -15,6 +15,7 @@ void	print_args(t_args *args)
 	printf("binary_ouput: %d\t", args->binary_output);
 	printf("ncurses: %d\t", args->ncurses);
 	printf("args->index: %d\n", args->index);
+	printf("args->talk: %d\n", args->talk);
 	while (i < args->index)
 	{
 		printf("process: %d, champ: %s\n", args->process[i], 
