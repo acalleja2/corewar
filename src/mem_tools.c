@@ -6,6 +6,11 @@ void			mem_set_byte(t_mem *mem, unsigned char const byte, int const pos, int con
 	mem->owner[pos % MEM_SIZE] = id;
 }
 
+unsigned char	mem_get_byte(t_mem *mem, t_proc *process, int pos)
+{
+	return (mem->map[(process->starting_pos + process->pc + pos) % MEM_SIZE]);
+}
+
 void			print_mem(t_mem *mem)
 {
 	int			row;

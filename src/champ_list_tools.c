@@ -67,3 +67,17 @@ int				champ_list_len(t_champion **list)
 	}
 	return (len);
 }
+
+t_champion		*get_champion_by_id(t_champion *champs, int id)
+{
+	t_champion	*current;
+
+	current = champs;
+	while (current != NULL)
+	{
+		if (current->id == id)
+			return (current);
+		current = current->next;
+	}
+	return (NULL);
+}

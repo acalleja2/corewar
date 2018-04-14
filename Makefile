@@ -14,46 +14,47 @@ LIBDIR = ./libft
 BUILDDIR = ./build
 
 INC = corewar.h
-SRC = ft_error_parse.c \
-	  ft_strisnumber.c \
-	  init_t_args.c \
-	  main.c \
-	  parseargs.c \
-	  parser.c \
-	  parse_n.c \
-	  parse_binary_output_mode.c\
-	  parse_name.c \
-	  parse_text_output_mode.c \
-	  parse_utilities.c \
-	  setup_champs.c \
+SRC = champ_list_tools.c \
 	  champion_initialization.c \
-	  champ_list_tools.c \
-	  get_stuff.c \
-	  mem_load.c \
-	  mem_tools.c \
-	  proc_list_tools.c \
-	  free_args.c \
-	  vm_loop.c \
 	  check_alive.c \
-	  parse_talk.c \
-	  print_winner.c \
-	  ins_live.c \
-	  ins_ld.c \
-	  ins_st.c \
+	  free_args.c \
+	  ft_strisnumber.c \
+	  get_stuff.c \
+	  init_t_args.c \
 	  ins_add.c \
-	  ins_sub.c \
+	  ins_aff.c \
 	  ins_and.c \
-	  ins_or.c \
-	  ins_xor.c \
-	  ins_zjmp.c \
-	  ins_ldi.c \
-	  ins_sti.c \
 	  ins_fork.c \
+	  ins_ld.c \
+	  ins_ldi.c \
+	  ins_lfork.c \
+	  ins_live.c \
 	  ins_lld.c \
 	  ins_lldi.c \
-	  ins_lfork.c \
-	  ins_aff.c
-# error_file.c
+	  ins_or.c \
+	  ins_st.c \
+	  ins_sti.c \
+	  ins_sub.c \
+	  ins_xor.c \
+	  ins_zjmp.c \
+	  main.c \
+	  mem_load.c \
+	  mem_tools.c \
+	  parse_binary_output_mode.c\
+	  parse_n.c \
+	  parse_name.c \
+	  parse_talk.c \
+	  parse_text_output_mode.c \
+	  parse_utilities.c \
+	  parseargs.c \
+	  parser.c \
+	  print_winner.c \
+	  proc_list_tools.c \
+	  setup_champs.c \
+	  switch_instruction.c \
+	  vm_loop.c \
+	  ft_error_parse.c \
+	# error_file.c
 
 # Prefixes sources
 SRCS = $(addprefix $(SRCDIR)/, $(SRC))

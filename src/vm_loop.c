@@ -33,6 +33,7 @@ void			vm_loop(t_mem *mem, t_champion *champs, t_args *args)
 		if (mem->since_last_check == mem->cycle_to_die)
 			if (!mem_check_alive(mem, champs))
 			{
+				ft_printf("We got a winner after %i cycles :\n", mem->cycle);
 				print_winner(champs, args);
 				break ;
 			}

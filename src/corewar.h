@@ -72,43 +72,35 @@ typedef struct	s_mem
 	int				checks_since_last_decrement;
 }				t_mem;
 
-void			ins_live(t_mem *mem, t_proc *process, t_champion *champs);
-void			ins_ld(t_mem *mem, t_proc *process, t_champion *champs);
-void			ins_st(t_mem *mem, t_proc *process, t_champion *champs);
-void			ins_add(t_mem *mem, t_proc *process, t_champion *champs);
-void			ins_sub(t_mem *mem, t_proc *process, t_champion *champs);
-void			ins_and(t_mem *mem, t_proc *process, t_champion *champs);
-void			ins_or(t_mem *mem, t_proc *process, t_champion *champs);
-void			ins_xor(t_mem *mem, t_proc *process, t_champion *champs);
-void			ins_zjmp(t_mem *mem, t_proc *process, t_champion *champs);
-void			ins_ldi(t_mem *mem, t_proc *process, t_champion *champs);
-void			ins_sti(t_mem *mem, t_proc *process, t_champion *champs);
-void			ins_fork(t_mem *mem, t_proc *process, t_champion *champs);
-void			ins_lld(t_mem *mem, t_proc *process, t_champion *champs);
-void			ins_lldi(t_mem *mem, t_proc *process, t_champion *champs);
-void			ins_lfork(t_mem *mem, t_proc *process, t_champion *champs);
-void			ins_aff(t_mem *mem, t_proc *process, t_champion *champs);
+typedef struct	s_data 	
+{
+	t_mem		*mem;
+	t_args		*args;
+	t_champion	*champs;
+	t_proc		*processes;
+}				t_data;
 
-void			(*const g_tab[17])(t_mem *mem,
+extern void		(*const g_tab[17])(t_mem *mem,
 		t_proc *process,
-		t_champion *champs) = {
-	NULL,
-	ins_live,
-	ins_ld,
-	ins_st,
-	ins_add,
-	ins_sub,
-	ins_and,
-	ins_or,
-	ins_xor,
-	ins_zjmp,
-	ins_ldi,
-	ins_sti,
-	ins_fork,
-	ins_lld,
-	ins_lldi,
-	ins_lfork,
-	ins_aff};
+		t_champion *champs,
+		t_args *args);
+void			ins_live(t_mem *mem, t_proc *process, t_champion *champs, t_args *args);
+void			ins_ld(t_mem *mem, t_proc *process, t_champion *champs, t_args *args);
+void			ins_st(t_mem *mem, t_proc *process, t_champion *champs, t_args *args);
+void			ins_add(t_mem *mem, t_proc *process, t_champion *champs, t_args *args);
+void			ins_sub(t_mem *mem, t_proc *process, t_champion *champs, t_args *args);
+void			ins_and(t_mem *mem, t_proc *process, t_champion *champs, t_args *args);
+void			ins_or(t_mem *mem, t_proc *process, t_champion *champs, t_args *args);
+void			ins_xor(t_mem *mem, t_proc *process, t_champion *champs, t_args *args);
+void			ins_zjmp(t_mem *mem, t_proc *process, t_champion *champs, t_args *args);
+void			ins_ldi(t_mem *mem, t_proc *process, t_champion *champs, t_args *args);
+void			ins_sti(t_mem *mem, t_proc *process, t_champion *champs, t_args *args);
+void			ins_fork(t_mem *mem, t_proc *process, t_champion *champs, t_args *args);
+void			ins_lld(t_mem *mem, t_proc *process, t_champion *champs, t_args *args);
+void			ins_lldi(t_mem *mem, t_proc *process, t_champion *champs, t_args *args);
+void			ins_lfork(t_mem *mem, t_proc *process, t_champion *champs, t_args *args);
+void			ins_aff(t_mem *mem, t_proc *process, t_champion *champs, t_args *args);
+
 /*
 ** init_t_args.c
 */
@@ -173,6 +165,7 @@ void			champ_list_append(t_champion **list, t_champion *new);
 void			ft_print_champ_list(t_champion *champ);
 int				champ_list_len(t_champion **list);
 void			champ_list_free(t_champion **list);
+t_champion		*get_champion_by_id(t_champion *champs, int id);
 
 /*
 ** get_stuff.c
@@ -199,6 +192,7 @@ void			load_champs_and_setup_processes(t_args *args, t_champion **champs, t_mem 
 
 void			mem_set_byte(t_mem *mem, unsigned char const byte, int const pos, int const id);
 void			print_mem(t_mem *mem);
+unsigned char	mem_get_byte(t_mem *mem, t_proc *process, int pos);
 
 /*
 ** proc_list_tools.c
