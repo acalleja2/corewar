@@ -171,4 +171,12 @@ void	ft_free_t_args(t_args *args);
 void			vm_loop(t_mem *mem, t_champion *champs);
 void			exec_cycle(t_mem *mem, t_champion *champs);
 
+/*
+** check_alive.c
+*/
+
+int				mem_check_alive(t_mem *mem, t_champion *champs);
+int				count_all_lives(t_mem *mem);
+void			clean_dead_processes(t_mem *mem);
+
 #endif

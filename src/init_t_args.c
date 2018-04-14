@@ -21,4 +21,6 @@ void	ft_init_t_args(t_args *args, t_mem *mem)
 		mem->first = NULL;
 		mem->cycle = 0;
 		mem->cycle_to_die = CYCLE_TO_DIE;
+		mem->since_last_check = 0;
+		mem->checks_since_last_decrement = 0;
 }
