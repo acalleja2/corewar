@@ -19,6 +19,8 @@ int		main(int argc, char *argv[])
 	load_champs_and_setup_processes(&args, &champs, &mem);
 	print_proc_list(&mem);
 	print_mem(&mem);
+	vm_loop(&mem, &champs);
+	proc_list_free(&mem);
 	champ_list_free(&champs);
 	return (0);
 }

@@ -19,4 +19,6 @@ void	ft_init_t_args(t_args *args, t_mem *mem)
 		ft_bzero(mem->map, MEM_SIZE);
 		ft_memset(mem->owner, (char)-1, MEM_SIZE);
 		mem->first = NULL;
+		mem->cycle = 0;
+		mem->cycle_to_die = CYCLE_TO_DIE;
 }
