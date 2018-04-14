@@ -2,20 +2,23 @@
 
 void		ins_live(t_proc *process, t_data *data)
 {
-	unsigned char	tmp[4];
 	int				id;
 	t_champion		*champion;
 
-	tmp[0] = mem_get_byte(data, process, 4);
-	tmp[1] = mem_get_byte(data, process, 3);
-	tmp[2] = mem_get_byte(data, process, 2);
-	tmp[3] = mem_get_byte(data, process, 1);
+	if (!process->instruction_started)
+	{
+		process->time_to_wait = 10 - 1;
+		process->instruction_started = TRUE;
+		return ;
+	}
+	process->instruction_started = FALSE;
 	process->live += 1;
-	process->time_to_wait = 10;
 	process->pc += 5;
-	id = *(int*)tmp;
+	id = mem_get_int(data, process, 1);
 	champion = get_champion_by_id(data->champs, id);
 	if (champion == NULL)
 		return ;
 	champion->last_seen_alive = data->mem->cycle;
+	if (data->args->verbosity & V_LIVES)
+		ft_printf("A process claimed a live for player %i (%s)\n", champion->id, champion->name);
 }

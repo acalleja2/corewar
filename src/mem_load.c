@@ -11,7 +11,7 @@ void			mem_load(t_mem *mem, t_champion *current, int starting_pos)
 	i = 0;
 	while (i < current->bytes)
 	{
-		mem_set_byte(mem, current->code[i], starting_pos + i, current->id);
+		mem_setup_byte(mem, current->code[i], starting_pos + i, current->id);
 		i += 1;
 	}
 }

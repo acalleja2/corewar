@@ -9,9 +9,11 @@ t_proc		*proc_new(int id, int starting_pos)
 	new->starting_pos = starting_pos;
 	new->champion_id = id;
 	new->live = 0;
-	new->registers[REG_SIZE - 1] = (unsigned char)id;
+	new->registers[0] = id;
 	new->pc = 0;
 	new->carry = 0;
+	new->instruction_started = 0;
+	new->time_to_wait = 0;
 	return (new);
 }
 

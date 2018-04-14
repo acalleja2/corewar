@@ -15,6 +15,15 @@
 # include "../libft/libft.h"
 # include "op.h"
 # include <fcntl.h>
+# define V_LIVES 1
+# define V_CYCLES 2
+# define V_OPERATIONS 4
+# define V_DEATHS 8
+# define V_PC 16
+# define P1 
+# define P2 0x3
+# define P3 0xc0
+# define OCP_P1
 
 typedef struct	s_args
 {
@@ -50,7 +59,8 @@ typedef struct	s_proc
 	int				champion_id;
 	int				live;
 	int				time_to_wait;
-	unsigned char	registers[REG_NUMBER * REG_SIZE];
+	int				instruction_started;
+	int				registers[REG_NUMBER];
 	unsigned char	pc;
 	unsigned char	carry;
 }				t_proc;
@@ -188,9 +198,13 @@ void			load_champs_and_setup_processes(t_data *data);
 ** mem_tools.c
 */
 
-void			mem_set_byte(t_mem *mem, unsigned char const byte, int const pos, int const id);
+void			mem_setup_byte(t_mem *mem, unsigned char const byte, int const pos, int const id);
+void			mem_set_byte(t_data *data, t_proc *process, int offset, unsigned char value);
 void			print_mem(t_mem *mem);
 unsigned char	mem_get_byte(t_data *data, t_proc *process, int pos);
+int				mem_get_int(t_data *data, t_proc *process, int offset);
+int				mem_get_short_int(t_data *data, t_proc *process, int offset);
+void			mem_set_int(t_data *data, t_proc *process, int offset, int value);
 
 /*
 ** proc_list_tools.c

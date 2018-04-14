@@ -2,7 +2,6 @@
 
 void	ft_error_parse()
 {
-	char	*usage;
 	ft_printf("Usage: ./corewar [d- N -s N -v N | -b --stealth | -n --stealth"
 			" | -n N Champion.cor]\n"
 			"#### TEXT OUTPUT MODE ############################################"
