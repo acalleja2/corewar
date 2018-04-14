@@ -31,7 +31,8 @@ SRC = ft_error_parse.c \
 	  get_stuff.c \
 	  mem_load.c \
 	  mem_tools.c \
-	  proc_list_tools.c
+	  proc_list_tools.c \
+	  free_args.c
 	  # error_file.c
 
 # Prefixes sources
