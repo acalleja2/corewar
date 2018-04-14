@@ -164,4 +164,11 @@ void			proc_list_free(t_mem *mem);
 
 void	ft_free_t_args(t_args *args);
 
+/*
+** vm_loop.c
+*/
+
+void			vm_loop(t_mem *mem, t_champion *champs);
+void			exec_cycle(t_mem *mem, t_champion *champs);
+
 #endif
