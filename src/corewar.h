@@ -155,4 +155,10 @@ void			proc_list_add(t_mem *mem, t_proc *new);
 void			print_proc_list(t_mem *mem);
 void			proc_list_free(t_mem *mem);
 
+/*
+** free_args.c
+*/
+
+void	ft_free_t_args(t_args *args);
+
 #endif

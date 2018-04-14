@@ -9,6 +9,7 @@ int		main(int argc, char *argv[])
 	ft_init_t_args(&args, &mem);
 	ft_parseargs(argc, argv, &args);
 	setup_champions(&args, &champs);
+	ft_free_t_args(&args);
 	ft_print_champ_list(champs);
 	if (args.champ_number == 0)
 	{
