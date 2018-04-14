@@ -4,6 +4,7 @@ PROGS = corewar
 # Compilation
 CC = gcc
 CFLAGS = -Wall -Wextra -g \
+		 -Wno-unused-parameter
 		 # -Werror
 
 # Directories

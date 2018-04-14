@@ -1,11 +1,10 @@
 #include "corewar.h"
 
-void			switch_instruction(t_mem *mem, t_proc *process,
-		t_champion *champs, unsigned char instruction)
+void			switch_instruction(t_proc *process, unsigned char instruction, t_data *data)
 {
 	if (instruction >= 1 && instruction <= 16)
 	{
-		(*(g_tab[instruction]))(mem, process, champs);
+		(*(g_tab[instruction]))(process, data);
 	}
 	else
 	{

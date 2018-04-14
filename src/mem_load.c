@@ -16,23 +16,23 @@ void			mem_load(t_mem *mem, t_champion *current, int starting_pos)
 	}
 }
 
-void			add_process(t_mem *mem, t_champion *current, int starting_pos)
+void			add_process(t_data *data, t_champion *current, int starting_pos)
 {
-	proc_list_add(mem, proc_new(current->id, starting_pos));
-	mem_load(mem, current, starting_pos);
+	proc_list_add(data, proc_new(current->id, starting_pos));
+	mem_load(data->mem, current, starting_pos);
 }
 
-void			load_champs_and_setup_processes(t_args *args, t_champion **champs, t_mem *mem)
+void			load_champs_and_setup_processes(t_data *data)
 {
 	int				starting_pos;
 	t_champion		*current;
 
 	starting_pos = 0;
-	current = *champs;
+	current = data->champs;
 	while (current != NULL)
 	{
-		add_process(mem, current, starting_pos);
+		add_process(data, current, starting_pos);
 		current = current->next;
-		starting_pos += MEM_SIZE / args->champ_number;
+		starting_pos += MEM_SIZE / data->args->champ_number;
 	}
 }

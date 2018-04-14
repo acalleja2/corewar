@@ -4,12 +4,12 @@
 ** On parcourt toute la liste et on compte toutes les vies du cycle precedent
 */
 
-int				count_all_lives(t_mem *mem)
+int				count_all_lives(t_data *data)
 {
 	t_proc		*current;
 	int			count;
 
-	current = mem->first;
+	current = data->procs;
 	count = 0;
 	while (current != NULL)
 	{
@@ -28,24 +28,24 @@ int				count_all_lives(t_mem *mem)
 ** qui n'ont pas fait de live pendant le dernier cycle.
 */
 
-int				mem_check_alive(t_mem *mem, t_champion *champs)
+int				mem_check_alive(t_data *data)
 {
 	int			total_live_instructions;
 
-	mem->since_last_check = -1;
-	if (mem->first == NULL)
+	data->mem->since_last_check = -1;
+	if (data->procs == NULL)
 		return (0);
-	total_live_instructions = count_all_lives(mem);
-	if (mem->checks_since_last_decrement == MAX_CHECKS
+	total_live_instructions = count_all_lives(data);
+	if (data->mem->checks_since_last_decrement == MAX_CHECKS
 			|| total_live_instructions >= NBR_LIVE)
 	{
-		mem->cycle_to_die -= CYCLE_DELTA;
-		mem->checks_since_last_decrement = 0;
+		data->mem->cycle_to_die -= CYCLE_DELTA;
+		data->mem->checks_since_last_decrement = 0;
 	}
 	else
-		mem->checks_since_last_decrement += 1;
+		data->mem->checks_since_last_decrement += 1;
 	if (total_live_instructions != 0)
-		clean_dead_processes(mem);
+		clean_dead_processes(data);
 	else
 		return (0);
 	return (1);
@@ -57,20 +57,20 @@ int				mem_check_alive(t_mem *mem, t_champion *champs)
 ** liste et on "coupe" dedans les elements a enlever.
 */
 
-void			clean_dead_processes(t_mem *mem)
+void			clean_dead_processes(t_data *data)
 {
 	t_proc		*previous;
 	t_proc		*current;
 
-	while (mem->first != NULL && mem->first->live == 0)
+	while (data->procs != NULL && data->procs->live == 0)
 	{
-		previous = mem->first->next;
-		free(mem->first);
-		mem->first = previous;
+		previous = data->procs->next;
+		free(data->procs);
+		data->procs = previous;
 	}
-	if ((previous = mem->first) == NULL)
+	if ((previous = data->procs) == NULL)
 		return ;
-	current = mem->first->next;
+	current = data->procs->next;
 	while (current != NULL)
 	{
 		if (current->live == 0)

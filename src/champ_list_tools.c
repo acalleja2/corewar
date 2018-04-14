@@ -4,16 +4,16 @@
 ** Ajoute un process a la fin de la liste (ouais c'est obvious)
 */
 
-void			champ_list_append(t_champion **list, t_champion *new)
+void			champ_list_append(t_data *data, t_champion *new)
 {
 	t_champion	*current;
 
-	if (*list == NULL)
+	if (data->champs == NULL)
 	{
-		*list = new;
+		data->champs = new;
 		return ;
 	}
-	current = *list;
+	current = data->champs;
 	while (current->next != NULL)
 		current = current->next;
 	current->next = new;

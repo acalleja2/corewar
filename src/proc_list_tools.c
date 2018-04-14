@@ -15,18 +15,18 @@ t_proc		*proc_new(int id, int starting_pos)
 	return (new);
 }
 
-void			proc_list_add(t_mem *mem, t_proc *new)
+void			proc_list_add(t_data *data, t_proc *new)
 {
-	new->next = mem->first;
-	mem->first = new;
+	new->next = data->procs;
+	data->procs = new;
 }
 
-void			print_proc_list(t_mem *mem)
+void			print_proc_list(t_data *data)
 {
 	t_proc		*current;
 
 	ft_printf("Printing process list :\n");
-	current = mem->first;
+	current = data->procs;
 	while (current != NULL)
 	{
 		ft_printf("Process id %i has his origin at %i\n",
@@ -35,12 +35,10 @@ void			print_proc_list(t_mem *mem)
 	}
 }
 
-void			proc_list_free(t_mem *mem)
+void			proc_list_free(t_proc *current)
 {
-	t_proc		*current;
 	t_proc		*tmp;
 
-	current = mem->first;
 	while (current != NULL)
 	{
 		tmp = current->next;

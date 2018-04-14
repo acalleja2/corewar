@@ -65,7 +65,6 @@ typedef struct	s_mem
 {
 	unsigned char	map[MEM_SIZE];
 	char			owner[MEM_SIZE];
-	t_proc			*first;
 	int				cycle;
 	int				cycle_to_die;
 	int				since_last_check;
@@ -77,7 +76,7 @@ typedef struct	s_data
 	t_mem		*mem;
 	t_args		*args;
 	t_champion	*champs;
-	t_proc		*processes;
+	t_proc		*procs;
 }				t_data;
 
 extern void		(*const g_tab[17])(t_proc *process,
@@ -148,8 +147,8 @@ int				ft_strisnumber(char *str);
 /*
 ** setup_champs.c
 */
-void			setup_champions(t_args *args, t_champion **champs);
-int				create_champ_list(t_args *args, t_champion **champs);
+void			setup_champions(t_data *data);
+int				create_champ_list(t_data *data);
 
 /*
 ** champion_initialization.c
@@ -160,7 +159,7 @@ int				get_champ_data(t_champion *new, char *filename);
 /*
 ** champ_list_tools.c
 */
-void			champ_list_append(t_champion **list, t_champion *new);
+void			champ_list_append(t_data *data, t_champion *new);
 void			ft_print_champ_list(t_champion *champ);
 int				champ_list_len(t_champion **list);
 void			champ_list_free(t_champion **list);
@@ -182,8 +181,8 @@ int				get_champ_code(int fd, t_champion *new, char *filename);
 */
 
 void			mem_load(t_mem *mem, t_champion *current, int starting_pos);
-void			add_process(t_mem *mem, t_champion *current, int starting_pos);
-void			load_champs_and_setup_processes(t_args *args, t_champion **champs, t_mem *mem);
+void			add_process(t_data *data, t_champion *current, int starting_pos);
+void			load_champs_and_setup_processes(t_data *data);
 
 /*
 ** mem_tools.c
@@ -191,16 +190,16 @@ void			load_champs_and_setup_processes(t_args *args, t_champion **champs, t_mem 
 
 void			mem_set_byte(t_mem *mem, unsigned char const byte, int const pos, int const id);
 void			print_mem(t_mem *mem);
-unsigned char	mem_get_byte(t_mem *mem, t_proc *process, int pos);
+unsigned char	mem_get_byte(t_data *data, t_proc *process, int pos);
 
 /*
 ** proc_list_tools.c
 */
 
 t_proc			*proc_new(int id, int starting_pos);
-void			proc_list_add(t_mem *mem, t_proc *new);
-void			print_proc_list(t_mem *mem);
-void			proc_list_free(t_mem *mem);
+void			proc_list_add(t_data *data, t_proc *new);
+void			print_proc_list(t_data *data);
+void			proc_list_free(t_proc *current);
 
 /*
 ** free_args.c
@@ -212,8 +211,8 @@ void	ft_free_t_args(t_args *args);
 ** vm_loop.c
 */
 
-void			vm_loop(t_mem *mem, t_champion *champs, t_args *args);
-void			exec_cycle(t_mem *mem, t_champion *champs);
+void			vm_loop(t_data *data);
+void			exec_cycle(t_data *data);
 
 /*
 ** parse_talk.c
@@ -225,14 +224,20 @@ void			ft_t(char *argv[], int *i, t_args *args);
 ** check_alive.c
 */
 
-int				mem_check_alive(t_mem *mem, t_champion *champs);
-int				count_all_lives(t_mem *mem);
-void			clean_dead_processes(t_mem *mem);
+int				mem_check_alive(t_data *data);
+int				count_all_lives(t_data *data);
+void			clean_dead_processes(t_data *data);
 
 /*
 ** print_winner.c
 */
 
-void			print_winner(t_champion *champ, t_args *args);
+void			print_winner(t_data *data);
+
+/*
+** switch_instruction.c
+*/
+
+void			switch_instruction(t_proc *process, unsigned char instruction, t_data *data);
 
 #endif
