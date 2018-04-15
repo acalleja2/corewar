@@ -1,18 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   mem_dup.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: florenzo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: florenzo <florenzo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/06 17:20:57 by florenzo          #+#    #+#             */
-/*   Updated: 2017/11/06 17:20:58 by florenzo         ###   ########.fr       */
+/*   Created: 2018/04/13 19:45:36 by florenzo          #+#    #+#             */
+/*   Updated: 2018/04/13 19:45:36 by florenzo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr(char *str)
+void			*mem_dup(void *ptr, size_t size)
 {
-	write(1, str, ft_strlen(str));
+	unsigned char	*new;
+	size_t			pos;
+
+	if (size == 0)
+		return (NULL);
+	new = ealloc(size);
+	pos = 0;
+	while (pos < size)
+	{
+		new[pos] = *((char*)ptr + pos);
+		pos += 1;
+	}
+	return (new);
 }

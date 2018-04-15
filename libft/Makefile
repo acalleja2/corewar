@@ -27,7 +27,8 @@ MEMSRC = mem/ealloc.c \
 		 mem/ft_memcpy.c \
 		 mem/ft_memdel.c \
 		 mem/ft_memmove.c \
-		 mem/ft_memset.c
+		 mem/ft_memset.c \
+		 mem/mem_dup.c
 MEMOBJ = $(MEMSRC:%.c=%.o)
 
 IFSSRC = ifs/ft_is_cinstr.c \

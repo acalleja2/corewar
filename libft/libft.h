@@ -92,6 +92,7 @@ void				*ft_memcpy(void *dest, const void *src, size_t n);
 void				ft_memdel(void **ap);
 void				*ft_memmove(void *dest, const void *src, size_t n);
 void				*ft_memset(void *s, int c, size_t n);
+void				*mem_dup(void *ptr, size_t size);
 
 /*
 ** ifs/

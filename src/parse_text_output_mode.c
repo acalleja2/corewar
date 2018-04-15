@@ -6,8 +6,8 @@
 ** dans arg => c'est le niveau de verbosite lors de l'affichage
 ** si -v, mais pas bon argument, affiche usage et exit;
 ** si pas -v, on retourne au parsing voir si c'est autre chose
-** -v doit avoir au moins un des bits 2, 3, 4 ou 5 sets, et aucun au dessus.
 */
+
 void		ft_v(int argc, char *argv[], int *i, t_args *args)
 {
 	int		nbr;
@@ -23,10 +23,8 @@ void		ft_v(int argc, char *argv[], int *i, t_args *args)
 	if (!ft_strisnumber(argv[*i + 1]))
 		ft_error_parse();
 	nbr = ft_atoi(argv[*i + 1]);
-	if (nbr < 30 && !(nbr & 1))
-		while (j <= 4)
-			if (nbr & (1 << j++))
-				ok = TRUE;
+	if (nbr <= 31)
+		ok = TRUE;
 	if (ok == FALSE)
 		ft_error_parse();
 	args->verbosity = nbr;
@@ -40,6 +38,7 @@ void		ft_v(int argc, char *argv[], int *i, t_args *args)
 ** Si -d, mais pas bon argument, affiche usage et exit;
 ** Si pas -d, on retourne au parsing voir si c'est autre chose
 */
+
 void		ft_d(int argc, char *argv[], int *i, t_args *args)
 {
 	if (args->binary_output != -1 || args->ncurses != -1 || *i + 1 >= argc)

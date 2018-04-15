@@ -52,6 +52,8 @@ void		ft_parseargs(int argc, char *argv[], t_args *args)
 			ft_b(argc, argv, &i, args);
 		else if (!strcmp(argv[i], "-n"))
 			ft_n(argc, argv, &i, args);
+		else if (!strcmp(argv[i], "-t"))
+			ft_t(argv, &i, args);
 		else if (args->index < MAX_PLAYERS)
 			ft_parse_name(argv, &i, args);
 		else
