@@ -1,32 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   add_param_size.c                                   :+:      :+:    :+:   */
+/*   put_lab_value.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/13 16:05:16 by acalleja          #+#    #+#             */
-/*   Updated: 2018/04/15 19:15:11 by acalleja         ###   ########.fr       */
+/*   Created: 2018/04/15 19:04:04 by acalleja          #+#    #+#             */
+/*   Updated: 2018/04/15 19:27:15 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-void	add_param_size(t_instru **tmp, int ret, int rank)
+void	put_lab_value(t_instru *ins)
 {
-	if (ret == T_REG)
+	t_instru	*tmp;
+	t_param		*par;
+
+	tmp = ins;
+	while (tmp)
 	{
-		(*tmp)->size += 1;
-	}
-	else if (ret == T_IND)
-	{
-		(*tmp)->size += 2;
-	}
-	else 
-	{
-		if (op_tab[rank].nb_direct == 0)
-			(*tmp)->size += 4;
-		else
-			(*tmp)->size += 2;
+		par = tmp->par;
+		while (par)
+		{
+			if (par->ret == T_LAB)
+				par->value = label_size(ins, tmp, par->name + 1);
+			else if (par->ret == T_LAB + 1)
+				par->value = label_size(ins, tmp, par->name + 2);
+			par = par->next;
+		}
+		tmp = tmp->next;
 	}
 }
