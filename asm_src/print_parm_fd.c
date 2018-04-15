@@ -1,32 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   add_param_size.c                                   :+:      :+:    :+:   */
+/*   print_parm_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/13 16:05:16 by acalleja          #+#    #+#             */
-/*   Updated: 2018/04/15 19:15:11 by acalleja         ###   ########.fr       */
+/*   Created: 2018/04/15 16:16:23 by acalleja          #+#    #+#             */
+/*   Updated: 2018/04/15 19:17:26 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-void	add_param_size(t_instru **tmp, int ret, int rank)
+void	print_param_fd(t_instru *ins, int fd)
 {
-	if (ret == T_REG)
+	t_instru	*tmp;
+	t_param		*tmp_par;
+	int			rank;
+
+	tmp = ins;
+	while (tmp)
 	{
-		(*tmp)->size += 1;
-	}
-	else if (ret == T_IND)
-	{
-		(*tmp)->size += 2;
-	}
-	else 
-	{
-		if (op_tab[rank].nb_direct == 0)
-			(*tmp)->size += 4;
-		else
-			(*tmp)->size += 2;
+		rank = search_rank_op(tmp->opcode);
+		write(fd, (char *)&op_tab[rank].opcode, 1);
+		tmp_par = tmp->par;
+		if (tmp->ocp != 0)
+			write(fd, (char *)&tmp->ocp, 1);
+		while (tmp_par)
+		{
+			rev_param(tmp_par->nb_octet, tmp_par->value, fd);
+			tmp_par = tmp_par->next;
+		}
+		tmp = tmp->next;
 	}
 }
+

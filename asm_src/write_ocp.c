@@ -6,7 +6,7 @@
 /*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/13 22:27:18 by acalleja          #+#    #+#             */
-/*   Updated: 2018/04/13 23:00:19 by acalleja         ###   ########.fr       */
+/*   Updated: 2018/04/15 17:33:33 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	write_ocp(int ret, int i)
 		octet |= 1;
 		octet = octet << (6 - i * 2);
 	}
-	else if (ret == T_DIR)
+	else if (ret == T_IND)
 	{
 		octet |= 3;
 		octet = octet << (6 - i * 2);
