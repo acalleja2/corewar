@@ -5,6 +5,7 @@
 *.out
 *.dSYM
 *.cor
+*.zip
 asm
 corewar
 tags
