@@ -6,7 +6,7 @@
 /*   By: florenzo <florenzo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/14 17:10:11 by florenzo          #+#    #+#             */
-/*   Updated: 2018/04/14 17:10:11 by florenzo         ###   ########.fr       */
+/*   Updated: 2018/04/15 15:33:17 by mschmitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # include "../libft/libft.h"
 # include "op.h"
 # include <fcntl.h>
+# include <ncurses.h>
 # define V_LIVES 1
 # define V_CYCLES 2
 # define V_OPERATIONS 4
@@ -24,6 +25,10 @@
 # define P2 0x3
 # define P3 0xc0
 # define OCP_P1
+# define HEIGHT 	64
+# define WIDTH 192
+# define STARTX 10 
+# define STARTY 10 
 
 typedef struct	s_args
 {
@@ -246,12 +251,38 @@ void			clean_dead_processes(t_data *data);
 ** print_winner.c
 */
 
-void			print_winner(t_data *data);
+void			print_winner(t_data *data, WINDOW *map);
 
 /*
 ** switch_instruction.c
 */
 
 void			switch_instruction(t_proc *process, unsigned char instruction, t_data *data);
+
+
+/*
+** ncurses_tools.c
+*/
+void	print_map(WINDOW *win, int height, int width, t_data *data);
+void	destroy_win(WINDOW *local_win);
+void	clear_win(WINDOW *win, int height, int width);
+WINDOW	*create_newwin(int height, int width, int starty, int startx);
+
+/*
+** ncurses_tools2.c
+*/
+
+void	init_main_window();
+void	print_usage(int rows, int cols);
+void	refresh_sleep(int sleep_time);
+void	ncurses_winner(char	*speak, t_data *data, WINDOW *map);
+void	wrefresh_sleep(WINDOW *win, int sleep_time);
+
+/*
+** ncurses_tools.c
+*/
+int			ncurses_main_loop(WINDOW *map, t_data *data);
+void		end_ncurses(WINDOW *map);
+WINDOW		*init_ncurse(t_data *data);
 
 #endif
