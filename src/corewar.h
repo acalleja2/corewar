@@ -6,7 +6,7 @@
 /*   By: florenzo <florenzo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/14 17:10:11 by florenzo          #+#    #+#             */
-/*   Updated: 2018/04/15 18:36:37 by mschmitt         ###   ########.fr       */
+/*   Updated: 2018/04/15 20:27:12 by mschmitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ typedef struct	s_proc
 	int				live;
 	int				time_to_wait;
 	int				instruction_started;
-	int				registers[REG_NUMBER];
+	int				registers[REG_NUMBER + 1];
 	unsigned char	pc;
 	unsigned char	carry;
 }				t_proc;
@@ -234,6 +234,8 @@ void	ft_free_t_args(t_args *args);
 
 void			vm_loop(t_data *data);
 void			exec_cycle(t_data *data);
+void			print_cycle_start(t_data *data);
+void			print_cycle_end(t_data *data);
 
 /*
 ** parse_talk.c
@@ -261,7 +263,6 @@ void			print_winner(t_data *data, WINDOW *map);
 
 void			switch_instruction(t_proc *process, unsigned char instruction, t_data *data);
 
-
 /*
 ** ncurses_tools.c
 */
@@ -286,5 +287,39 @@ void	wrefresh_sleep(WINDOW *win, int sleep_time);
 int			ncurses_main_loop(WINDOW *map, t_data *data);
 void		end_ncurses(WINDOW *map);
 WINDOW		*init_ncurse(t_data *data);
+/*
+** ocp_getters.c
+*/
+
+int			ocp_get_param1(t_data *data, t_proc *process, int offset, int *var);
+int			ocp_get_param2(t_data *data, t_proc *process, int offset, int *var);
+int			ocp_get_param3(t_data *data, t_proc *process, int offset, int *var);
+int			ocp_get_param1_ind(t_data *data, t_proc *process, int offset, int *var);
+int			ocp_get_param2_ind(t_data *data, t_proc *process, int offset, int *var);
+int			ocp_get_param3_ind(t_data *data, t_proc *process, int offset, int *var);
+
+/*
+** process_parameters.c
+*/
+
+int			get_ocp_3_indirect_params(t_data *data, t_proc *process,
+		int *p1, int *p2, ...);
+int			get_ocp_3_direct_params(t_data *data, t_proc *process,
+		int *p1, int *p2, ...);
+int			get_nth_register_value(t_proc *process, int n);
+void		set_nth_register_value(t_proc *process, int n, int value);
+
+/*
+** ocp_ifs.c
+*/
+
+int			is_first_param_register(t_data *data, t_proc *process);
+int			is_second_param_register(t_data *data, t_proc *process);
+
+/*
+** increment_pc.c
+*/
+
+void		increment_pc(t_data *data, t_proc *process, int offset);
 
 #endif

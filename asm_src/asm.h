@@ -6,7 +6,7 @@
 /*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/11 11:11:51 by acalleja          #+#    #+#             */
-/*   Updated: 2018/04/13 22:52:38 by acalleja         ###   ########.fr       */
+/*   Updated: 2018/04/15 19:14:10 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,9 @@ typedef struct		s_label
 typedef struct		s_param
 {
 	char			*name;
+	int				ret;
+	int				nb_octet;
+	int				value;
 	struct s_param	*next;
 }					t_param;
 
@@ -49,8 +52,16 @@ typedef struct		s_instru
 	t_param			*par;
 	int				size;
 	struct s_instru	*next;
+	unsigned char	ocp;
 }					t_instru;
 
+void				put_lab_value(t_instru *ins);
+void				rev_param(int nb_octet, int value, int fd);
+void				print_param_fd(t_instru *ins, int fd);
+void				add_value_param(t_param *par, int ret, t_instru *ins,
+					t_instru *cur);
+int					label_size(t_instru *ins, t_instru *cur, char *str);
+char				write_ocp(int ret, int i);
 void				rev_instruc(int size, int fd);
 int					count_size_tot(t_instru *tmp);
 void				rev_magic(header_t *head, int fd);
@@ -58,7 +69,7 @@ void				add_empty_oct(int nb, int fd);
 void				add_size(t_instru **tmp, int rank);
 void				add_param_size(t_instru **tmp, int ret, int rank);
 void				check_param(t_instru *ins, t_label *lab, char *str,
-					char octet);
+					unsigned char octet);
 void				check_nb_param(t_instru *ins);
 int					search_rank_op(char *str);
 int					count_lst_lab(t_label *lab);

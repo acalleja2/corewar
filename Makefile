@@ -20,8 +20,10 @@ SRC = champ_list_tools.c \
 	  champion_initialization.c \
 	  check_alive.c \
 	  free_args.c \
+	  ft_error_parse.c \
 	  ft_strisnumber.c \
 	  get_stuff.c \
+	  increment_pc.c \
 	  init_t_args.c \
 	  ins_add.c \
 	  ins_aff.c \
@@ -42,6 +44,11 @@ SRC = champ_list_tools.c \
 	  main.c \
 	  mem_load.c \
 	  mem_tools.c \
+	  ncurse.c \
+	  ncurses_tools.c \
+	  ncurses_tools2.c \
+	  ocp_getters.c \
+	  ocp_ifs.c \
 	  parse_binary_output_mode.c\
 	  parse_n.c \
 	  parse_name.c \
@@ -52,14 +59,11 @@ SRC = champ_list_tools.c \
 	  parser.c \
 	  print_winner.c \
 	  proc_list_tools.c \
+	  process_parameters.c \
 	  setup_champs.c \
 	  switch_instruction.c \
 	  vm_loop.c \
-	  ft_error_parse.c \
-	  ncurse.c \
-	  ncurses_tools.c \
-	  ncurses_tools2.c
-	# error_file.c
+	  # error_file.c
 
 # Prefixes sources
 SRCS = $(addprefix $(SRCDIR)/, $(SRC))

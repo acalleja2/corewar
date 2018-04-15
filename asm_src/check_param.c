@@ -6,13 +6,13 @@
 /*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/13 12:17:55 by acalleja          #+#    #+#             */
-/*   Updated: 2018/04/13 23:00:56 by acalleja         ###   ########.fr       */
+/*   Updated: 2018/04/15 19:14:39 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-void	check_param(t_instru *ins, t_label *lab, char *str, char octet)
+void	check_param(t_instru *ins, t_label *lab, char *str, unsigned char octet)
 {
 	t_instru		*tmp;
 	int			ret;
@@ -35,13 +35,18 @@ void	check_param(t_instru *ins, t_label *lab, char *str, char octet)
 			ret |= is_reg(str);
 			ret |= is_direct(str, ins, lab, tmp);
 			ret |= is_indirect(str, ins, lab, tmp);
-			t_par = t_par->next;
 			if (!(ret & op_tab[rank].param_type[i]))
 				error_param();
+			octet += write_ocp(ret, i);
 			i++;
 			free(str);
+			t_par->ret = ret;
 			add_param_size(&tmp, ret, rank);
+			add_value_param(t_par, ret, ins, tmp);
+			t_par = t_par->next;
 		}
+		if (op_tab[rank].ocp == 1)
+			tmp->ocp = octet;
 		add_size(&tmp, rank);
 		tmp = tmp->next;
 	}

@@ -7,18 +7,19 @@ void		ins_live(t_proc *process, t_data *data)
 
 	if (!process->instruction_started)
 	{
-		process->time_to_wait = 10 - 1;
+		process->time_to_wait = 10 - 2;
 		process->instruction_started = TRUE;
 		return ;
 	}
 	process->instruction_started = FALSE;
 	process->live += 1;
-	process->pc += 5;
 	id = mem_get_int(data, process, 1);
 	champion = get_champion_by_id(data->champs, id);
-	if (champion == NULL)
-		return ;
-	champion->last_seen_alive = data->mem->cycle;
-	if (data->args->verbosity & V_LIVES)
+	if (champion != NULL)
+		champion->last_seen_alive = data->mem->cycle;
+	if (data->args->verbosity & V_OPERATIONS)
+		ft_printf("P   %2i | live %i\n", process->champion_id, id);
+	if ((data->args->verbosity & V_LIVES) && champion != NULL)
 		ft_printf("A process claimed a live for player %i (%s)\n", champion->id, champion->name);
+	increment_pc(data, process, 5);
 }
