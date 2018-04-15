@@ -20,10 +20,6 @@
 # define V_OPERATIONS 4
 # define V_DEATHS 8
 # define V_PC 16
-# define P1 
-# define P2 0x3
-# define P3 0xc0
-# define OCP_P1
 
 typedef struct	s_args
 {
@@ -254,4 +250,21 @@ void			print_winner(t_data *data);
 
 void			switch_instruction(t_proc *process, unsigned char instruction, t_data *data);
 
+/*
+** ocp_getters.c
+*/
+
+int			ocp_get_param1(t_data *data, t_proc *process, int offset, int *var);
+int			ocp_get_param2(t_data *data, t_proc *process, int offset, int *var);
+int			ocp_get_param3(t_data *data, t_proc *process, int offset, int *var);
+int			ocp_get_param1_ind(t_data *data, t_proc *process, int offset, int *var);
+int			ocp_get_param2_ind(t_data *data, t_proc *process, int offset, int *var);
+int			ocp_get_param3_ind(t_data *data, t_proc *process, int offset, int *var);
+
+/*
+** process_parameters.c
+*/
+
+int			get_ocp_3_indirect_params(t_data *data, t_proc *process,
+		int *p1, int *p2, ...);
 #endif

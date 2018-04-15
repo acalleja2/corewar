@@ -7,7 +7,7 @@ void	ft_init_t_args(t_args *args, t_mem *mem)
 {
 		args->dump = -1;
 		args->cycles = -1;
-		args->verbosity = -1;
+		args->verbosity = 0;
 		args->binary_output = -1;
 		args->ncurses = -1;
 		args->index = 0;

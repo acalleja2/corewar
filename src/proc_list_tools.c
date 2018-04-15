@@ -9,7 +9,7 @@ t_proc		*proc_new(int id, int starting_pos)
 	new->starting_pos = starting_pos;
 	new->champion_id = id;
 	new->live = 0;
-	new->registers[0] = id;
+	new->registers[1] = id;
 	new->pc = 0;
 	new->carry = 0;
 	new->instruction_started = 0;
