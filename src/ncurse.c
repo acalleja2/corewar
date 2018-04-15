@@ -28,7 +28,45 @@ void		end_ncurses(WINDOW *map)
 }
 
 /*
-** Creer la fenetre principale, la fenetre d'affichage du corewar, affiche
+** Si le terminal supporte les couleurs, attribue une couleur par joueur.
+** Si plus de 6 joueurs, pas de couleurs(8 couleurs en tout, moins blanc et
+** et noir).
+*/
+void		init_colors(t_data *data)
+{
+	int			colors[] = {0, 1, 2, 3, 4, 5, 6, 7};
+	t_champion	*curr;
+	int			i;
+	int			j;
+
+	i = 0;
+	j = i + 1;
+	curr = data->champs;
+	if (!has_colors() || data->args->champ_number > 56)
+		return ;
+	start_color();
+	while (curr && i < 8)
+	{
+		curr->back_color = colors[i];
+		curr->front_color = colors[j];
+		if (j + 1 > 8)
+		{
+			j = 0;
+			i++;
+		}
+		else if (j + 1 == i)
+		{
+			j += 2;
+		}
+		else
+		{
+			j++;
+		}
+	}
+}
+
+/*
+** Creer la fenetre principale et la fenetre d'affichage du corewar, affiche
 ** l'usage, empeche l'echo des touches, et rend l'entree utilisateur non
 ** bloquante.
 */
@@ -41,6 +79,7 @@ WINDOW		*init_ncurse(t_data *data)
 	if (data->args->ncurses == -1)
 		return (NULL);
 	init_main_window();
+	init_colors(data);
 	getmaxyx(stdscr, cols, rows);
 	print_usage(rows, cols);
 	refresh_sleep(1);

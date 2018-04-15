@@ -13,6 +13,7 @@ OBJDIR = objects
 INCDIR = includes
 LIBDIR = ./libft
 BUILDDIR = ./build
+NCURSE = -lncurses
 
 INC = corewar.h
 SRC = champ_list_tools.c \
@@ -55,6 +56,9 @@ SRC = champ_list_tools.c \
 	  switch_instruction.c \
 	  vm_loop.c \
 	  ft_error_parse.c \
+	  ncurse.c \
+	  ncurses_tools.c \
+	  ncurses_tools2.c
 	# error_file.c
 
 # Prefixes sources
@@ -76,7 +80,7 @@ all: $(PROGS)
 $(OBJS): src/corewar.h
 $(PROGS): $(OBJDIR) $(OBJS)
 	make -C libft
-	$(CC) $(CFLAGS) -o $(PROGS) $(OBJS) $(LIBS)
+	$(CC) $(CFLAGS) -o $(PROGS) $(OBJS) $(LIBS) $(NCURSE)
 
 $(OBJDIR):
 	mkdir -p $(OBJDIR)

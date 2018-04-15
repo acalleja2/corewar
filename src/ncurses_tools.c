@@ -60,31 +60,6 @@ void	destroy_win(WINDOW *local_win)
 	delwin(local_win);
 }
 
-/*
-void	print_map(WINDOW *win, int height, int width, t_data *data)
-{
-	int		i;
-	int		j;
-	int		cp;
-
-	j = 1;
-	i = 1;
-	cp = 0;
-	while (j <= height)
-	{
-		while (i <= width)
-		{
-			mvwprintw(win, j, i, "0");
-			i++;
-			cp++;
-		}
-		i = 1;
-		j++;
-	}
-	wrefresh(win);
-	//wprintw(win, "charaters printed: %d\n", cp);
-}
-*/
 
 /*
 **  Affiche le contenu de t_mem dans la fenetre reservee a corewar.
@@ -96,22 +71,33 @@ void	print_map(WINDOW *win, int height, int width, t_data *data)
 	int			row;
 	int			col;
 	int			offset;
-	char		buffer[MEM_SIZE * 4 + 100];
+	char		buffer[MEM_SIZE * 4 + 200];
 
 	row = 0;
 	offset = 0;
+	buffer[offset++] = ' ';
+	buffer[offset++] = ' ';
 	while (row * 64 < MEM_SIZE)
 	{
 		col = 1;
 		while (col < 64 && row * 64 + col < MEM_SIZE)
 		{
-			offset += ft_sprintf(buffer + offset, "%.2x ", data->mem->map[row * 64 + col]);
+			//offset += ft_sprintf(buffer + offset, "%.2x ", data->mem->map[row * 64 + col]);
+			offset += ft_sprintf(buffer + offset, "%.2i ", data->mem->owner[row * 64 + col]);
 			col += 1;
 		}
-		buffer[offset] = '\n';
-		offset += 1;
+		buffer[offset++] = ' ';
+		buffer[offset++] = '|';
+		//buffer[offset++] = '\n';
+		if (row < 63)
+		{
+			buffer[offset++] = '|';
+			buffer[offset++] = ' ';
+			buffer[offset++] = ' ';
+		}
 		row += 1;
 	}
+	buffer[offset++] = '\0';
 	wmove(win, 1, 1);
 	wprintw(win, buffer);
 	wrefresh_sleep(win, 0);

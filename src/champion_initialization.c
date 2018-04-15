@@ -49,6 +49,8 @@ t_champion		*init_champion(int id, char *filename)
 		return (freen(4, new, new->code, new->name, new->comment));
 	new->id = id;
 	new->last_seen_alive = 0;
+	new->front_color = -1;
+	new->back_color = -1;
 	ft_printf("succesfully created champion %s\n", filename);
 	return (new);
 }

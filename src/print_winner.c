@@ -19,7 +19,7 @@ void			print_winner(t_data *data, WINDOW *map)
 		}
 		curr = curr->next;
 	}
-	speak = str_join_n(3, "The winner is ", winner_name, "\n");
+	speak = str_join_n(3, "We have a winner, and his name is ", winner_name, "\n");
 	if (data->args->ncurses != -1)
 		ncurses_winner(speak, data, map);
 	else
@@ -27,7 +27,7 @@ void			print_winner(t_data *data, WINDOW *map)
 	free(speak);
 	if (data->args->talk)
 	{
-		speak = str_join_n(3, "echo \'The winner is ",
+		speak = str_join_n(3, "echo \'We have a winner, and his name is",
 				winner_name, "\' | espeak");
 		system(speak); 
 		free(speak);
