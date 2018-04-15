@@ -56,7 +56,9 @@ SRC = champ_list_tools.c \
 	  vm_loop.c \
 	  ft_error_parse.c \
 	  ocp_getters.c \
-	  process_parameters.c
+	  process_parameters.c \
+	  ocp_ifs.c \
+	  increment_pc.c
 	# error_file.c
 
 # Prefixes sources

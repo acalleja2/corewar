@@ -56,7 +56,7 @@ typedef struct	s_proc
 	int				live;
 	int				time_to_wait;
 	int				instruction_started;
-	int				registers[REG_NUMBER];
+	int				registers[REG_NUMBER + 1];
 	unsigned char	pc;
 	unsigned char	carry;
 }				t_proc;
@@ -223,6 +223,8 @@ void	ft_free_t_args(t_args *args);
 
 void			vm_loop(t_data *data);
 void			exec_cycle(t_data *data);
+void			print_cycle_start(t_data *data);
+void			print_cycle_end(t_data *data);
 
 /*
 ** parse_talk.c
@@ -267,4 +269,22 @@ int			ocp_get_param3_ind(t_data *data, t_proc *process, int offset, int *var);
 
 int			get_ocp_3_indirect_params(t_data *data, t_proc *process,
 		int *p1, int *p2, ...);
+int			get_ocp_3_direct_params(t_data *data, t_proc *process,
+		int *p1, int *p2, ...);
+int			get_nth_register_value(t_proc *process, int n);
+void		set_nth_register_value(t_proc *process, int n, int value);
+
+/*
+** ocp_ifs.c
+*/
+
+int			is_first_param_register(t_data *data, t_proc *process);
+int			is_second_param_register(t_data *data, t_proc *process);
+
+/*
+** increment_pc.c
+*/
+
+void		increment_pc(t_data *data, t_proc *process, int offset);
+
 #endif

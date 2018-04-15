@@ -29,6 +29,8 @@ void			vm_loop(t_data *data)
 {
 	while (42)
 	{
+		if (data->args->verbosity & V_CYCLES)
+			print_cycle_start(data);
 		if (data->mem->cycle == data->args->dump)
 		{
 			print_mem(data->mem);
@@ -44,5 +46,20 @@ void			vm_loop(t_data *data)
 			}
 		data->mem->cycle += 1;
 		data->mem->since_last_check += 1;
+		if (data->args->verbosity & V_CYCLES)
+			print_cycle_end(data);
 	}
+}
+
+void			print_cycle_start(t_data *data)
+{
+	static char	buf[6] = "\e[30m";
+
+	buf[3] = 49 + data->mem->cycle % 6;
+	ft_printf("It is now cycle %s%i\n", buf, data->mem->cycle);
+}
+
+void			print_cycle_end(t_data *data)
+{
+	ft_printf(CLEAR);
 }

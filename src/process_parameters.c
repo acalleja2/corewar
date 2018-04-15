@@ -28,3 +28,34 @@ int			get_ocp_3_indirect_params(t_data *data, t_proc *process,
 	offset += ocp_get_param3_ind(data, process, offset, p3);
 	return (offset);
 }
+
+int			get_ocp_3_direct_params(t_data *data, t_proc *process,
+		int *p1, int *p2, ...)
+{
+	va_list	ap;
+	int		*p3;
+	int		offset;
+
+	va_start(ap, p2);
+	p3 = va_arg(ap, int*);
+	va_end(ap);
+	offset = 2;
+	offset += ocp_get_param1(data, process, offset, p1);
+	offset += ocp_get_param2(data, process, offset, p2);
+	offset += ocp_get_param3(data, process, offset, p3);
+	return (offset);
+}
+
+int			get_nth_register_value(t_proc *process, int n)
+{
+	if (n <= 0 || n > REG_NUMBER)
+		return (0);
+	return (process->registers[n]);
+}
+
+void		set_nth_register_value(t_proc *process, int n, int value)
+{
+	if (n <= 0 || n > REG_NUMBER)
+		return ;
+	process->registers[n] = value;
+}
