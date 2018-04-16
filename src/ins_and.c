@@ -1,5 +1,10 @@
 #include "corewar.h"
 
+/*
+** Effectue un AND (&) entre les deux parametres et stocke le resultat dans le
+** troisieme.
+*/
+
 void		ins_and(t_proc *process, t_data *data)
 {
 	int				p1;
