@@ -79,7 +79,7 @@ void	destroy_win(WINDOW *local_win)
 void	print_usage(int rows, int cols)
 {
 	mvprintw(0, rows / 2, "COREWAR NCURSE OUTPUT MODE\n");
-	printw("q => quit");
+	mvprintw(STARTx, 0, "q => quit");
 	refresh();
 }
 
