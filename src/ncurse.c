@@ -1,5 +1,45 @@
 #include "corewar.h"
 
+void		ncurse_pause(WINDOW *map)
+{
+	int			ch;
+	int			cols;
+	int			rows;
+
+	getmaxyx(stdscr, cols, rows);
+	nodelay(map, FALSE);
+	mvprintw(0, rows / 2, "COREWAR NCURSE OUTPUT MODE: PAUSE\n");
+	refresh();
+	ch = wgetch(map);
+	while (ch != ' ')
+		ch = wgetch(map);
+	nodelay(map, TRUE);
+	mvprintw(0, rows / 2, "COREWAR NCURSE OUTPUT MODE       \n");
+	refresh();
+}
+
+void		print_control_pannel(t_data *data)
+{
+	t_champion	*curr;
+	int		cols;
+	int		rows;
+	int		i;
+
+	i = 0;
+	getmaxyx(stdscr, cols, rows);
+	curr = data->champs;
+	mvprintw(STARTY, WIDTH + STARTX + 20, "PROCESS NAME");
+	mvprintw(STARTY, WIDTH + STARTX + 60, "ID");
+	while (curr)
+	{
+		mvprintw(STARTY + 2 + i, WIDTH + STARTX + 20, curr->name);
+		mvprintw(STARTY + 2 + i, WIDTH + STARTX + 60, "%d", curr->id);
+		curr = curr->next;
+		i++;
+	}
+	refresh();
+}
+
 int			ncurses_main_loop(WINDOW *map, t_data *data)
 {
 	int		ch;
@@ -10,9 +50,12 @@ int			ncurses_main_loop(WINDOW *map, t_data *data)
 		print_map_colors(map, HEIGHT, WIDTH, data);
 	else
 		print_map(map, HEIGHT, WIDTH, data);
+	print_control_pannel(data);
 	ch = wgetch(map);
 	if (ch == 'q')
 		return (0);
+	if (ch == ' ')
+		ncurse_pause(map);
 	//wrefresh_sleep(map, 1);
 	return (1);
 }
@@ -74,13 +117,6 @@ int		init_colors(t_data *data)
 	data->colors = 1;
 	return (1);
 }
-
-
-/*
-void		init_champ_colors(t_data *data)
-{
-}
-*/
 
 /*
 ** Creer la fenetre principale et la fenetre d'affichage du corewar, affiche
