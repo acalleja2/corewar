@@ -75,6 +75,7 @@ void			clean_dead_processes(t_data *data)
 	{
 		if (current->live == 0)
 		{
+			speak_kill(data);
 			previous->next = current->next;
 			free(current);
 			if (previous->next == NULL)

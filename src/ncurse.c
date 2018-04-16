@@ -81,6 +81,10 @@ void		print_control_pannel(t_data *data)
 	}
 	mvprintw(STARTY + 10 + i, WIDTH + STARTX + 20, " CYCLES TO DIE\t\t%d", CYCLE_TO_DIE);
 	mvprintw(STARTY + 11 + i, WIDTH + STARTX + 20, " CYCLES DELTA\t\t%d", CYCLE_DELTA);
+	mvprintw(STARTY + 13 + i, WIDTH + STARTX + 20, " CYCLES LEFT\t\t%d", 
+			data->mem->cycle_to_die);
+	mvprintw(STARTY + 14 + i, WIDTH + STARTX + 20, " SINCE LAST CHECK\t\t%d", 
+			data->mem->since_last_check);
 	refresh();
 	reinit_process_by_champion(data);
 }
@@ -97,11 +101,11 @@ int			ncurses_main_loop(WINDOW *map, t_data *data)
 		print_map(map, HEIGHT, WIDTH, data);
 	print_control_pannel(data);
 	ch = wgetch(map);
-	if (ch == 'q')
+	//if (ch == 'q' || data->mem->cycle_to_die <= 0) /* S'arrete jamais a cause ca ? */
+	if (ch == 'q') /* S'arrete jamais a cause ca ? */
 		return (0);
 	if (ch == ' ')
 		ncurse_pause(map);
-	//wrefresh_sleep(map, 1);
 	return (1);
 }
 
