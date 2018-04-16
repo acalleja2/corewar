@@ -6,7 +6,7 @@
 /*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/11 15:01:57 by acalleja          #+#    #+#             */
-/*   Updated: 2018/04/15 14:54:39 by acalleja         ###   ########.fr       */
+/*   Updated: 2018/04/16 14:41:53 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,5 @@ void	pars_param(char *str, t_instru **ins)
 		i++;
 	}
 	(*ins)->par = tmp;
+	free_tab(tab);
 }
