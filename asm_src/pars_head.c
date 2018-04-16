@@ -6,7 +6,7 @@
 /*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/12 21:45:34 by acalleja          #+#    #+#             */
-/*   Updated: 2018/04/13 20:33:12 by acalleja         ###   ########.fr       */
+/*   Updated: 2018/04/16 12:41:18 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ int		pars_name(char *str, header_t *head, int fd)
 			del_pos(str, 0);
 		if (str[0] == '"')
 			del_pos(str, 0);
+		else
+			error_header();
 		while (str[i] != '"')
 		{
 			if (str[i] == '\0')
@@ -84,6 +86,8 @@ int		pars_desc(char *str, header_t *head, int fd)
 			del_pos(str, 0);
 		if (str[0] == '"')
 			del_pos(str, 0);
+		else
+			error_header();
 		while (str[i] != '"')
 		{
 			if (str[i] == '\0')

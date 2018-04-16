@@ -6,7 +6,7 @@
 /*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/13 11:37:59 by acalleja          #+#    #+#             */
-/*   Updated: 2018/04/13 11:41:00 by acalleja         ###   ########.fr       */
+/*   Updated: 2018/04/16 13:04:15 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int		all_digit(char *str)
 	int		i;
 
 	i = 0;
+	if (!str[i])
+		return (0);
 	while (str[i])
 	{
 		if (!ft_isdigit(str[i]))
