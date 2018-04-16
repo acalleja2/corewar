@@ -35,10 +35,8 @@ void			vm_loop(t_data *data)
 		if (data->args->verbosity & V_CYCLES)
 			print_cycle_start(data);
 		if (data->args->ncurses != -1)
-		{
 			if (!ncurses_main_loop(map, data))
 				break ;
-		}
 		if (data->mem->cycle == data->args->dump)
 		{
 			print_mem(data->mem);

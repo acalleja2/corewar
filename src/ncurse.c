@@ -13,7 +13,7 @@ int			ncurses_main_loop(WINDOW *map, t_data *data)
 	ch = wgetch(map);
 	if (ch == 'q')
 		return (0);
-	wrefresh_sleep(map, 1);
+	//wrefresh_sleep(map, 1);
 	return (1);
 }
 
@@ -23,9 +23,8 @@ int			ncurses_main_loop(WINDOW *map, t_data *data)
 */
 void		end_ncurses(WINDOW *map)
 {
-	if (map)
+	if (!map)
 		return ;
-	refresh_sleep(1);
 	destroy_win(map);
 	endwin();
 }
