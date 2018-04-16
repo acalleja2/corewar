@@ -61,6 +61,7 @@ SRC = champ_list_tools.c \
 	  proc_list_tools.c \
 	  process_parameters.c \
 	  setup_champs.c \
+	  stupid.c \
 	  switch_instruction.c \
 	  vm_loop.c \
 	  # error_file.c

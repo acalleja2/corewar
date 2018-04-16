@@ -1,5 +1,10 @@
 #include "corewar.h"
 
+/*
+** Toutes ces fonction ont le meme role, elles renvoient le param n,
+** la difference est le n et le type de param, direct ou indirect.
+*/
+
 int			ocp_get_param1(t_data *data, t_proc *process, int offset, int *var)
 {
 	int		ocp;

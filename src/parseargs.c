@@ -9,14 +9,14 @@ int			ft_valid_process(int candidate, t_args *args)
 {
 	int		i;
 
-	printf("index candidat: %d, index courant: %d\n", candidate, args->index);
+	//printf("index candidat: %d, index courant: %d\n", candidate, args->index);
 	i = 0;
 	while (i < args->index)
 	{
-		printf("\targs->process[%d]: %d\n", i, args->process[i]);
+		//printf("\targs->process[%d]: %d\n", i, args->process[i]);
 		if (args->process[i] == candidate)
 		{
-			printf("\t\tl'index: %d est deja utilise\n", args->process[i]);
+			//printf("\t\tl'index: %d est deja utilise\n", args->process[i]);
 			return (FALSE);
 		}
 		i++;

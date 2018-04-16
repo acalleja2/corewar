@@ -7,7 +7,7 @@
 */
 void		ft_b(int argc, char *argv[], int *i, t_args *args)
 {
-	if (args->dump != -1 || args->cycles != -1 || args->verbosity != -1 ||
+	if (args->dump != -1 || args->cycles != -1 || args->verbosity != -0 ||
 			args->ncurses != -1)
 		ft_error_parse();
 	if (args->binary_output != -1)
