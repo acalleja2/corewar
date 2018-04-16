@@ -46,7 +46,6 @@ int				main(int argc, char *argv[])
 	}
 	load_champs_and_setup_processes(&data);
 	print_proc_list(&data);
-	/* print_mem(&mem); */
 	vm_loop(&data);
 	proc_list_free(data.procs);
 	champ_list_free(&data.champs);

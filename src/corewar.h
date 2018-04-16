@@ -6,7 +6,7 @@
 /*   By: florenzo <florenzo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/14 17:10:11 by florenzo          #+#    #+#             */
-/*   Updated: 2018/04/16 11:50:41 by mschmitt         ###   ########.fr       */
+/*   Updated: 2018/04/16 14:33:23 by mschmitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ typedef struct	s_champion
 	int					bytes;
 	int					last_seen_alive;
 	int					color_pair;
+	int					nbr_process;
 }				t_champion;
 
 typedef struct	s_proc
