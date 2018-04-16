@@ -6,7 +6,7 @@
 /*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/11 11:11:51 by acalleja          #+#    #+#             */
-/*   Updated: 2018/04/16 14:13:30 by acalleja         ###   ########.fr       */
+/*   Updated: 2018/04/16 19:35:49 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ typedef struct		s_instru
 	unsigned char	ocp;
 }					t_instru;
 
+int					count_sep(char *str);
 void				free_lab(t_label **lab);
 void				free_param(t_param **par);
 void				free_instru(t_instru **ins);
