@@ -186,6 +186,7 @@ void			ft_n(int argc, char *argv[], int *i, t_args *args);
 /*
 ** parse_utilies.c
 */
+
 void			print_args(t_args *args);
 void			ft_error_parse();
 void			ft_error_file(char *champ);
@@ -194,18 +195,21 @@ int				ft_strisnumber(char *str);
 /*
 ** setup_champs.c
 */
+
 void			setup_champions(t_data *data);
 int				create_champ_list(t_data *data);
 
 /*
 ** champion_initialization.c
 */
+
 t_champion		*init_champion(int id, char *filename);
 int				get_champ_data(t_champion *new, char *filename);
 
 /*
 ** champ_list_tools.c
 */
+
 void			champ_list_append(t_data *data, t_champion *new);
 void			ft_print_champ_list(t_champion *champ);
 int				champ_list_len(t_champion **list);
@@ -215,6 +219,7 @@ t_champion		*get_champion_by_id(t_champion *champs, int id);
 /*
 ** get_stuff.c
 */
+
 int				error_reading(int readres, int expected, char *filename);
 int				get_magic_number(int fd, t_champion *new, char *filename);
 int				get_program_name(int fd, t_champion *new, char *filename);
@@ -296,6 +301,7 @@ void			switch_instruction(t_proc *process, unsigned char instruction, t_data *da
 /*
 ** ncurses_tools.c
 */
+
 void	print_map(WINDOW *win, int height, int width, t_data *data);
 void	destroy_win(WINDOW *local_win);
 void	clear_win(WINDOW *win, int height, int width);
@@ -314,6 +320,7 @@ void	wrefresh_sleep(WINDOW *win, int sleep_time);
 /*
 ** ncurses_tools.c
 */
+
 int			ncurses_main_loop(WINDOW *map, t_data *data);
 void		end_ncurses(WINDOW *map);
 WINDOW		*init_ncurse(t_data *data);
