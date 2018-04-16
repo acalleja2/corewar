@@ -6,7 +6,7 @@
 /*   By: florenzo <florenzo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/14 17:10:11 by florenzo          #+#    #+#             */
-/*   Updated: 2018/04/14 17:10:11 by florenzo         ###   ########.fr       */
+/*   Updated: 2018/04/16 11:50:41 by mschmitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,20 @@
 # include "../libft/libft.h"
 # include "op.h"
 # include <fcntl.h>
+# include <ncurses.h>
 # define V_LIVES 1
 # define V_CYCLES 2
 # define V_OPERATIONS 4
 # define V_DEATHS 8
 # define V_PC 16
+# define P1 
+# define P2 0x3
+# define P3 0xc0
+# define OCP_P1
+# define HEIGHT 	64
+# define WIDTH 192
+# define STARTX 10 
+# define STARTY 10 
 
 typedef struct	s_args
 {
@@ -46,6 +55,7 @@ typedef struct	s_champion
 	int					id;
 	int					bytes;
 	int					last_seen_alive;
+	int					color_pair;
 }				t_champion;
 
 typedef struct	s_proc
@@ -56,7 +66,7 @@ typedef struct	s_proc
 	int				live;
 	int				time_to_wait;
 	int				instruction_started;
-	int				registers[REG_NUMBER];
+	int				registers[REG_NUMBER + 1];
 	unsigned char	pc;
 	unsigned char	carry;
 }				t_proc;
@@ -83,6 +93,7 @@ typedef struct	s_data
 	t_args		*args;
 	t_champion	*champs;
 	t_proc		*procs;
+	int			colors;
 }				t_data;
 
 extern void		(*const g_tab[17])(t_proc *process,
@@ -223,6 +234,8 @@ void	ft_free_t_args(t_args *args);
 
 void			vm_loop(t_data *data);
 void			exec_cycle(t_data *data);
+void			print_cycle_start(t_data *data);
+void			print_cycle_end(t_data *data);
 
 /*
 ** parse_talk.c
@@ -242,7 +255,7 @@ void			clean_dead_processes(t_data *data);
 ** print_winner.c
 */
 
-void			print_winner(t_data *data);
+void			print_winner(t_data *data, WINDOW *map);
 
 /*
 ** switch_instruction.c
@@ -250,6 +263,31 @@ void			print_winner(t_data *data);
 
 void			switch_instruction(t_proc *process, unsigned char instruction, t_data *data);
 
+/*
+** ncurses_tools.c
+*/
+void	print_map(WINDOW *win, int height, int width, t_data *data);
+void	destroy_win(WINDOW *local_win);
+void	clear_win(WINDOW *win, int height, int width);
+WINDOW	*create_newwin(int height, int width, int starty, int startx);
+
+/*
+** ncurses_tools2.c
+*/
+
+void	init_main_window();
+void	print_usage(int rows, int cols);
+void	refresh_sleep(int sleep_time);
+void	ncurses_winner(char	*speak, t_data *data, WINDOW *map);
+void	wrefresh_sleep(WINDOW *win, int sleep_time);
+
+/*
+** ncurses_tools.c
+*/
+int			ncurses_main_loop(WINDOW *map, t_data *data);
+void		end_ncurses(WINDOW *map);
+WINDOW		*init_ncurse(t_data *data);
+void		print_map_colors(WINDOW *win, int height, int width, t_data *data);
 /*
 ** ocp_getters.c
 */
@@ -267,4 +305,22 @@ int			ocp_get_param3_ind(t_data *data, t_proc *process, int offset, int *var);
 
 int			get_ocp_3_indirect_params(t_data *data, t_proc *process,
 		int *p1, int *p2, ...);
+int			get_ocp_3_direct_params(t_data *data, t_proc *process,
+		int *p1, int *p2, ...);
+int			get_nth_register_value(t_proc *process, int n);
+void		set_nth_register_value(t_proc *process, int n, int value);
+
+/*
+** ocp_ifs.c
+*/
+
+int			is_first_param_register(t_data *data, t_proc *process);
+int			is_second_param_register(t_data *data, t_proc *process);
+
+/*
+** increment_pc.c
+*/
+
+void		increment_pc(t_data *data, t_proc *process, int offset);
+
 #endif

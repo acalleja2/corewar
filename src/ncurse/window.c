@@ -7,6 +7,24 @@
 #define STARTX 10 
 #define STARTY 10 
 
+typedef struct	s_win
+{
+	int			startx;
+	int			starty;
+	int			height;
+	int			width;
+}				t_win;
+
+/*
+void		ft_init_win(WINDOW *win, int *values)
+{
+	win->startx = values[0];
+	win->starty = values[1];
+	win->height = values[2];
+	win->width = values[3];
+}
+*/
+
 WINDOW		*create_newwin(int height, int width, int starty, int startx)
 {
 	WINDOW	*local_win;
@@ -95,7 +113,9 @@ int		main(void)
 	int		rows;
 	int		cols;
 	WINDOW	*map;
+	int		cycles;
 
+	cycles = 0;
 	initscr();
 	raw();
 	keypad(stdscr, TRUE);
@@ -105,13 +125,16 @@ int		main(void)
 	refresh();
 	sleep(1);
 	map = create_newwin(HEIGHT + 2, WIDTH + 2, STARTX, STARTY); 
+	nodelay(map, TRUE);
 	while (1)
 	{
+		//printw("cycles: %d\n", cycles++);
 		print_map(map, HEIGHT, WIDTH);
 		ch = wgetch(map);
 		if (ch == 'q')
 			break ;
 		wrefresh(map);
+		refresh();
 	}
 	sleep(1);
 	destroy_win(map);

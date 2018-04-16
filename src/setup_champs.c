@@ -13,7 +13,7 @@ int		create_champ_list(t_data *data)
 	t_champion	*new;
 
 	i = 0;
-	count = 0;
+	count = 1;
 	while (i < MAX_PLAYERS && (data->args->champions)[i] != NULL)
 	{
 		new = init_champion(count, (data->args->champions)[i]);
@@ -24,7 +24,7 @@ int		create_champ_list(t_data *data)
 		data->args->champ_number += 1;
 		count += 1;
 	}
-	return (count);
+	return (count - 1);
 }
 
 void	setup_champions(t_data *data)
