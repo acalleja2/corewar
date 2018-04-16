@@ -6,7 +6,7 @@
 /*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/13 18:19:34 by acalleja          #+#    #+#             */
-/*   Updated: 2018/04/15 19:17:12 by acalleja         ###   ########.fr       */
+/*   Updated: 2018/04/16 14:41:46 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,6 @@ void	create_cor(char *file, t_instru *ins, header_t *head)
 	write(fd, head->comment, COMMENT_LENGTH);
 	add_empty_oct(4, fd);
 	print_param_fd(ins, fd);
+	free(name);
+	close(fd);
 }

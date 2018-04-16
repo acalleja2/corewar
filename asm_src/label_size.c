@@ -6,7 +6,7 @@
 /*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/15 15:21:06 by acalleja          #+#    #+#             */
-/*   Updated: 2018/04/15 19:26:35 by acalleja         ###   ########.fr       */
+/*   Updated: 2018/04/16 14:06:03 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ int		label_size(t_instru *ins, t_instru *cur, char *str)
 			lab = tmp->lab;
 			while (lab)
 			{
-				printf("%s\n", str);
 				if (!ft_strcmp(lab->name, str))
 				{
 					if (size != 0)
@@ -50,10 +49,7 @@ int		label_size(t_instru *ins, t_instru *cur, char *str)
 			}
 		}
 		if (after == 1 || before == 1)
-		{
 			size += tmp->size;
-			printf("sizeo = %d\n", size);
-		}
 		tmp = tmp->next;
 	}
 	return (0);

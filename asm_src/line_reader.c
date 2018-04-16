@@ -6,7 +6,7 @@
 /*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/11 18:28:31 by acalleja          #+#    #+#             */
-/*   Updated: 2018/04/15 19:16:39 by acalleja         ###   ########.fr       */
+/*   Updated: 2018/04/16 14:21:29 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,7 @@ void	line_reader(int fd, t_label **lab, t_instru **ins, char *file)
 	check_param(*ins, *lab, str, octet);
 	put_lab_value(*ins);
 	create_cor(file, *ins, head);
+	free_instru(ins);
+	free_lab(lab);
+	free(head);
 }

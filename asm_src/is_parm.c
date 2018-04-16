@@ -6,7 +6,7 @@
 /*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/13 11:32:57 by acalleja          #+#    #+#             */
-/*   Updated: 2018/04/13 20:35:16 by acalleja         ###   ########.fr       */
+/*   Updated: 2018/04/16 14:43:32 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,17 @@ int		is_reg(char *s)
 
 	str = ft_strdup(s);
 	if (str[0] != 'r')
+	{
+		free(str);
 		return (0);
+	}
 	del_pos(str, 0);
 	if (!all_digit(str) || ft_atoi(str) > REG_NUMBER)
+	{
+		free(str);
 		return (0);
+	}
+	free(str);
 	return (T_REG);
 }
 
@@ -32,14 +39,20 @@ int		is_direct(char *s, t_instru *beg, t_label *lab, t_instru *tmp)
 
 	str = ft_strdup(s);
 	if (str[0] != DIRECT_CHAR || str[0] == 'r')
+	{
+		free(str);
 		return (0);
+	}
 	del_pos(str, 0);
 	if (str[0] != LABEL_CHAR)
 	{
 		if (str[0] == '-')
 			del_pos(str, 0);
 		if (all_digit(str))
+		{
+			free(str);
 			return (T_DIR);
+		}
 	}
 	else
 	{
@@ -50,7 +63,10 @@ int		is_direct(char *s, t_instru *beg, t_label *lab, t_instru *tmp)
 			while (l)
 			{
 				if (!ft_strcmp(l->name, str) && beg != tmp)
+				{
+					free(str);
 					return (T_DIR);
+				}
 				l = l->next;
 			}
 			beg = beg->next;
@@ -58,11 +74,17 @@ int		is_direct(char *s, t_instru *beg, t_label *lab, t_instru *tmp)
 		while (lab)
 		{
 			if (!ft_strcmp(lab->name, str))
+			{
+				free(str);
 				return (T_DIR);
+			}
 			lab = lab->next;
 		}
 		if (tmp && tmp->lab && !ft_strcmp(str, tmp->lab->name))
+		{
+			free(str);
 			return (T_DIR);
+		}
 	}
 	return (0);
 }
@@ -74,13 +96,19 @@ int		is_indirect(char *s, t_instru *beg, t_label *lab, t_instru *tmp)
 
 	str = ft_strdup(s);
 	if (str[0] == 'r')
+	{
+		free(str);
 		return (0);
+	}
 	if (str[0] != LABEL_CHAR)
 	{
 		if (str[0] == '-')
 			del_pos(str, 0);
 		if (all_digit(str))
+		{
+			free(str);
 			return (T_IND);
+		}
 	}
 	else
 	{
@@ -91,7 +119,10 @@ int		is_indirect(char *s, t_instru *beg, t_label *lab, t_instru *tmp)
 			while (l)
 			{
 				if (!ft_strcmp(l->name, str) && beg != tmp)
+				{
+					free(str);
 					return (T_IND);
+				}
 				l = l->next;
 			}
 			beg = beg->next;
@@ -99,11 +130,18 @@ int		is_indirect(char *s, t_instru *beg, t_label *lab, t_instru *tmp)
 		while (lab)
 		{
 			if (!ft_strcmp(lab->name, str))
+			{
+				free(str);
 				return (T_IND);
+			}
 			lab = lab->next;
 		}
 		if (tmp && tmp->lab && !ft_strcmp(str, tmp->lab->name))
+		{
+			free(str);
 			return (T_IND);
+		}
 	}
+	free(str);
 	return (0);
 }
