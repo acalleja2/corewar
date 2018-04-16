@@ -1,12 +1,27 @@
 #include "corewar.h"
 
-void			mem_setup_byte(t_mem *mem, unsigned char const byte, int const pos, int const id)
+/*
+** Fonction "legacy" d'avant la refactorisation, ne vous en servez pas.
+** elle sert de wrapper pour mem_set_byte et lors du chargement des programmes
+** en memoire.
+*/
+
+void			mem_setup_byte(t_mem *mem, unsigned char const byte,
+		int const pos, int const id)
 {
 	mem->map[pos % MEM_SIZE] = byte;
 	mem->owner[pos % MEM_SIZE] = id;
 }
 
-void			mem_set_byte(t_data *data, t_proc *process, int offset, unsigned char value)
+/*
+** Cette fonction permet a un process de set un octet situe offset octets apres
+** son emplacement logique.
+** map->owner est mis a jour par la meme occasion afin d'avoir les bonnes
+** couleurs.
+*/
+
+void			mem_set_byte(t_data *data, t_proc *process, int offset,
+		unsigned char value)
 {
 	mem_setup_byte(data->mem,
 			value,
@@ -14,10 +29,24 @@ void			mem_set_byte(t_data *data, t_proc *process, int offset, unsigned char val
 			process->champion_id);
 }
 
+/*
+** Renvoie la valeur de l'octet pos octets apres l'emplacement logique du
+** process.
+** J'appelle "emplacement logique" la position de depart du process + son pc.
+** Comme il se peut que le PC soit tres eleve on n'oublie pas le petit modulo.
+*/
+
 unsigned char	mem_get_byte(t_data *data, t_proc *process, int pos)
 {
-	return (data->mem->map[(process->starting_pos + process->pc + pos) % MEM_SIZE]);
+	return (data->mem->map[(process->starting_pos + process->pc + pos)
+			% MEM_SIZE]);
 }
+
+/*
+** Dump la memoire comme au format de la VM.
+** Pour optimiser on cree un buffer et on fait un seul write.
+** Pour comprendre comment ca marche : man 3 printf (lol)
+*/
 
 void			print_mem(t_mem *mem)
 {
@@ -44,6 +73,10 @@ void			print_mem(t_mem *mem)
 	write(1, buffer, offset);
 }
 
+/*
+** Recupere un octet de la memoire et renvoie sa valeur avec le bon endianisme.
+*/
+
 int				mem_get_int(t_data *data, t_proc *process, int offset)
 {
 
@@ -56,6 +89,10 @@ int				mem_get_int(t_data *data, t_proc *process, int offset)
 	return (*(int*)tmp);
 }
 
+/*
+** Bon la c'est comme au-dessus mais ca renvoie un short.
+*/
+
 int				mem_get_short_int(t_data *data, t_proc *process, int offset)
 {
 
@@ -65,6 +102,11 @@ int				mem_get_short_int(t_data *data, t_proc *process, int offset)
 	tmp[1] = mem_get_byte(data, process, offset + 0);
 	return ((int)(*(short int*)tmp));
 }
+
+/*
+** Ici on set un int (4 octets de la VM). Tout comme au dessus on change
+** l'endianisme avant de l'ecrire.
+*/
 
 void			mem_set_int(t_data *data, t_proc *process, int offset, int value)
 {
