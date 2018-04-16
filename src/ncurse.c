@@ -30,10 +30,14 @@ void		print_control_pannel(t_data *data)
 	curr = data->champs;
 	mvprintw(STARTY, WIDTH + STARTX + 20, "PROCESS NAME");
 	mvprintw(STARTY, WIDTH + STARTX + 60, "ID");
+	mvprintw(STARTY, WIDTH + STARTX + 70, "SIZE(bytes)");
+	mvprintw(STARTY, WIDTH + STARTX + 90, "LAST_SEEN_ALIVE");
 	while (curr)
 	{
 		mvprintw(STARTY + 2 + i, WIDTH + STARTX + 20, curr->name);
 		mvprintw(STARTY + 2 + i, WIDTH + STARTX + 60, "%d", curr->id);
+		mvprintw(STARTY + 2 + i, WIDTH + STARTX + 70, "%d", curr->bytes);
+		mvprintw(STARTY + 2 + i, WIDTH + STARTX + 90, "%d", curr->last_seen_alive);
 		curr = curr->next;
 		i++;
 	}
