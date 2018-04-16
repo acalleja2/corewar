@@ -26,8 +26,8 @@ void	wrefresh_sleep(WINDOW *win, int sleep_time)
 void	print_usage(int rows, int cols)
 {
 	mvprintw(0, rows / 2, "COREWAR NCURSE OUTPUT MODE\n");
-	printw("q         quit\n");
-	printw("espace    pause/continue");
+	mvprintw(2, STARTX, "q         quit\n");
+	mvprintw(3, STARTX, "espace    pause/continue");
 	refresh();
 }
 

@@ -18,30 +18,71 @@ void		ncurse_pause(WINDOW *map)
 	refresh();
 }
 
+void	count_process_by_champion(t_data *data)
+{
+	t_proc		*proc;
+	t_champion	*champ;
+
+	champ = data->champs;
+	while (champ)
+	{
+		proc = data->procs;
+		while (proc)
+		{
+			if (proc->champion_id == champ->id)
+				champ->nbr_process += 1;
+			proc = proc->next;
+		}
+		champ = champ->next;
+	}
+}
+
+void	reinit_process_by_champion(t_data *data)
+{
+	t_champion	*champ;
+
+	champ = data->champs;
+	while (champ)
+	{
+		champ->nbr_process = 0;
+		champ = champ->next;
+	}
+}
+
 void		print_control_pannel(t_data *data)
 {
 	t_champion	*curr;
 	int		cols;
 	int		rows;
 	int		i;
+	char	name[31];
 
 	i = 0;
+
+	count_process_by_champion(data);
 	getmaxyx(stdscr, cols, rows);
 	curr = data->champs;
 	mvprintw(STARTY, WIDTH + STARTX + 20, "PROCESS NAME");
 	mvprintw(STARTY, WIDTH + STARTX + 60, "ID");
 	mvprintw(STARTY, WIDTH + STARTX + 70, "SIZE(bytes)");
 	mvprintw(STARTY, WIDTH + STARTX + 90, "LAST_SEEN_ALIVE");
+	mvprintw(STARTY, WIDTH + STARTX + 110, "PROCESSES");
 	while (curr)
 	{
-		mvprintw(STARTY + 2 + i, WIDTH + STARTX + 20, curr->name);
+		ft_strncpy(name, curr->name, 30);
+		name[30] = '\0';
+		mvprintw(STARTY + 2 + i, WIDTH + STARTX + 20, name);
 		mvprintw(STARTY + 2 + i, WIDTH + STARTX + 60, "%d", curr->id);
 		mvprintw(STARTY + 2 + i, WIDTH + STARTX + 70, "%d", curr->bytes);
 		mvprintw(STARTY + 2 + i, WIDTH + STARTX + 90, "%d", curr->last_seen_alive);
+		mvprintw(STARTY + 2 + i, WIDTH + STARTX + 110, "%d", curr->nbr_process);
 		curr = curr->next;
 		i++;
 	}
+	mvprintw(STARTY + 10 + i, WIDTH + STARTX + 20, " CYCLES TO DIE\t\t%d", CYCLE_TO_DIE);
+	mvprintw(STARTY + 11 + i, WIDTH + STARTX + 20, " CYCLES DELTA\t\t%d", CYCLE_DELTA);
 	refresh();
+	reinit_process_by_champion(data);
 }
 
 int			ncurses_main_loop(WINDOW *map, t_data *data)

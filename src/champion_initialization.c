@@ -50,6 +50,7 @@ t_champion		*init_champion(int count, char *filename)
 	new->id = count;
 	new->last_seen_alive = 0;
 	new->color_pair = -1;
+	new->nbr_process = 0;
 	ft_printf("succesfully created champion %s\n", filename);
 	return (new);
 }
