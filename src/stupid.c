@@ -33,8 +33,8 @@ void		speak_kill(t_data *data)
 	char	*(*jaipasenviedebosser[3])(void);
 
 	jaipasenviedebosser[0] = kill1;
-	jaipasenviedebosser[0] = kill2;
-	jaipasenviedebosser[0] = kill3;
+	jaipasenviedebosser[1] = kill2;
+	jaipasenviedebosser[2] = kill3;
 	nbr = rand() % 5;
 	if (data->args->talk)
 	{

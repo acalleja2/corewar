@@ -6,7 +6,7 @@
 /*   By: florenzo <florenzo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/14 17:10:11 by florenzo          #+#    #+#             */
-/*   Updated: 2018/04/16 18:44:00 by mschmitt         ###   ########.fr       */
+/*   Updated: 2018/04/16 18:49:08 by mschmitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -330,5 +330,10 @@ int			is_second_param_register(t_data *data, t_proc *process);
 */
 
 void		increment_pc(t_data *data, t_proc *process, int offset);
+
+/*
+** stupid.c
+*/
+void		speak_kill(t_data *data);
 
 #endif

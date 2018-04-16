@@ -2,8 +2,8 @@
 
 void	ft_error_parse()
 {
-	ft_printf("Usage: ./corewar [d- N -s N -v N | -b --stealth | -n --stealth"
-			" | -n N Champion.cor]\n"
+	ft_printf("Parse Error\nUsage: ./corewar [d- N -s N -v N | -b --stealth | "
+			"-n --stealth | -n N Champion.cor]\n"
 			"#### TEXT OUTPUT MODE ############################################"
 			"##############\n"
 			"    -d N      : Dumps memory after N cycles then exits\n"
@@ -23,8 +23,9 @@ void	ft_error_parse()
 			"#### NCURSES OUTPUT MODE #########################################"
 			"##############\n"
 			"    -n        : Ncurses output mode"
-			"    --stealth : Hides the real contents of the memory"
+			"    --stealth : Hides the real contents of the memory\n"
 			"##################################################################"
 			"##############\n"
 			);
+	exit(1);
 }

@@ -5,7 +5,6 @@
 */
 void		ft_n_name(char *argv[], int *i, t_args *args)
 {
-	printf("on est bien la\n");
 	if (ft_valid_process(ft_atoi(argv[*i + 1]), args))
 		args->process[args->index] = ft_atoi(argv[*i + 1]);
 	else
@@ -25,10 +24,8 @@ void		ft_n_name(char *argv[], int *i, t_args *args)
 */
 void	ft_n_curse(int argc, char *argv[], int *i, t_args *args)
 {
-	if (args->dump != -1 || args->cycles != -1 || args->verbosity != -1 ||
+	if (args->dump != -1 || args->cycles != -1 || args->verbosity != 0 ||
 			args->binary_output != -1)
-		ft_error_parse();
-	if (args->binary_output != -1)
 		ft_error_parse();
 	if (*i + 1 < argc && !ft_strcmp(argv[*i + 1], "--stealth"))
 	{

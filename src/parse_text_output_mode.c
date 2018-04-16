@@ -15,17 +15,17 @@ void		ft_v(int argc, char *argv[], int *i, t_args *args)
 	int		ok;
 
 	j = 1;
-	ok = FALSE;
+	ok = 0;
 	if (args->binary_output != -1 || args->ncurses != -1 || *i + 1 >= argc)
 		ft_error_parse();
-	if (args->verbosity != -1)
+	if (args->verbosity != 0)
 		ft_error_parse();
 	if (!ft_strisnumber(argv[*i + 1]))
 		ft_error_parse();
 	nbr = ft_atoi(argv[*i + 1]);
 	if (nbr <= 31)
-		ok = TRUE;
-	if (ok == FALSE)
+		ok = 1;
+	if (ok == 0)
 		ft_error_parse();
 	args->verbosity = nbr;
 	*i += 2;
