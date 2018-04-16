@@ -25,6 +25,7 @@ void			setup_data(t_mem *mem, t_args *args, t_data *data)
 	data->args = args;
 	data->procs = NULL;
 	data->champs = NULL;
+	data->colors = 0;
 }
 
 int				main(int argc, char *argv[])

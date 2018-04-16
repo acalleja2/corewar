@@ -6,7 +6,10 @@ int			ncurses_main_loop(WINDOW *map, t_data *data)
 
 	if (data->args->ncurses == -1 || !map)
 		return (-1);
-	print_map(map, HEIGHT, WIDTH, data);
+	if (data->colors)
+		print_map_colors(map, HEIGHT, WIDTH, data);
+	else
+		print_map(map, HEIGHT, WIDTH, data);
 	ch = wgetch(map);
 	if (ch == 'q')
 		return (0);
@@ -32,38 +35,53 @@ void		end_ncurses(WINDOW *map)
 ** Si plus de 6 joueurs, pas de couleurs(8 couleurs en tout, moins blanc et
 ** et noir).
 */
-void		init_colors(t_data *data)
+int		init_colors(t_data *data)
 {
-	int			colors[] = {0, 1, 2, 3, 4, 5, 6, 7};
+	int			colors[] = {COLOR_BLACK, COLOR_RED, COLOR_GREEN, COLOR_YELLOW, 
+			COLOR_BLUE, COLOR_MAGENTA, COLOR_CYAN, COLOR_WHITE};
 	t_champion	*curr;
 	int			i;
 	int			j;
+	int			color_pair;
 
 	i = 0;
 	j = i + 1;
+	color_pair = 1;
 	curr = data->champs;
 	if (!has_colors() || data->args->champ_number > 56)
-		return ;
+		return(0);
 	start_color();
 	while (curr && i < 8)
 	{
-		curr->back_color = colors[i];
-		curr->front_color = colors[j];
+		init_pair(color_pair, colors[i], colors[j]);
+		curr->color_pair = color_pair;
+		/*
+		printw("curr->color_pair: %d, front: %d, bask: %d\t", color_pair, colors[i],
+				colors[j]);
+		refresh();
+		*/
 		if (j + 1 > 8)
 		{
 			j = 0;
 			i++;
 		}
 		else if (j + 1 == i)
-		{
 			j += 2;
-		}
 		else
-		{
 			j++;
-		}
+		color_pair += 1;
+		curr = curr->next;
 	}
+	data->colors = 1;
+	return (1);
 }
+
+
+/*
+void		init_champ_colors(t_data *data)
+{
+}
+*/
 
 /*
 ** Creer la fenetre principale et la fenetre d'affichage du corewar, affiche
@@ -79,6 +97,10 @@ WINDOW		*init_ncurse(t_data *data)
 	if (data->args->ncurses == -1)
 		return (NULL);
 	init_main_window();
+	/*
+	if (init_colors(data));
+		init_champ_colors(data);
+		*/
 	init_colors(data);
 	getmaxyx(stdscr, cols, rows);
 	print_usage(rows, cols);

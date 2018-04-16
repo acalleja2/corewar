@@ -66,6 +66,7 @@ void	destroy_win(WINDOW *local_win)
 ** On stocke tout dans un buffer, puis on fait un gros wprintw (print on a 
 ** window), et on refresh la fenetre de la map.
 */
+/*
 void	print_map(WINDOW *win, int height, int width, t_data *data)
 {
 	int			row;
@@ -82,8 +83,8 @@ void	print_map(WINDOW *win, int height, int width, t_data *data)
 		col = 1;
 		while (col < 64 && row * 64 + col < MEM_SIZE)
 		{
-			//offset += ft_sprintf(buffer + offset, "%.2x ", data->mem->map[row * 64 + col]);
-			offset += ft_sprintf(buffer + offset, "%.2i ", data->mem->owner[row * 64 + col]);
+			offset += ft_sprintf(buffer + offset, "%.2x ", data->mem->map[row * 64 + col]);
+			//offset += ft_sprintf(buffer + offset, "%.2i ", data->mem->owner[row * 64 + col]);
 			col += 1;
 		}
 		buffer[offset++] = ' ';
@@ -100,5 +101,91 @@ void	print_map(WINDOW *win, int height, int width, t_data *data)
 	buffer[offset++] = '\0';
 	wmove(win, 1, 1);
 	wprintw(win, buffer);
+	wrefresh_sleep(win, 0);
+}
+*/
+
+int			find_colors(t_data *data, int id)
+{
+	t_champion	*curr;
+
+	curr = data->champs;
+	while (curr != NULL)
+	{
+		if (curr->id == id)
+			return (curr->color_pair);
+		curr = curr->next;
+	}
+	return (0);
+}
+
+void	print_map(WINDOW *win, int height, int width, t_data *data)
+{
+	int			row;
+	int			col;
+	int			offset;
+	char		buffer[MEM_SIZE * 4 + 200];
+
+	row = 0;
+	offset = 0;
+	buffer[offset++] = ' ';
+	buffer[offset++] = ' ';
+	while (row * 64 < MEM_SIZE)
+	{
+		col = 1;
+		while (col < 64 && row * 64 + col < MEM_SIZE)
+		{
+			offset += ft_sprintf(buffer + offset, "%.2x ", data->mem->map[row * 64 + col]);
+			col += 1;
+		}
+		buffer[offset++] = ' ';
+		buffer[offset++] = '|';
+		if (row < 63)
+		{
+			buffer[offset++] = '|';
+			buffer[offset++] = ' ';
+			buffer[offset++] = ' ';
+		}
+		row += 1;
+	}
+	buffer[offset++] = '\0';
+	wmove(win, 1, 1);
+	wprintw(win, buffer);
+	wrefresh_sleep(win, 0);
+}
+
+void	print_map_colors(WINDOW *win, int height, int width, t_data *data)
+{
+	int			row;
+	int			col;
+	int			offset;
+	char		buffer[MEM_SIZE * 4 + 200];
+	int			color_pair;
+
+	row = 0;
+	offset = 0;
+	wprintw(win, " ");
+	wprintw(win, " ");
+	while (row * 64 < MEM_SIZE)
+	{
+		col = 1;
+		while (col < 64 && row * 64 + col < MEM_SIZE)
+		{
+			offset += ft_sprintf(buffer + offset, "%.2x ", data->mem->map[row * 64 + col]);
+			if (data->colors)
+			{
+				color_pair = find_colors(data, data->mem->owner[row * 64 + col]);
+				wattron(win, COLOR_PAIR(color_pair));
+				wprintw(win, "%.2x ", data->mem->map[row * 64 + col]);
+				wattroff(win, COLOR_PAIR(color_pair));
+			}
+			col += 1;
+		}
+		wprintw(win, " |");
+		if (row < 63)
+			wprintw(win, "|  ");
+		row += 1;
+	}
+	wmove(win, 1, 1);
 	wrefresh_sleep(win, 0);
 }

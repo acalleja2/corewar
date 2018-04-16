@@ -6,7 +6,7 @@
 /*   By: florenzo <florenzo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/14 17:10:11 by florenzo          #+#    #+#             */
-/*   Updated: 2018/04/15 20:27:12 by mschmitt         ###   ########.fr       */
+/*   Updated: 2018/04/16 11:50:41 by mschmitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,7 @@ typedef struct	s_champion
 	int					id;
 	int					bytes;
 	int					last_seen_alive;
-	int					front_color;
-	int					back_color;
+	int					color_pair;
 }				t_champion;
 
 typedef struct	s_proc
@@ -94,6 +93,7 @@ typedef struct	s_data
 	t_args		*args;
 	t_champion	*champs;
 	t_proc		*procs;
+	int			colors;
 }				t_data;
 
 extern void		(*const g_tab[17])(t_proc *process,
@@ -287,6 +287,7 @@ void	wrefresh_sleep(WINDOW *win, int sleep_time);
 int			ncurses_main_loop(WINDOW *map, t_data *data);
 void		end_ncurses(WINDOW *map);
 WINDOW		*init_ncurse(t_data *data);
+void		print_map_colors(WINDOW *win, int height, int width, t_data *data);
 /*
 ** ocp_getters.c
 */
