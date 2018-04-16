@@ -1,6 +1,15 @@
 #include "corewar.h"
 
-void			switch_instruction(t_proc *process, unsigned char instruction, t_data *data)
+/*
+** Pas le droit au switch case donc on passe par un tableau de pointeurs sur
+** fonction.
+** On commence par verifier qu'il s'agit d'un opcode valide. Si ce n'est pas le
+** cas on se contente de faire avancer de un le process.
+** Si c'est valide on execute l'instruction.
+*/
+
+void			switch_instruction(t_proc *process, unsigned char instruction,
+		t_data *data)
 {
 	if (instruction >= 1 && instruction <= 16)
 	{

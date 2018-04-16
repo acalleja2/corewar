@@ -20,6 +20,7 @@ void		ins_live(t_proc *process, t_data *data)
 	if (data->args->verbosity & V_OPERATIONS)
 		ft_printf("P   %2i | live %i\n", process->champion_id, id);
 	if ((data->args->verbosity & V_LIVES) && champion != NULL)
-		ft_printf("A process claimed a live for player %i (%s)\n", champion->id, champion->name);
+		ft_printf("A process claimed a live for player %i (%s)\n",
+				champion->id, champion->name);
 	increment_pc(data, process, 5);
 }

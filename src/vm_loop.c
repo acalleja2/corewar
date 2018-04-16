@@ -1,5 +1,13 @@
 #include "corewar.h"
 
+/*
+** Tout d'abord on verifie si le process est "gele" c'est-a-dire qu'il
+** est sur un opcode qu'il a demarre. Si c'est le cas on diminue son
+** temps d'attente. S'il n'a pas de temps d'attente c'est qu'il est
+** disponible. On va alors executer l'instruction correspondant a
+** l'octet sur lequel il se trouve.
+*/
+
 void			process_exec(t_data *data, t_proc *process)
 {
 	unsigned char		instruction;
@@ -13,6 +21,11 @@ void			process_exec(t_data *data, t_proc *process)
 	switch_instruction(process, instruction, data);
 }
 
+/*
+** Au cours du cycle on parcourt toute la liste des process
+** et on execute les instructions pour chaque
+*/
+
 void			exec_cycle(t_data *data)
 {
 	t_proc		*current;
@@ -25,6 +38,11 @@ void			exec_cycle(t_data *data)
 	}
 }
 
+/*
+** A chaque cycle on va executer tous les process et verifier s'il en reste en
+** vie. Des qu'ils sont tous morts on affiche le gagnant.
+*/
+
 void			vm_loop(t_data *data)
 {
 	WINDOW		*map;
@@ -35,10 +53,8 @@ void			vm_loop(t_data *data)
 		if (data->args->verbosity & V_CYCLES)
 			print_cycle_start(data);
 		if (data->args->ncurses != -1)
-		{
 			if (!ncurses_main_loop(map, data))
 				break ;
-		}
 		if (data->mem->cycle == data->args->dump)
 		{
 			print_mem(data->mem);
@@ -62,6 +78,10 @@ void			vm_loop(t_data *data)
 	end_ncurses(map);
 }
 
+/*
+** TODO rajouter une option pour le mode arc-en-ciel.
+*/
+
 void			print_cycle_start(t_data *data)
 {
 	static char	buf[6] = "\e[30m";
@@ -69,6 +89,10 @@ void			print_cycle_start(t_data *data)
 	buf[3] = 49 + data->mem->cycle % 6;
 	ft_printf("It is now cycle %s%i\n", buf, data->mem->cycle);
 }
+
+/*
+** Pareil, inutile de write() si on n'a pas passe l'option
+*/
 
 void			print_cycle_end(t_data *data)
 {

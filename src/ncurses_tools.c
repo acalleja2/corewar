@@ -119,6 +119,11 @@ int			find_colors(t_data *data, int id)
 	return (0);
 }
 
+/*
+**  Affiche le contenu de t_mem dans la fenetre reservee a corewar.
+** On stocke tout dans un buffer, puis on fait un gros wprintw (print on a 
+** window), et on refresh la fenetre de la map.
+*/
 void	print_map(WINDOW *win, int height, int width, t_data *data)
 {
 	int			row;
@@ -154,6 +159,9 @@ void	print_map(WINDOW *win, int height, int width, t_data *data)
 	wrefresh_sleep(win, 0);
 }
 
+/*
+**  Pareil que print_map au dessus, mais avec des couleurs.
+*/
 void	print_map_colors(WINDOW *win, int height, int width, t_data *data)
 {
 	int			row;
