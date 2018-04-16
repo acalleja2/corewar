@@ -6,7 +6,7 @@
 /*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/12 21:45:34 by acalleja          #+#    #+#             */
-/*   Updated: 2018/04/16 12:41:18 by acalleja         ###   ########.fr       */
+/*   Updated: 2018/04/16 14:52:32 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int		pars_name(char *str, header_t *head, int fd)
 			if (str[i] == '\0')
 			{
 				i = 0;
+				free(str);
 				if (get_next_line(fd, &str) < 1)
 					error_header();
 			}
@@ -58,8 +59,11 @@ int		pars_name(char *str, header_t *head, int fd)
 			ft_strcpy(head->prog_name, nm);
 		else
 			error_header();
+		free(nm);
 		return (1);
 	}
+	free(nm);
+	free(name);
 	return (0);
 }
 
@@ -93,6 +97,7 @@ int		pars_desc(char *str, header_t *head, int fd)
 			if (str[i] == '\0')
 			{
 				i = 0;
+				free(str);
 				if (get_next_line(fd, &str) < 1)
 					error_header();
 			}
@@ -109,7 +114,10 @@ int		pars_desc(char *str, header_t *head, int fd)
 			ft_strcpy(head->comment, nm);
 		else
 			error_header();
+		free(nm);
 		return (1);
 	}
+	free(nm);
+	free(name);
 	return (0);
 }

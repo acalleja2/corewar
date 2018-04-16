@@ -6,7 +6,7 @@
 /*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/15 16:44:37 by acalleja          #+#    #+#             */
-/*   Updated: 2018/04/15 19:18:53 by acalleja         ###   ########.fr       */
+/*   Updated: 2018/04/16 13:18:41 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	rev_param(int nb_octet, int value, int fd)
 {
-	printf("value = %d, nb_octet = %d\n", value, nb_octet);
 	while (nb_octet)
 	{
 		write(fd, (char *)&value + nb_octet - 1, 1);

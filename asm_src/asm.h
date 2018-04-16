@@ -6,7 +6,7 @@
 /*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/11 11:11:51 by acalleja          #+#    #+#             */
-/*   Updated: 2018/04/15 19:14:10 by acalleja         ###   ########.fr       */
+/*   Updated: 2018/04/16 14:13:30 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,9 @@ typedef struct		s_instru
 	unsigned char	ocp;
 }					t_instru;
 
+void				free_lab(t_label **lab);
+void				free_param(t_param **par);
+void				free_instru(t_instru **ins);
 void				put_lab_value(t_instru *ins);
 void				rev_param(int nb_octet, int value, int fd);
 void				print_param_fd(t_instru *ins, int fd);
