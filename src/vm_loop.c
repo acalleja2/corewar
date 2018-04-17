@@ -1,5 +1,13 @@
 #include "corewar.h"
 
+/*
+** Tout d'abord on verifie si le process est "gele" c'est-a-dire qu'il
+** est sur un opcode qu'il a demarre. Si c'est le cas on diminue son
+** temps d'attente. S'il n'a pas de temps d'attente c'est qu'il est
+** disponible. On va alors executer l'instruction correspondant a
+** l'octet sur lequel il se trouve.
+*/
+
 void			process_exec(t_data *data, t_proc *process)
 {
 	unsigned char		instruction;
@@ -13,6 +21,11 @@ void			process_exec(t_data *data, t_proc *process)
 	switch_instruction(process, instruction, data);
 }
 
+/*
+** Au cours du cycle on parcourt toute la liste des process
+** et on execute les instructions pour chaque
+*/
+
 void			exec_cycle(t_data *data)
 {
 	t_proc		*current;
@@ -24,6 +37,11 @@ void			exec_cycle(t_data *data)
 		current = current->next;
 	}
 }
+
+/*
+** A chaque cycle on va executer tous les process et verifier s'il en reste en
+** vie. Des qu'ils sont tous morts on affiche le gagnant.
+*/
 
 void			vm_loop(t_data *data)
 {
@@ -59,6 +77,10 @@ void			vm_loop(t_data *data)
 	}
 	end_ncurses(map);
 }
+
+/*
+** TODO rajouter une option pour le mode arc-en-ciel.
+*/
 
 void			print_cycle_start(t_data *data)
 {
