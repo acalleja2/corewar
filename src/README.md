@@ -1,10 +1,17 @@
 ## A faire
-- [ ] Il n'y avait pas de exit dans le ft_error_parse. C'est moi qui l'qi oublie, ou quelqu'un l'avait enleve pour une bonne raison ?
-- [ ] Tests parser en profondeur
-- [ ] Si tests ok, mettre au propre + finir doc (preciser entrees/sorties)
-- [ ] La VM :/
-- [ ] Aller bouffer
-- [ ] Illegal hardware instruction espeak. C'est moi aui fait de la merde ou c'est autre chose ?
+Parser
+	- [ ] Tests parser en profondeur
+	- [ ] Si tests ok, mettre au propre + finir doc (preciser entrees/sorties)
+Visu
+	- [ ] Affichage process visu
+	- [ ] Visu verifier affiche process bonne position // finir les instructions
+	- [ ] Visu verifier affiche process bonne couleur // finir les instructions
+VM
+	- [ ] La VM :/
+	- [ ] Instructions avec adressage restreint a refaire
+	- [ ] Valider les instructions que j'ai faites ou les corriger.
+Norme/Leaks
+	- [ ] Pas de leaks, mais pas du tout a la norme.
 
 ## Fait
 - [x] Option v lors du parsing, et verif des bits sets avec masks.
@@ -16,3 +23,5 @@
 - [x] Chargement des programmes en memoire
 - [x] Probleme parser./corewar tests/champs/Gagnant.cor tests/champs/examples/zork.cor -n 13 tests/champs/Gagnant.cor tests/champs/Car.cor -v 2 -n
 - [x] l'option v ne march plus.
+- [x] Il n'y avait pas de exit dans le ft\_error\_parse. C'est moi qui l'qi oublie, ou quelqu'un l'avait enleve pour une bonne raison ?
+- [x] Aller bouffer

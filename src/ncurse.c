@@ -126,6 +126,7 @@ void		end_ncurses(WINDOW *map)
 ** Si plus de 6 joueurs, pas de couleurs(8 couleurs en tout, moins blanc et
 ** et noir).
 */
+/*
 int		init_colors(t_data *data)
 {
 	int			colors[] = {COLOR_BLACK, COLOR_RED, COLOR_GREEN, COLOR_YELLOW, 
@@ -146,11 +147,6 @@ int		init_colors(t_data *data)
 	{
 		init_pair(color_pair, colors[i], colors[j]);
 		curr->color_pair = color_pair;
-		/*
-		printw("curr->color_pair: %d, front: %d, bask: %d\t", color_pair, colors[i],
-				colors[j]);
-		refresh();
-		*/
 		if (j + 1 > 8)
 		{
 			j = 0;
@@ -162,6 +158,43 @@ int		init_colors(t_data *data)
 			j++;
 		color_pair += 1;
 		curr = curr->next;
+	}
+	data->colors = 1;
+	return (1);
+}
+*/
+
+int		init_colors(t_data *data)
+{
+	int	colors[] = {COLOR_RED, COLOR_GREEN, COLOR_YELLOW, 
+			COLOR_BLUE, COLOR_MAGENTA, COLOR_CYAN};
+	t_champion	*curr_champ;
+	t_proc		*curr_proc;
+	int			i;
+
+	i = 1;
+	curr_champ = data->champs;
+	curr_proc = data->procs;
+	if (!has_colors() || data->args->champ_number > 6)
+		return(0);
+	start_color();
+	use_default_colors();
+	while (curr_champ)
+	{
+		init_pair(i, colors[i - 1], -1);
+		curr_champ->color_pair = i;
+		while (curr_proc)
+		{
+			if (curr_proc->champion_id == curr_champ->id)
+			{
+				curr_proc->proc_color = i + 6;
+				init_pair(i + 6, colors[i], -1);
+			}
+			curr_proc = curr_proc ->next;
+		}
+		curr_champ = curr_champ->next;
+		i++;
+		curr_proc = data->procs;
 	}
 	data->colors = 1;
 	return (1);

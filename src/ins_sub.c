@@ -20,7 +20,7 @@ void		ins_sub(t_proc *process, t_data *data)
 	if (is_second_param_register(data, process))
 		p2 = get_nth_register_value(process, p2);
 	set_nth_register_value(process, p3, p1 - p2);
-	if (p3 == 0)
+	if ((p1 - p2) == 0)
 		process->carry = 1;
 	if (data->args->verbosity & V_OPERATIONS)
 		ft_printf("P   %2i | sub %i %i %i\n", 

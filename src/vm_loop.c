@@ -44,7 +44,7 @@ void			vm_loop(t_data *data)
 		}
 		exec_cycle(data);
 		if (data->mem->since_last_check == data->mem->cycle_to_die)
-			if (!mem_check_alive(data)) // ncurse rentre pas la dedans
+			if (!mem_check_alive(data) || data->mem->cycle_to_die)
 			{
 				if (data->args->ncurses == -1)
 					ft_printf("We got a winner after %i cycles :\n", 

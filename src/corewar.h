@@ -6,7 +6,7 @@
 /*   By: florenzo <florenzo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/14 17:10:11 by florenzo          #+#    #+#             */
-/*   Updated: 2018/04/16 18:49:08 by mschmitt         ###   ########.fr       */
+/*   Updated: 2018/04/17 13:33:24 by mschmitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ typedef struct	s_proc
 	int				registers[REG_NUMBER + 1];
 	unsigned char	pc;
 	unsigned char	carry;
+	int				proc_color;
 }				t_proc;
 
 /*
