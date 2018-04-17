@@ -1,17 +1,17 @@
 ## A faire
 Parser
-	- [ ] Tests parser en profondeur
-	- [ ] Si tests ok, mettre au propre + finir doc (preciser entrees/sorties)
+- [ ] Tests parser en profondeur
+- [ ] Si tests ok, mettre au propre + finir doc (preciser entrees/sorties)
 Visu
-	- [ ] Affichage process visu
-	- [ ] Visu verifier affiche process bonne position // finir les instructions
-	- [ ] Visu verifier affiche process bonne couleur // finir les instructions
+- [ ] Affichage process visu
+- [ ] Visu verifier affiche process bonne position // finir les instructions
+- [ ] Visu verifier affiche process bonne couleur // finir les instructions
 VM
-	- [ ] La VM :/
-	- [ ] Instructions avec adressage restreint a refaire
-	- [ ] Valider les instructions que j'ai faites ou les corriger.
+- [ ] La VM :/
+- [ ] Instructions avec adressage restreint a refaire
+- [ ] Valider les instructions que j'ai faites ou les corriger.
 Norme/Leaks
-	- [ ] Pas de leaks, mais pas du tout a la norme.
+- [ ] Pas de leaks, mais pas du tout a la norme.
 
 ## Fait
 - [x] Option v lors du parsing, et verif des bits sets avec masks.
