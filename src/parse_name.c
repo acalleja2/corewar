@@ -4,6 +4,7 @@
 ** Si L'argument ne correspond a aucun flag, il s'agit d'un champion
 ** On lui attribue un process valide > process_curr
 */
+
 void		ft_parse_name(char *argv[], int *i, t_args *args)
 {
 	while (!ft_valid_process(args->process_curr, args))

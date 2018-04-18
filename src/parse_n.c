@@ -3,6 +3,7 @@
 /*
 ** Gere l'option n s'il s'agit d'un name
 */
+
 void		ft_n_name(char *argv[], int *i, t_args *args)
 {
 	if (ft_valid_process(ft_atoi(argv[*i + 1]), args))
@@ -22,7 +23,8 @@ void		ft_n_name(char *argv[], int *i, t_args *args)
 /*
 ** Gere l'option n s'il s'agit de ncurse
 */
-void	ft_n_curse(int argc, char *argv[], int *i, t_args *args)
+
+void		ft_n_curse(int argc, char *argv[], int *i, t_args *args)
 {
 	if (args->dump != -1 || args->cycles != -1 || args->verbosity != 0 ||
 			args->binary_output != -1)
@@ -41,14 +43,15 @@ void	ft_n_curse(int argc, char *argv[], int *i, t_args *args)
 
 /*
 ** Deux possibilites pour n. Soit n de format n || n --stealth => option ncurse
-** soit n de format -n nbr name, auquel cas n est un champion avec nbr le 
+** soit n de format -n nbr name, auquel cas n est un champion avec nbr le
 ** numero de process.
 */
+
 void		ft_n(int argc, char *argv[], int *i, t_args *args)
 {
-	if (*i + 2 < argc && ft_strisnumber(argv[*i + 1]) && 
+	if (*i + 2 < argc && ft_strisnumber(argv[*i + 1]) &&
 			args->index < MAX_PLAYERS)
 		ft_n_name(argv, i, args);
 	else
-		ft_n_curse(argc,argv, i, args);
+		ft_n_curse(argc, argv, i, args);
 }

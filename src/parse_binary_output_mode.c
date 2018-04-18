@@ -5,6 +5,7 @@
 ** soit le parametre -stealth complete b, et b = 1
 ** Sinon on fait rien, et on reprends le parsing
 */
+
 void		ft_b(int argc, char *argv[], int *i, t_args *args)
 {
 	if (args->dump != -1 || args->cycles != -1 || args->verbosity != -0 ||

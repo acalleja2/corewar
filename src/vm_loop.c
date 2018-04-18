@@ -21,6 +21,18 @@ void			process_exec(t_data *data, t_proc *process)
 	switch_instruction(process, instruction, data);
 }
 
+void	desbugs(t_data *data)
+{
+	t_champion	*curr;
+
+	curr = data->champs;
+	while (curr)
+	{
+		ft_printf("%d, %d\n", curr->id, curr->last_seen_alive);
+		curr = curr->next;
+	}
+}
+
 /*
 ** Au cours du cycle on parcourt toute la liste des process
 ** et on execute les instructions pour chaque
@@ -33,6 +45,7 @@ void			exec_cycle(t_data *data)
 	current = data->procs;
 	while (current != NULL)
 	{
+		desbugs(data);
 		process_exec(data, current);
 		current = current->next;
 	}
@@ -65,7 +78,7 @@ void			vm_loop(t_data *data)
 			if (!mem_check_alive(data) || data->mem->cycle_to_die)
 			{
 				if (data->args->ncurses == -1)
-					ft_printf("We got a winner after %i cycles :\n", 
+					ft_printf("We got a winner after %i cycles :\n",
 							data->mem->cycle);
 				print_winner(data, map);
 				break ;

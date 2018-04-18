@@ -19,7 +19,7 @@ void		ins_or(t_proc *process, t_data *data)
 		p1 = get_nth_register_value(process, p1);
 	if (is_second_param_register(data, process))
 		p2 = get_nth_register_value(process, p2);
-	set_nth_register_value(process, p3, p1 & p2);
+	set_nth_register_value(process, p3, p1 | p2);
 	if ((p1 | p2) == 0)
 		process->carry = 1;
 	if (data->args->verbosity & V_OPERATIONS)

@@ -56,7 +56,6 @@ SRC = champ_list_tools.c \
 	  parse_text_output_mode.c \
 	  parse_utilities.c \
 	  parseargs.c \
-	  parser.c \
 	  print_winner.c \
 	  proc_list_tools.c \
 	  process_parameters.c \
@@ -64,6 +63,9 @@ SRC = champ_list_tools.c \
 	  stupid.c \
 	  switch_instruction.c \
 	  vm_loop.c \
+	  ncurse_colors.c \
+	  ncurses_tools3.c \
+	  ncurse_tools4.c \
 	  # error_file.c
 
 # Prefixes sources

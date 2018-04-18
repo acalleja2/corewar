@@ -4,26 +4,26 @@ char		*kill1(void)
 {
 	char	*speak;
 
-		speak = ft_strdup("echo \'ouch ouch no  please stop aaaaaaaaaaaa\' |"
-				"espeak");
-		return (speak);
+	speak = ft_strdup("echo \'ouch ouch no  please stop aaaaaaaaaaaa\' |"
+			"espeak");
+	return (speak);
 }
 
 char		*kill2(void)
 {
 	char	*speak;
 
-		speak = ft_strdup("echo \'suka blyat\' | espeak");
-		return (speak);
+	speak = ft_strdup("echo \'suka blyat\' | espeak");
+	return (speak);
 }
 
 char		*kill3(void)
 {
 	char	*speak;
 
-		speak = ft_strdup("echo \'ouch ouch no please stop aaaaaaaaaaaa\' |"
-				"espeak");
-		return (speak);
+	speak = ft_strdup("echo \'ouch ouch no please stop aaaaaaaaaaaa\' |"
+			"espeak");
+	return (speak);
 }
 
 void		speak_kill(t_data *data)
@@ -39,7 +39,7 @@ void		speak_kill(t_data *data)
 	if (data->args->talk)
 	{
 		speak = jaipasenviedebosser[nbr]();
-		system(speak); 
+		system(speak);
 		free(speak);
 		speak = NULL;
 	}
