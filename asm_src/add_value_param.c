@@ -6,7 +6,7 @@
 /*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/15 15:47:55 by acalleja          #+#    #+#             */
-/*   Updated: 2018/04/15 19:15:28 by acalleja         ###   ########.fr       */
+/*   Updated: 2018/04/18 20:54:30 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,7 @@ void	add_value_param(t_param *par, int ret, t_instru *ins, t_instru *cur)
 
 	rank = search_rank_op(cur->opcode);
 	if (ret == T_REG)
-	{
-		par->value = ft_atoi(par->name + 1);
-		par->nb_octet = 1;
-	}
+		add_rg_val(par);
 	else if (ret == T_IND)
 	{
 		if (par->name[0] == LABEL_CHAR)
@@ -41,4 +38,10 @@ void	add_value_param(t_param *par, int ret, t_instru *ins, t_instru *cur)
 		else
 			par->nb_octet = 2;
 	}
+}
+
+void	add_rg_val(t_param *par)
+{
+	par->value = ft_atoi(par->name + 1);
+	par->nb_octet = 1;
 }

@@ -6,7 +6,7 @@
 /*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/11 11:58:12 by acalleja          #+#    #+#             */
-/*   Updated: 2018/04/13 18:30:46 by acalleja         ###   ########.fr       */
+/*   Updated: 2018/04/18 20:56:45 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	error_opcode(char *str)
 	exit(0);
 }
 
-void	error_param()
+void	error_param(void)
 {
 	ft_printf("Invalid Parametres.\n");
 	exit(0);

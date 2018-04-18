@@ -6,15 +6,15 @@
 /*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/11 11:11:51 by acalleja          #+#    #+#             */
-/*   Updated: 2018/04/18 15:13:50 by acalleja         ###   ########.fr       */
+/*   Updated: 2018/04/18 21:09:27 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ASM_H
 # define ASM_H
-#include "../libft/libft.h"
-#include "../doc/op.h"
-#include <fcntl.h>
+# include "../libft/libft.h"
+# include "../doc/op.h"
+# include <fcntl.h>
 
 typedef struct		s_op
 {
@@ -55,6 +55,20 @@ typedef struct		s_instru
 	unsigned char	ocp;
 }					t_instru;
 
+void				error_hd(int name, int desc, int i);
+void				magic(int ret, header_t *head);
+void				check_header2(char *str);
+void				init_head(header_t *head);
+void				pars_nm_dc(char *str, int i, char *name);
+void				line_reader2(char *line, t_label **lab, t_instru **ins);
+int					is_indirect2(char *str, t_instru *beg, t_label *lab,
+					t_instru *tmp);
+int					is_direct2(char *str, t_instru *beg, t_label *lab,
+					t_instru *tmp);
+int					ret_dir_ind(char *str, int val);
+int					ret_val(char *str, t_instru *ins, t_label *lab,
+					t_instru *tmp);
+void				add_rg_val(t_param *par);
 char				*split_extend(char **tab, int len);
 int					count_sep(char *str);
 void				free_lab(t_label **lab);
@@ -73,8 +87,9 @@ void				rev_magic(header_t *head, int fd);
 void				add_empty_oct(int nb, int fd);
 void				add_size(t_instru **tmp, int rank);
 void				add_param_size(t_instru **tmp, int ret, int rank);
-void				check_param(t_instru *ins, t_label *lab, char *str,
-					unsigned char octet);
+void				check_param(t_instru *ins, t_label *lab);
+void				check_param2(t_instru *ins, t_label *lab, t_instru *tmp,
+					int rank);
 void				check_nb_param(t_instru *ins);
 int					search_rank_op(char *str);
 int					count_lst_lab(t_label *lab);
@@ -82,6 +97,7 @@ int					count_lst_ins(t_instru *ins);
 int					count_lst_par(t_param *par);
 void				check_header(char *str, int fd, header_t *head);
 int					pars_name(char *str, header_t *head, int fd);
+char				*pars_nm(char *str, int i, int fd);
 int					pars_desc(char *str, header_t *head, int fd);
 int					check_opcode(t_instru *ins);
 void				del_lst_lab(t_label **lab);
@@ -114,5 +130,7 @@ int					is_direct(char *str, t_instru *beg, t_label *lab,
 int					is_indirect(char *str, t_instru *beg, t_label *lab,
 					t_instru *tmp);
 void				create_cor(char *file, t_instru *ins, header_t *head);
+int					label_size2(t_instru *tmp, t_instru *cur, char *str,
+					int *bol);
 
 #endif
