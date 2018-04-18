@@ -6,7 +6,7 @@
 /*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/13 18:19:34 by acalleja          #+#    #+#             */
-/*   Updated: 2018/04/16 14:41:46 by acalleja         ###   ########.fr       */
+/*   Updated: 2018/04/18 15:18:24 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	create_cor(char *file, t_instru *ins, header_t *head)
 	tmp = ins;
 	name = ft_strjoin(file, ".cor");
 	ft_printf("Writing output program to %s\n", name);
-	fd = open(name, O_CREAT | O_RDWR, 0666);
+	fd = open(name, O_CREAT | O_RDWR | O_TRUNC, 0666);
 	size = count_size_tot(tmp);
 	rev_magic(head, fd);
 	write(fd, head->prog_name, PROG_NAME_LENGTH);
