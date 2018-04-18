@@ -60,51 +60,6 @@ void	destroy_win(WINDOW *local_win)
 	delwin(local_win);
 }
 
-
-/*
-**  Affiche le contenu de t_mem dans la fenetre reservee a corewar.
-** On stocke tout dans un buffer, puis on fait un gros wprintw (print on a 
-** window), et on refresh la fenetre de la map.
-*/
-/*
-void	print_map(WINDOW *win, int height, int width, t_data *data)
-{
-	int			row;
-	int			col;
-	int			offset;
-	char		buffer[MEM_SIZE * 4 + 200];
-
-	row = 0;
-	offset = 0;
-	buffer[offset++] = ' ';
-	buffer[offset++] = ' ';
-	while (row * 64 < MEM_SIZE)
-	{
-		col = 1;
-		while (col < 64 && row * 64 + col < MEM_SIZE)
-		{
-			offset += ft_sprintf(buffer + offset, "%.2x ", data->mem->map[row * 64 + col]);
-			//offset += ft_sprintf(buffer + offset, "%.2i ", data->mem->owner[row * 64 + col]);
-			col += 1;
-		}
-		buffer[offset++] = ' ';
-		buffer[offset++] = '|';
-		//buffer[offset++] = '\n';
-		if (row < 63)
-		{
-			buffer[offset++] = '|';
-			buffer[offset++] = ' ';
-			buffer[offset++] = ' ';
-		}
-		row += 1;
-	}
-	buffer[offset++] = '\0';
-	wmove(win, 1, 1);
-	wprintw(win, buffer);
-	wrefresh_sleep(win, 0);
-}
-*/
-
 int			find_colors(t_data *data, int id)
 {
 	t_champion	*curr;
@@ -160,6 +115,41 @@ void	print_map(WINDOW *win, int height, int width, t_data *data)
 }
 
 /*
+void	print_process_colors(WINDOW *win, t_data *data)
+{
+	t_proc	*curr;
+	int		character;
+	
+	curr = data->procs;
+	while (curr)
+	{
+		character = mvwinchstr(win, 
+	}
+}
+*/
+
+/*
+** verifie si la position correpond a un process. Si oui, inverse les
+** couleurs background foreground.
+*/
+int			check_process_colors(WINDOW *win, t_data *data)
+{
+	t_proc	*proc;
+	int		x;
+	int		y;
+
+	proc = data->procs;
+	getyx(win, y, x);
+	while (proc)
+	{
+		if (proc->starting_pos == (y - 1) * 192 + x)
+			return (proc->proc_color);
+		proc = proc->next;
+	}
+	return (0);
+}
+
+/*
 **  Pareil que print_map au dessus, mais avec des couleurs.
 */
 void	print_map_colors(WINDOW *win, int height, int width, t_data *data)
@@ -182,7 +172,8 @@ void	print_map_colors(WINDOW *win, int height, int width, t_data *data)
 			offset += ft_sprintf(buffer + offset, "%.2x ", data->mem->map[row * 64 + col]);
 			if (data->colors)
 			{
-				color_pair = find_colors(data, data->mem->owner[row * 64 + col]);
+				if (!(color_pair = check_process_colors(win, data)))
+					color_pair = find_colors(data, data->mem->owner[row * 64 + col]);
 				wattron(win, COLOR_PAIR(color_pair));
 				wprintw(win, "%.2x ", data->mem->map[row * 64 + col]);
 				wattroff(win, COLOR_PAIR(color_pair));

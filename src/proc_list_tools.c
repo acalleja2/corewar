@@ -15,6 +15,7 @@ t_proc		*proc_new(int id, int starting_pos)
 	new->carry = 0;
 	new->instruction_started = 0;
 	new->time_to_wait = 0;
+	new->proc_color = -1;
 	return (new);
 }
 

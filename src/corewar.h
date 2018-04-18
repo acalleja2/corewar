@@ -6,7 +6,7 @@
 /*   By: florenzo <florenzo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/14 17:10:11 by florenzo          #+#    #+#             */
-/*   Updated: 2018/04/16 18:49:08 by mschmitt         ###   ########.fr       */
+/*   Updated: 2018/04/17 13:33:24 by mschmitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ typedef struct	s_proc
 	int				registers[REG_NUMBER + 1];
 	unsigned char	pc;
 	unsigned char	carry;
+	int				proc_color;
 }				t_proc;
 
 /*
@@ -99,6 +100,35 @@ typedef struct	s_data
 
 extern void		(*const g_tab[17])(t_proc *process,
 		t_data *data);
+/*
+** Toutes les instruction doivent commencer par le bloc suivant :
+**     if (!process->instruction_started)
+**     {
+**         process->time_to_wait = <temps d'attente de l'instruction> - 2;
+**         process->instruction_started = TRUE;
+**         return ;
+**     }
+** Ce bloc sera s'executera la premiere fois que le process est appele, ca lui
+** fera attendre n tours. Le -2 est la car on consomme un tour lorsqu'on lui 
+** dit de repasser et un autre lorsqu'il execute reellement l'instruction.
+**
+** Si on n'a pas declenche le bloc precedent c'est que le process avait attendu
+** le temps requis et on execute maintenant l'instruction a proprement parler.
+** Apres ce bloc il faut imperativement rajouter la ligne suivante :
+**     process->instruction_started = FALSE;
+** Elle permet de "liberer" le process et lui permettra d'executer une autre
+** instruction.
+** A la fin du bloc il faut rajouter le bonus de verbosite :
+**     if (data->args->verbosity & V_OPERATIONS)
+**         ft_printf("P   %2i | <operation> %i %i %i\n",
+**             process->champion_id, p1, p2, p3);
+**
+** A la fin il ne faut surtout pas oublier d'incrementer le pc :
+**     increment_pc(data, process, offset);
+** Ici l'offset est le nombre d'octets "consommes" par l'instruction a savoir,
+** l'octet un octet pour l'opcode, un pour l'OCP et un nombre variable en
+** fonction du type des parametres.
+*/
 
 void			ins_live(t_proc *process, t_data *data);
 void			ins_ld(t_proc *process, t_data *data);
