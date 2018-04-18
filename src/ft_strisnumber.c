@@ -3,7 +3,7 @@
 int			ft_strisnumber(char *str)
 {
 	size_t	i;
-	size_t len;
+	size_t	len;
 
 	i = 0;
 	len = ft_strlen(str);

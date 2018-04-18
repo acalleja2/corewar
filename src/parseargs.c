@@ -5,20 +5,16 @@
 ** Verifie si le numero de process est valide. Si pas valide, lui attribue
 **
 */
+
 int			ft_valid_process(int candidate, t_args *args)
 {
 	int		i;
 
-	//printf("index candidat: %d, index courant: %d\n", candidate, args->index);
 	i = 0;
 	while (i < args->index)
 	{
-		//printf("\targs->process[%d]: %d\n", i, args->process[i]);
 		if (args->process[i] == candidate)
-		{
-			//printf("\t\tl'index: %d est deja utilise\n", args->process[i]);
 			return (FALSE);
-		}
 		i++;
 	}
 	return (TRUE);
@@ -32,6 +28,7 @@ int			ft_valid_process(int candidate, t_args *args)
 ** On peut prendre les arguments dans n'import quel ordre tant aue le format
 ** est valide.
 */
+
 void		ft_parseargs(int argc, char *argv[], t_args *args)
 {
 	int		i;
@@ -39,7 +36,6 @@ void		ft_parseargs(int argc, char *argv[], t_args *args)
 	i = 1;
 	if (argc < 2)
 		ft_error_parse();
-	//print_args(args);
 	while (i < argc)
 	{
 		if (!strcmp(argv[i], "-d"))
@@ -59,6 +55,5 @@ void		ft_parseargs(int argc, char *argv[], t_args *args)
 		else
 			ft_error_parse();
 	}
-	//check_args(args);
 	print_args(args);
 }

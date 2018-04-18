@@ -3,6 +3,7 @@
 /*
 **  Refresh la fenetre principale et sleep 'sleep_time'
 */
+
 void	refresh_sleep(int sleep_time)
 {
 	refresh();
@@ -13,6 +14,7 @@ void	refresh_sleep(int sleep_time)
 /*
 **  Refresh la fenetre en parametre et sleep 'sleep_time'
 */
+
 void	wrefresh_sleep(WINDOW *win, int sleep_time)
 {
 	wrefresh(win);
@@ -23,6 +25,7 @@ void	wrefresh_sleep(WINDOW *win, int sleep_time)
 /*
 **  Affiche l'usage.
 */
+
 void	print_usage(int rows, int cols)
 {
 	mvprintw(0, rows / 2, "COREWAR NCURSE OUTPUT MODE\n");
@@ -31,12 +34,12 @@ void	print_usage(int rows, int cols)
 	refresh();
 }
 
-
 /*
 **  Set certaines fonctionnalites: permet l'usage des touches fonctions,
 **  ne reaffiche pas les entrees utilisateurs, et creet la fenetre principale.
 */
-void	init_main_window()
+
+void	init_main_window(void)
 {
 	initscr();
 	raw();
@@ -47,10 +50,11 @@ void	init_main_window()
 /*
 **  Affiche le winner sur la fenetre de corewar (pas la principale)
 */
-void	ncurses_winner(char	*speak, t_data *data, WINDOW *map)
+
+void	ncurses_winner(char *speak, t_data *data, WINDOW *map)
 {
-	int		cols;
-	int		rows;
+	int	cols;
+	int	rows;
 
 	if (data->args->ncurses == -1 || !map)
 		return ;

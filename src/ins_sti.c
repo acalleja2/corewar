@@ -18,7 +18,9 @@ void		ins_sti(t_proc *process, t_data *data)
 		return ;
 	}
 	process->instruction_started = FALSE;
-	offset = get_ocp_3_indirect_params(data, process, &p1, &p2, &p3);
+	offset = get_ocp_3_direct_params(data, process, &p1, &p2, &p3);
+	if (is_first_param_register(data, process))
+		p1 = get_nth_register_value(process, p1);
 	mem_set_int(data, process, p2 + p3, get_nth_register_value(process, p1));
 	if (data->args->verbosity & V_OPERATIONS)
 		ft_printf("P   %2i | sti r%i %i %i\n"

@@ -3,6 +3,7 @@
 /*
 ** La petite gestion d'erreur des familles
 */
+
 int		error_reading(int readres, int expected, char *filename)
 {
 	if (readres < 0)
@@ -10,7 +11,8 @@ int		error_reading(int readres, int expected, char *filename)
 		errorf("Could not read from file %s", filename);
 		return (1);
 	}
-	if (readres != expected) {
+	if (readres != expected)
+	{
 		ft_printf("File %s is too short\n", filename);
 		return (1);
 	}
@@ -21,6 +23,7 @@ int		error_reading(int readres, int expected, char *filename)
 ** Ici on va juste check que le magic number est bon.
 ** On swap les chars pour se repasser en big-endian
 */
+
 int		get_magic_number(int fd, t_champion *new, char *filename)
 {
 	char	buf[4];
@@ -42,6 +45,7 @@ int		get_magic_number(int fd, t_champion *new, char *filename)
 /*
 ** Ici on recupere le nom du programme
 */
+
 int		get_program_name(int fd, t_champion *new, char *filename)
 {
 	char	buf[PROG_NAME_LENGTH + 1];
@@ -84,7 +88,8 @@ int			get_byte_count(int fd, t_champion *new, char *filename)
 	new->bytes = *(int*)buf;
 	if (new->bytes > CHAMP_MAX_SIZE)
 	{
-		ft_printf("Champion %s from file %s says his program weights %i bytes, it's over %i\n",
+		ft_printf("Champion %s from file %s says his program weights %i bytes,"
+				"it's over %i\n",
 				new->name, filename, new->bytes, CHAMP_MAX_SIZE);
 		return (1);
 	}
