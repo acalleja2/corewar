@@ -6,7 +6,7 @@
 /*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/12 21:45:34 by acalleja          #+#    #+#             */
-/*   Updated: 2018/04/18 21:08:08 by acalleja         ###   ########.fr       */
+/*   Updated: 2018/04/18 21:17:52 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int		pars_name(char *str, header_t *head, int fd)
 	char	*name;
 	char	*nm;
 
+	nm = NULL;
 	name = ft_strdup(NAME_CMD_STRING);
 	i = 0;
 	while (str[i] && name[i] && str[i] == name[i])
@@ -33,7 +34,8 @@ int		pars_name(char *str, header_t *head, int fd)
 		free(nm);
 		return (1);
 	}
-	free(nm);
+	if (nm)
+		free(nm);
 	free(name);
 	return (0);
 }
@@ -114,7 +116,7 @@ int		pars_desc(char *str, header_t *head, int fd)
 	char	*name;
 	char	*nm;
 
-	nm = ft_strnew(0);
+	nm = NULL;
 	name = ft_strdup(COMMENT_CMD_STRING);
 	i = 0;
 	while (str[i] && name[i] && str[i] == name[i])
@@ -130,7 +132,8 @@ int		pars_desc(char *str, header_t *head, int fd)
 		free(nm);
 		return (1);
 	}
-	free(nm);
+	if (nm)
+		free(nm);
 	free(name);
 	return (0);
 }
