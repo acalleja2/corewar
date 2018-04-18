@@ -6,7 +6,7 @@
 /*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/13 11:13:59 by acalleja          #+#    #+#             */
-/*   Updated: 2018/04/13 11:21:50 by acalleja         ###   ########.fr       */
+/*   Updated: 2018/04/18 21:44:35 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int		search_rank_op(char *str)
 	int		i;
 
 	i = 0;
-	while (i < 16 && ft_strcmp(op_tab[i].name, str))
+	while (i < 16 && ft_strcmp(g_op_tab[i].name, str))
 		i++;
 	return (i);
 }

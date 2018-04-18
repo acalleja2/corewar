@@ -6,7 +6,7 @@
 /*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/11 11:11:51 by acalleja          #+#    #+#             */
-/*   Updated: 2018/04/18 21:09:27 by acalleja         ###   ########.fr       */
+/*   Updated: 2018/04/18 21:42:23 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef struct		s_op
 	int				nb_direct;
 }					t_op;
 
-extern t_op			op_tab[17];
+extern t_op			g_op_tab[17];
 
 typedef struct		s_label
 {

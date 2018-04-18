@@ -6,7 +6,7 @@
 /*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/13 12:17:55 by acalleja          #+#    #+#             */
-/*   Updated: 2018/04/18 20:55:28 by acalleja         ###   ########.fr       */
+/*   Updated: 2018/04/18 21:43:12 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	check_param2(t_instru *ins, t_label *lab, t_instru *tmp, int rank)
 	{
 		str = ft_strdup(t_par->name);
 		ret = ret_val(str, ins, lab, tmp);
-		if (!(ret & op_tab[rank].param_type[i]))
+		if (!(ret & g_op_tab[rank].param_type[i]))
 			error_param();
 		octet += write_ocp(ret, i);
 		i++;
@@ -37,7 +37,7 @@ void	check_param2(t_instru *ins, t_label *lab, t_instru *tmp, int rank)
 		add_value_param(t_par, ret, ins, tmp);
 		t_par = t_par->next;
 	}
-	if (op_tab[rank].ocp == 1)
+	if (g_op_tab[rank].ocp == 1)
 		tmp->ocp = octet;
 }
 

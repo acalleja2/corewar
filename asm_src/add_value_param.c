@@ -6,7 +6,7 @@
 /*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/15 15:47:55 by acalleja          #+#    #+#             */
-/*   Updated: 2018/04/18 20:54:30 by acalleja         ###   ########.fr       */
+/*   Updated: 2018/04/18 21:42:42 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	add_value_param(t_param *par, int ret, t_instru *ins, t_instru *cur)
 			par->ret = T_LAB + 1;
 		else
 			par->value = ft_atoi(par->name + 1);
-		if (op_tab[rank].nb_direct == 0)
+		if (g_op_tab[rank].nb_direct == 0)
 			par->nb_octet = 4;
 		else
 			par->nb_octet = 2;

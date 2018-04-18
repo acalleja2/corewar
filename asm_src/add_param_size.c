@@ -6,7 +6,7 @@
 /*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/13 16:05:16 by acalleja          #+#    #+#             */
-/*   Updated: 2018/04/18 20:53:42 by acalleja         ###   ########.fr       */
+/*   Updated: 2018/04/18 21:42:35 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	add_param_size(t_instru **tmp, int ret, int rank)
 		(*tmp)->size += 2;
 	else
 	{
-		if (op_tab[rank].nb_direct == 0)
+		if (g_op_tab[rank].nb_direct == 0)
 			(*tmp)->size += 4;
 		else
 			(*tmp)->size += 2;
