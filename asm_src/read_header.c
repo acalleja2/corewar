@@ -6,7 +6,7 @@
 /*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/12 21:02:36 by acalleja          #+#    #+#             */
-/*   Updated: 2018/04/19 17:47:58 by acalleja         ###   ########.fr       */
+/*   Updated: 2018/04/19 18:08:12 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ void	check_header(char *str, int fd, header_t *head)
 			error_hd(name, desc, ++i);
 		}
 		free(str);
-		str = NULL;
 		if (name && desc)
 			break ;
 	}
