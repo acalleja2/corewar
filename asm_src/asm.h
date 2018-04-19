@@ -6,7 +6,7 @@
 /*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/11 11:11:51 by acalleja          #+#    #+#             */
-/*   Updated: 2018/04/18 21:42:23 by acalleja         ###   ########.fr       */
+/*   Updated: 2018/04/19 17:46:45 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,9 +96,9 @@ int					count_lst_lab(t_label *lab);
 int					count_lst_ins(t_instru *ins);
 int					count_lst_par(t_param *par);
 void				check_header(char *str, int fd, header_t *head);
-int					pars_name(char *str, header_t *head, int fd);
-char				*pars_nm(char *str, int i, int fd);
-int					pars_desc(char *str, header_t *head, int fd);
+int					pars_name(char **str, header_t *head, int fd);
+char				*pars_nm(char **str, int i, int fd);
+int					pars_desc(char **str, header_t *head, int fd);
 int					check_opcode(t_instru *ins);
 void				del_lst_lab(t_label **lab);
 void				print_lab(t_label *lab);

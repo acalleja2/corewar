@@ -6,7 +6,7 @@
 /*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/12 21:02:36 by acalleja          #+#    #+#             */
-/*   Updated: 2018/04/18 20:52:29 by acalleja         ###   ########.fr       */
+/*   Updated: 2018/04/19 17:47:58 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,13 @@ void	check_header(char *str, int fd, header_t *head)
 		if (str[0] != '\0')
 		{
 			if (!name)
-				name = pars_name(str, head, fd);
+				name = pars_name(&str, head, fd);
 			if (!desc)
-				desc = pars_desc(str, head, fd);
+				desc = pars_desc(&str, head, fd);
 			error_hd(name, desc, ++i);
 		}
 		free(str);
+		str = NULL;
 		if (name && desc)
 			break ;
 	}
@@ -59,7 +60,7 @@ void	magic(int ret, header_t *head)
 {
 	if (ret != 1)
 		error_header();
-	head->magic = 0xea83f3;
+	head->magic = COREWAR_EXEC_MAGIC;
 }
 
 void	error_hd(int name, int desc, int i)
