@@ -391,10 +391,10 @@ int					ocp_get_param3_ind(t_data *data, t_proc *process,
 ** process_parameters.c
 */
 
-int					get_ocp_3_indirect_params(t_data *data, t_proc *process, 
-		int *p1, int *p2, ...);
-int					get_ocp_3_direct_params(t_data *data, t_proc *process, 
-		int *p1, int *p2, ...);
+int					get_ocp_2_indirect_params(t_data *data, t_proc *process, int *p1, int *p2);
+int					get_ocp_2_direct_params(t_data *data, t_proc *process, int *p1, int *p2);
+int					get_ocp_3_indirect_params(t_data *data, t_proc *process, int *p1, int *p2, ...);
+int					get_ocp_3_direct_params(t_data *data, t_proc *process, int *p1, int *p2, ...);
 int					get_nth_register_value(t_proc *process, int n);
 void				set_nth_register_value(t_proc *process, int n, int value);
 
