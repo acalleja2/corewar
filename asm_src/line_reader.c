@@ -15,10 +15,10 @@
 void	line_reader(int fd, t_label **lab, t_instru **ins, char *file)
 {
 	char		*line;
-	t_instru	*tmp;
 	header_t	*head;
 
 	head = (header_t *)ealloc(sizeof(header_t));
+	line = NULL;
 	check_header(line, fd, head);
 	while (get_next_line(fd, &line) == 1)
 	{

@@ -16,7 +16,7 @@ void	pars_opcode(char *str, t_instru **ins)
 {
 	char	**tab2;
 	char	**tab;
-	int		i;
+	size_t	i;
 
 	i = 0;
 	while (str[i] == ' ' || str[i] == '\t')

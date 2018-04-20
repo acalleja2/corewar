@@ -17,7 +17,6 @@ void	pars_label(char *str, t_label **lab)
 	int		i;
 	int		ret;
 	char	*label;
-	char	*opcode;
 
 	i = 0;
 	ret = 0;

@@ -15,7 +15,6 @@
 int		label_size(t_instru *ins, t_instru *cur, char *str)
 {
 	t_instru	*tmp;
-	t_label		*lab;
 	int			bol[3];
 	int			ret;
 

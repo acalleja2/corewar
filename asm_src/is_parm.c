@@ -14,7 +14,6 @@
 
 int		is_direct(char *s, t_instru *beg, t_label *lab, t_instru *tmp)
 {
-	t_label		*l;
 	char		*str;
 
 	str = ft_strdup(s);
@@ -95,7 +94,6 @@ int		is_indirect2(char *str, t_instru *beg, t_label *lab, t_instru *tmp)
 
 int		is_indirect(char *s, t_instru *beg, t_label *lab, t_instru *tmp)
 {
-	t_label		*l;
 	char		*str;
 
 	str = ft_strdup(s);
