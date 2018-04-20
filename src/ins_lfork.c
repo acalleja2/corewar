@@ -10,7 +10,7 @@ void		ins_lfork(t_proc *process, t_data *data)
 
 	if (!process->instruction_started)
 	{
-		process->time_to_wait = 800 - 2;
+		process->time_to_wait = 1000 - 2;
 		process->instruction_started = TRUE;
 		return ;
 	}

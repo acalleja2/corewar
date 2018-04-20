@@ -9,7 +9,7 @@ void		ins_ldi(t_proc *process, t_data *data)
 
 	if (!process->instruction_started)
 	{
-		process->time_to_wait = 5 - 2;
+		process->time_to_wait = 25 - 2;
 		process->instruction_started = TRUE;
 		return ;
 	}
