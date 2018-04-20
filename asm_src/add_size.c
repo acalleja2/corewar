@@ -6,7 +6,7 @@
 /*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/13 16:16:39 by acalleja          #+#    #+#             */
-/*   Updated: 2018/04/15 18:29:51 by acalleja         ###   ########.fr       */
+/*   Updated: 2018/04/18 21:45:06 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	add_size(t_instru **tmp, int rank)
 {
-	if (op_tab[rank].ocp == 1)
+	if (g_op_tab[rank].ocp == 1)
 		(*tmp)->size += 1;
 	(*tmp)->size += 1;
 }

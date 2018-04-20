@@ -6,7 +6,7 @@
 /*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/11 15:36:33 by acalleja          #+#    #+#             */
-/*   Updated: 2018/04/12 17:36:51 by acalleja         ###   ########.fr       */
+/*   Updated: 2018/04/18 20:58:23 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	create_param_lst(t_param **par, char *str)
 	tmp = *par;
 	if (!*par)
 	{
-
 		*par = (t_param *)ealloc(sizeof(t_param));
 		(*par)->name = ft_strdup(str);
 		(*par)->next = NULL;

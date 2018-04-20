@@ -6,7 +6,7 @@
 /*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/12 18:57:52 by acalleja          #+#    #+#             */
-/*   Updated: 2018/04/12 20:56:49 by acalleja         ###   ########.fr       */
+/*   Updated: 2018/04/18 21:42:56 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int		check_opcode(t_instru *ins)
 	i = 0;
 	while (i < 16)
 	{
-		if (ft_strcmp(op_tab[i].name, ins->opcode) == 0)
+		if (ft_strcmp(g_op_tab[i].name, ins->opcode) == 0)
 			return (1);
 		i++;
 	}

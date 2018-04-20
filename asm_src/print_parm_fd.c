@@ -6,7 +6,7 @@
 /*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/15 16:16:23 by acalleja          #+#    #+#             */
-/*   Updated: 2018/04/15 19:17:26 by acalleja         ###   ########.fr       */
+/*   Updated: 2018/04/18 21:44:19 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	print_param_fd(t_instru *ins, int fd)
 	while (tmp)
 	{
 		rank = search_rank_op(tmp->opcode);
-		write(fd, (char *)&op_tab[rank].opcode, 1);
+		write(fd, (char *)&g_op_tab[rank].opcode, 1);
 		tmp_par = tmp->par;
 		if (tmp->ocp != 0)
 			write(fd, (char *)&tmp->ocp, 1);
@@ -34,4 +34,3 @@ void	print_param_fd(t_instru *ins, int fd)
 		tmp = tmp->next;
 	}
 }
-

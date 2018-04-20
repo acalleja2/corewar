@@ -1,45 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   debug.c                                            :+:      :+:    :+:   */
+/*   is_reg.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/12 14:16:52 by acalleja          #+#    #+#             */
-/*   Updated: 2018/04/18 16:08:48 by acalleja         ###   ########.fr       */
+/*   Created: 2018/04/18 17:19:34 by acalleja          #+#    #+#             */
+/*   Updated: 2018/04/18 17:19:43 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-void	print_lab(t_label *lab)
+int		is_reg(char *s)
 {
-	while (lab)
-	{
-		ft_printf(" %s ", lab->name);
-		lab = lab->next;
-	}
-}
+	char	*str;
 
-void	print_par(t_param *par)
-{
-	while (par)
+	str = ft_strdup(s);
+	if (str[0] != 'r')
 	{
-		ft_printf(" %s ", par->name);
-		par = par->next;
+		free(str);
+		return (0);
 	}
-}
-
-void	print_ins(t_instru *ins)
-{
-	while (ins)
+	del_pos(str, 0);
+	if (!all_digit(str) || ft_atoi(str) > REG_NUMBER)
 	{
-		ft_printf("label =");
-		print_lab(ins->lab);
-		ft_printf(" || ");
-		ft_printf("param =");
-		print_par(ins->par);
-		ft_printf(" || opcode = %s\n", ins->opcode);
-		ins = ins->next;
+		free(str);
+		return (0);
 	}
+	free(str);
+	return (T_REG);
 }

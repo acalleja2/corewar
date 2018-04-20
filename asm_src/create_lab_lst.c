@@ -6,7 +6,7 @@
 /*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/11 15:23:55 by acalleja          #+#    #+#             */
-/*   Updated: 2018/04/12 17:36:51 by acalleja         ###   ########.fr       */
+/*   Updated: 2018/04/18 20:56:07 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	create_lab_lst(t_label **lab, char *str)
 	t_label		*last;
 
 	if (!str)
-		return;
+		return ;
 	tmp = *lab;
 	if (!*lab)
 	{
@@ -38,4 +38,3 @@ void	create_lab_lst(t_label **lab, char *str)
 		tmp->next = last;
 	}
 }
-

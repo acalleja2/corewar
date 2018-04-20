@@ -6,13 +6,13 @@
 /*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/12 19:29:23 by acalleja          #+#    #+#             */
-/*   Updated: 2018/04/12 19:30:42 by acalleja         ###   ########.fr       */
+/*   Updated: 2018/04/18 21:42:11 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-t_op    op_tab[17] =
+t_op		g_op_tab[17] =
 {
 	{"live", 1, {T_DIR}, 1, 10, "alive", 0, 0},
 	{"ld", 2, {T_DIR | T_IND, T_REG}, 2, 5, "load", 1, 0},
