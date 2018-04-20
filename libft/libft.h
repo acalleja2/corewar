@@ -43,6 +43,7 @@
 
 int					ft_atoi(const char *str);
 intmax_t			ft_atoim(const char *str);
+int					safe_atoi(const char *str, int *result);
 char				*ft_rstrrev(char *str);
 char				*ft_strcat(char *dest, const char *src);
 char				*ft_strchr(const char *s, int c);
