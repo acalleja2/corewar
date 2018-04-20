@@ -12,6 +12,28 @@
 
 #include "corewar.h"
 
+int			get_ocp_2_indirect_params(t_data *data, t_proc *process,
+		int *p1, int *p2)
+{
+	int		offset;
+
+	offset = 2;
+	offset += ocp_get_param1_ind(data, process, offset, p1);
+	offset += ocp_get_param2_ind(data, process, offset, p2);
+	return (offset);
+}
+
+int			get_ocp_2_direct_params(t_data *data, t_proc *process,
+		int *p1, int *p2)
+{
+	int		offset;
+
+	offset = 2;
+	offset += ocp_get_param1(data, process, offset, p1);
+	offset += ocp_get_param2(data, process, offset, p2);
+	return (offset);
+}
+
 int			get_ocp_3_indirect_params(t_data *data, t_proc *process,
 		int *p1, int *p2, ...)
 {
