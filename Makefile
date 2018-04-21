@@ -56,6 +56,7 @@ COREWAR_SRC = champ_list_tools.c \
 			  parse_text_output_mode.c \
 			  parse_utilities.c \
 			  parseargs.c \
+			  parse_rainbow.c \
 			  print_winner.c \
 			  proc_list_tools.c \
 			  process_parameters.c \
