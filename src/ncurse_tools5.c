@@ -84,7 +84,7 @@ void			ft_free_header(t_data *data)
 	i = 0;
 	while (i < header->y)
 	{
-		ft_printf("%s\n", header->header[i]);
+		/* ft_printf("%s\n", header->header[i]); */
 		header->header[i] = NULL;
 		i++;
 	}

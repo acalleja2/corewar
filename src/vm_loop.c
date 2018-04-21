@@ -21,17 +21,17 @@ void			process_exec(t_data *data, t_proc *process)
 	switch_instruction(process, instruction, data);
 }
 
-/* void	desbugs(t_data *data) */
-/* { */
-/* 	t_champion	*curr; */
-/*  */
-/* 	curr = data->champs; */
-/* 	while (curr) */
-/* 	{ */
-/* 		ft_printf("%d, %d\n", curr->id, curr->last_seen_alive); */
-/* 		curr = curr->next; */
-/* 	} */
-/* } */
+void	desbugs(t_data *data)
+{
+	t_champion	*curr;
+
+	curr = data->champs;
+	while (curr)
+	{
+		ft_printf("%d, %d\n", curr->id, curr->last_seen_alive);
+		curr = curr->next;
+	}
+}
 
 /*
 ** Au cours du cycle on parcourt toute la liste des process
@@ -43,11 +43,17 @@ void			exec_cycle(t_data *data)
 	t_proc		*current;
 
 	current = data->procs;
+	int i = 0;
+	ft_printf("on appelle exec au cycle %i\n", data->mem->cycle);
 	while (current != NULL)
 	{
 		/* desbugs(data); */
+		current->debug = i;
+		ft_printf("on execute le process %i, la verbosite est a %i ", i, data->args->verbosity);
 		process_exec(data, current);
+		ft_printf("maintenant elle est a %i\n", data->args->verbosity);
 		current = current->next;
+		i += 1;
 	}
 }
 
@@ -63,20 +69,21 @@ void			vm_loop(t_data *data)
 	map = init_ncurse(data);
 	while (42)
 	{
+		ft_printf("verbosity = %i\n", data->args->verbosity);
 		if (data->args->verbosity & V_CYCLES)
 			print_cycle_start(data);
 		if (data->args->ncurses != -1)
 			if (!ncurses_main_loop(map, data))
 				break ;
 		exec_cycle(data);
-		if (data->mem->since_last_check == data->mem->cycle_to_die)
-			if (!mem_check_alive(data) || data->mem->cycle_to_die <= 0)
+		if (data->mem->since_last_check == data->mem->cycle_to_die
+			&& (!mem_check_alive(data) || data->mem->cycle_to_die <= 0))
 			{
 				if (data->args->ncurses == -1)
 					ft_printf("We got a winner after %i cycles :\n",
 							data->mem->cycle);
 				print_winner(data, map);
-				break ;
+				return ;
 			}
 		data->mem->since_last_check += 1;
 		if (data->args->verbosity & V_CYCLES)
@@ -108,5 +115,6 @@ void			print_cycle_start(t_data *data)
 
 void			print_cycle_end(t_data *data)
 {
-	ft_printf(CLEAR);
+	if (data->args->rainbow)
+		ft_printf(CLEAR);
 }

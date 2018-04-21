@@ -13,6 +13,7 @@ void			switch_instruction(t_proc *process, unsigned char instruction,
 {
 	if (instruction >= 1 && instruction <= 16)
 	{
+		ft_printf("le process %i execute l'instruction %i\n", process->debug, instruction);
 		(*(g_tab[instruction]))(process, data);
 	}
 	else

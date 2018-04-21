@@ -9,8 +9,8 @@ void		increment_pc(t_data *data, t_proc *process, int offset)
 	pos = 0;
 	if (data->args->verbosity & V_PC)
 	{
-		pos += ft_sprintf(buf + pos, "P %2i : ADV %i (%#.4x -> %#.4x) ",
-				process->champion_id, offset,
+		pos += ft_sprintf(buf + pos, "ADV %i (%#.4x -> %#.4x) ",
+				offset,
 				process->starting_pos + process->pc,
 				process->starting_pos + process->pc + offset);
 		i = 0;

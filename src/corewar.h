@@ -35,7 +35,6 @@ typedef struct		s_args
 	char			**champions;
 	int				dump;
 	int				cycles;
-	int				verbosity;
 	int				binary_output;
 	int				ncurses;
 	int				index;
@@ -43,6 +42,7 @@ typedef struct		s_args
 	int				*process;
 	int				champ_number;
 	int				talk;
+	int				verbosity;
 	int				rainbow;
 }					t_args;
 
@@ -68,10 +68,11 @@ typedef struct		s_proc
 	int				live;
 	int				time_to_wait;
 	int				instruction_started;
-	int				registers[REG_NUMBER + 1];
 	int				pc;
 	int				carry;
 	int				proc_color;
+	int				registers[REG_NUMBER + 1];
+	int				debug;
 }					t_proc;
 
 /*
@@ -105,8 +106,8 @@ typedef struct		s_data
 	t_proc			*procs;
 	int				colors;
 	int				speed;
-	int				curr_cycle;
 	t_header		*header;
+	int				curr_cycle;
 }					t_data;
 
 extern void			(*const g_tab[17])(t_proc *process,
@@ -206,7 +207,7 @@ void				ft_n(int argc, char *argv[], int *i, t_args *args);
 */
 
 void				print_args(t_args *args);
-void				ft_error_parse();
+void				ft_error_parse(void);
 void				ft_error_file(char *champ);
 int					ft_strisnumber(char *str);
 
@@ -356,7 +357,7 @@ int					init_colors(t_data *data);
 void				print_map_colors(WINDOW *win, int height, int width, 
 		t_data *data);
 
-void				init_main_window();
+void				init_main_window(void);
 void				print_usage(int rows, int cols);
 void				refresh_sleep(int sleep_time);
 void				ncurses_winner(char	*speak, t_data *data, WINDOW *map);
@@ -381,7 +382,7 @@ void				print_map_colors(WINDOW *win, int height, int width,
 /*
 ** ncurses_tools4.c
 */
-void				reinit_process_by_champion(t_data *data);;
+void				reinit_process_by_champion(t_data *data);
 void				count_process_by_champion(t_data *data);
 void				ncurse_pause(WINDOW *map, int *keep_going);
 WINDOW				*init_ncurse(t_data *data);

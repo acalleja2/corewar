@@ -2,7 +2,7 @@ LIBFT = libft.a
 
 # Compilation
 CC = clang
-CFLAGS = -Wall -Wextra -g \
+CFLAGS = -Wall -Wextra -Weverything -Wno-pedantic -Wno-padded -g \
 		 -Wno-unused-parameter
 # -Werror
 NCURSE = -lncurses
@@ -15,7 +15,7 @@ LIBDIR = ./libft
 
 ASM = asm
 COREWAR = corewar
-NAME = $(COREWAR) $(ASM)
+NAME = $(COREWAR) #$(ASM)
 COREWAR_SRC = champ_list_tools.c \
 			  champion_initialization.c \
 			  check_alive.c \
@@ -89,7 +89,6 @@ ASM_SRC = add_empty_oct.c \
 		  create_param_lst.c \
 		  debug.c \
 		  del_pos.c \
-		  er_atoi.c \
 		  error_syntax.c \
 		  free_lst.c \
 		  free_tab.c \

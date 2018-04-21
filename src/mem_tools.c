@@ -57,6 +57,7 @@ void			print_mem(t_mem *mem)
 
 	row = 0;
 	offset = 0;
+	write(1, "\n", 1); // XXX enlever
 	while (row * 64 < MEM_SIZE)
 	{
 		offset += ft_sprintf(buffer + offset, "%#.4x : ", row * 64);
@@ -110,8 +111,13 @@ int				mem_get_short_int(t_data *data, t_proc *process, int offset)
 
 void			mem_set_int(t_data *data, t_proc *process, int offset, int value)
 {
+	ft_printf("mem_set_int verbosity = %i ", data->args->verbosity);
 	mem_set_byte(data, process, offset, (unsigned char)((value >> 24) & 0xff));
+	ft_printf("on a set l'octet 1 verbosity = %i", data->args->verbosity);
 	mem_set_byte(data, process, offset + 1, (unsigned char)((value >> 16) & 0xff));
+	ft_printf("on a set l'octet 2 verbosity = %i", data->args->verbosity);
 	mem_set_byte(data, process, offset + 2, (unsigned char)((value >> 8) & 0xff));
+	ft_printf("on a set l'octet 3 verbosity = %i", data->args->verbosity);
 	mem_set_byte(data, process, offset + 3, (unsigned char)(value & 0xff));
+	ft_printf("mem_set_int est fini, verbosity = %i ", data->args->verbosity);
 }

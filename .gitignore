@@ -10,3 +10,4 @@ asm
 corewar
 tags
 *.vim
+massif.out.*
