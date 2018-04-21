@@ -1,5 +1,11 @@
 #include "corewar.h"
 
+/*
+** Effectue une addition (+) entre les deux parametres et stocke le resultat
+** dans le troisieme.
+** Si le resultat est nul passe le carry a un, sinon le passe a 0
+*/
+
 void		ins_add(t_proc *process, t_data *data)
 {
 	int				p1;
@@ -20,8 +26,7 @@ void		ins_add(t_proc *process, t_data *data)
 	if (is_second_param_register(data, process))
 		p2 = get_nth_register_value(process, p2);
 	set_nth_register_value(process, p3, p1 + p2);
-	if (p1 + p2 == 0)
-		process->carry = 1;
+	process->carry = !(p1 + p2);
 	if (data->args->verbosity & V_OPERATIONS)
 		ft_printf("P   %2i | add %i %i %i\n", 
 				process->champion_id, p1, p2, p1 + p2);

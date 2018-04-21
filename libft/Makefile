@@ -72,8 +72,9 @@ STRSRC = str/ft_atoi.c \
 		 str/ft_strsub.c \
 		 str/ft_strtrim.c \
 		 str/ft_vstrrev.c \
-		 str/word_count.c \
 		 str/get_word_ptr.c \
+		 str/safe_atoi.c \
+		 str/word_count.c \
 		 str/dup_word.c \
 		 str/str_join_n.c
 STROBJ = $(STRSRC:%.c=%.o)

@@ -21,17 +21,17 @@ void			process_exec(t_data *data, t_proc *process)
 	switch_instruction(process, instruction, data);
 }
 
-void	desbugs(t_data *data)
-{
-	t_champion	*curr;
-
-	curr = data->champs;
-	while (curr)
-	{
-		ft_printf("%d, %d\n", curr->id, curr->last_seen_alive);
-		curr = curr->next;
-	}
-}
+/* void	desbugs(t_data *data) */
+/* { */
+/* 	t_champion	*curr; */
+/*  */
+/* 	curr = data->champs; */
+/* 	while (curr) */
+/* 	{ */
+/* 		ft_printf("%d, %d\n", curr->id, curr->last_seen_alive); */
+/* 		curr = curr->next; */
+/* 	} */
+/* } */
 
 /*
 ** Au cours du cycle on parcourt toute la liste des process
@@ -45,7 +45,7 @@ void			exec_cycle(t_data *data)
 	current = data->procs;
 	while (current != NULL)
 	{
-		desbugs(data);
+		/* desbugs(data); */
 		process_exec(data, current);
 		current = current->next;
 	}
@@ -68,14 +68,9 @@ void			vm_loop(t_data *data)
 		if (data->args->ncurses != -1)
 			if (!ncurses_main_loop(map, data))
 				break ;
-		if (data->mem->cycle == data->args->dump)
-		{
-			print_mem(data->mem);
-			return ;
-		}
 		exec_cycle(data);
 		if (data->mem->since_last_check == data->mem->cycle_to_die)
-			if (!mem_check_alive(data) || data->mem->cycle_to_die)
+			if (!mem_check_alive(data) || data->mem->cycle_to_die <= 0)
 			{
 				if (data->args->ncurses == -1)
 					ft_printf("We got a winner after %i cycles :\n",
@@ -83,10 +78,15 @@ void			vm_loop(t_data *data)
 				print_winner(data, map);
 				break ;
 			}
-		data->mem->cycle += 1;
 		data->mem->since_last_check += 1;
 		if (data->args->verbosity & V_CYCLES)
 			print_cycle_end(data);
+		if (data->mem->cycle == data->args->dump)
+		{
+			print_mem(data->mem);
+			return ;
+		}
+		data->mem->cycle += 1;
 	}
 	end_ncurses(map);
 }

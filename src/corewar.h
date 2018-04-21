@@ -6,7 +6,7 @@
 /*   By: florenzo <florenzo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/14 17:10:11 by florenzo          #+#    #+#             */
-/*   Updated: 2018/04/18 19:11:02 by mschmitt         ###   ########.fr       */
+/*   Updated: 2018/04/21 13:56:51 by mschmitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,13 @@ typedef struct		s_mem
 	int				checks_since_last_decrement;
 }					t_mem;
 
+typedef struct		s_header
+{
+	int				x;
+	int				y;
+	char			**header;
+}					t_header;
+
 typedef struct		s_data 	
 {
 	t_mem			*mem;
@@ -96,6 +103,9 @@ typedef struct		s_data
 	t_champion		*champs;
 	t_proc			*procs;
 	int				colors;
+	int				speed;
+	int				curr_cycle;
+	t_header		*header;
 }					t_data;
 
 extern void			(*const g_tab[17])(t_proc *process,
@@ -366,9 +376,17 @@ void				print_map_colors(WINDOW *win, int height, int width,
 */
 void				reinit_process_by_champion(t_data *data);;
 void				count_process_by_champion(t_data *data);
-void				end_ncurses(WINDOW *map);
-void				ncurse_pause(WINDOW *map);
+void				ncurse_pause(WINDOW *map, int *keep_going);
 WINDOW				*init_ncurse(t_data *data);
+
+/*
+** ncurses_tools5.c
+*/
+
+void		change_speed(WINDOW *map, t_data *data, int ch);
+void		init_header(t_data *data);
+char		**generate_header(void);
+void		put_header(int x_top_left, int y_top_left, t_data *d);
 
 /*
 ** ocp_getters.c
@@ -391,10 +409,10 @@ int					ocp_get_param3_ind(t_data *data, t_proc *process,
 ** process_parameters.c
 */
 
-int					get_ocp_3_indirect_params(t_data *data, t_proc *process, 
-		int *p1, int *p2, ...);
-int					get_ocp_3_direct_params(t_data *data, t_proc *process, 
-		int *p1, int *p2, ...);
+int					get_ocp_2_indirect_params(t_data *data, t_proc *process, int *p1, int *p2);
+int					get_ocp_2_direct_params(t_data *data, t_proc *process, int *p1, int *p2);
+int					get_ocp_3_indirect_params(t_data *data, t_proc *process, int *p1, int *p2, ...);
+int					get_ocp_3_direct_params(t_data *data, t_proc *process, int *p1, int *p2, ...);
 int					get_nth_register_value(t_proc *process, int n);
 void				set_nth_register_value(t_proc *process, int n, int value);
 

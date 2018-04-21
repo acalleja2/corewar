@@ -15,15 +15,12 @@ void		ins_sub(t_proc *process, t_data *data)
 	}
 	process->instruction_started = FALSE;
 	offset = get_ocp_3_direct_params(data, process, &p1, &p2, &p3);
-	if (is_first_param_register(data, process))
-		p1 = get_nth_register_value(process, p1);
-	if (is_second_param_register(data, process))
-		p2 = get_nth_register_value(process, p2);
+	p1 = get_nth_register_value(process, p1);
+	p2 = get_nth_register_value(process, p2);
 	set_nth_register_value(process, p3, p1 - p2);
-	if ((p1 - p2) == 0)
-		process->carry = 1;
+	process->carry = !(p1 - p2);
 	if (data->args->verbosity & V_OPERATIONS)
-		ft_printf("P   %2i | sub %i %i %i\n", 
-				process->champion_id, p1, p2, p1 - p2);
+		ft_printf("P   %2i | sub %i %i -> r%i = \n", 
+				process->champion_id, p1, p2, p3, p1 - p2);
 	increment_pc(data, process, offset);
 }

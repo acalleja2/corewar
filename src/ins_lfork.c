@@ -2,10 +2,7 @@
 
 void		ins_lfork(t_proc *process, t_data *data)
 {
-	int				p1;
-	int				p2;
-	int				p3;
-	int				offset;
+	int				position;
 	t_proc			*new;
 
 	if (!process->instruction_started)
@@ -14,11 +11,13 @@ void		ins_lfork(t_proc *process, t_data *data)
 		process->instruction_started = TRUE;
 		return ;
 	}
-	offset = get_ocp_3_indirect_params(data, process, &p1, &p2, &p3);
+	position = mem_get_short_int(data, process, 1);
 	new = (t_proc*)ealloc(sizeof(t_proc));
 	proc_cpy(process, new);
-	new->pc = process->pc + (p1 % IDX_MOD);
+	new->pc = process->pc + position;
+	new->next = data->procs;
+	data->procs = new;
 	if (data->args->verbosity & V_OPERATIONS)
-		ft_printf("P   %2i | lforked\n", process->champion_id);
-	increment_pc(data, process, offset);
+		ft_printf("P   %2i | lforked at position %i\n", process->champion_id, position);
+	increment_pc(data, process, 3);
 }
