@@ -68,11 +68,6 @@ void			vm_loop(t_data *data)
 		if (data->args->ncurses != -1)
 			if (!ncurses_main_loop(map, data))
 				break ;
-		if (data->mem->cycle == data->args->dump)
-		{
-			print_mem(data->mem);
-			return ;
-		}
 		exec_cycle(data);
 		if (data->mem->since_last_check == data->mem->cycle_to_die)
 			if (!mem_check_alive(data) || data->mem->cycle_to_die)
@@ -83,10 +78,15 @@ void			vm_loop(t_data *data)
 				print_winner(data, map);
 				break ;
 			}
-		data->mem->cycle += 1;
 		data->mem->since_last_check += 1;
 		if (data->args->verbosity & V_CYCLES)
 			print_cycle_end(data);
+		if (data->mem->cycle == data->args->dump)
+		{
+			print_mem(data->mem);
+			return ;
+		}
+		data->mem->cycle += 1;
 	}
 	end_ncurses(map);
 }
