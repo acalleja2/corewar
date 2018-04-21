@@ -6,7 +6,7 @@
 /*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/15 15:47:55 by acalleja          #+#    #+#             */
-/*   Updated: 2018/04/21 14:21:49 by acalleja         ###   ########.fr       */
+/*   Updated: 2018/04/21 16:43:43 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	add_value_param(t_param *par, int ret, t_instru *ins, t_instru *cur)
 		if (par->name[0] == LABEL_CHAR)
 			par->ret = T_LAB;
 		else
-			par->value = ft_atoi(par->name);
+			par->value = er_atoi(par->name);
 		par->nb_octet = 2;
 	}
 	else if (ret == T_DIR)
@@ -32,7 +32,7 @@ void	add_value_param(t_param *par, int ret, t_instru *ins, t_instru *cur)
 		if (par->name[1] == LABEL_CHAR)
 			par->ret = T_LAB + 1;
 		else
-			par->value = ft_atoi(par->name + 1);
+			par->value = er_atoi(par->name + 1);
 		if (g_op_tab[rank].nb_direct == 0)
 			par->nb_octet = 4;
 		else
@@ -42,6 +42,6 @@ void	add_value_param(t_param *par, int ret, t_instru *ins, t_instru *cur)
 
 void	add_rg_val(t_param *par)
 {
-	par->value = ft_atoi(par->name + 1);
+	par->value = er_atoi(par->name + 1);
 	par->nb_octet = 1;
 }

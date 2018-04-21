@@ -6,7 +6,7 @@
 /*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/11 11:11:51 by acalleja          #+#    #+#             */
-/*   Updated: 2018/04/21 15:41:55 by acalleja         ###   ########.fr       */
+/*   Updated: 2018/04/21 16:45:41 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ typedef struct		s_instru
 	unsigned char	ocp;
 }					t_instru;
 
+int					er_atoi(const char *str);
 void				error_hd(int name, int desc, int i);
 void				magic(int ret, header_t *head);
 void				check_header2(char *str);

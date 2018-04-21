@@ -6,7 +6,7 @@
 /*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/18 17:19:34 by acalleja          #+#    #+#             */
-/*   Updated: 2018/04/18 17:19:43 by acalleja         ###   ########.fr       */
+/*   Updated: 2018/04/21 16:43:46 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int		is_reg(char *s)
 		return (0);
 	}
 	del_pos(str, 0);
-	if (!all_digit(str) || ft_atoi(str) > REG_NUMBER)
+	if (!all_digit(str) || er_atoi(str) > REG_NUMBER)
 	{
 		free(str);
 		return (0);

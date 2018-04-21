@@ -69,8 +69,8 @@ typedef struct		s_proc
 	int				time_to_wait;
 	int				instruction_started;
 	int				registers[REG_NUMBER + 1];
-	unsigned char	pc;
-	unsigned char	carry;
+	int				pc;
+	int				carry;
 	int				proc_color;
 }					t_proc;
 
