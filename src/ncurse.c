@@ -62,6 +62,7 @@ int				ncurses_main_loop(WINDOW *map, t_data *data)
 {
 	int			ch;
 
+	usleep(30);
 	if (data->args->ncurses == -1 || !map)
 		return (-1);
 	if (data->colors)

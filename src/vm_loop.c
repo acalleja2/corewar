@@ -45,7 +45,7 @@ void			exec_cycle(t_data *data)
 	current = data->procs;
 	while (current != NULL)
 	{
-		desbugs(data);
+		//desbugs(data);
 		process_exec(data, current);
 		current = current->next;
 	}
