@@ -6,7 +6,7 @@
 /*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/12 21:45:34 by acalleja          #+#    #+#             */
-/*   Updated: 2018/04/20 19:33:01 by acalleja         ###   ########.fr       */
+/*   Updated: 2018/04/21 12:59:54 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,10 @@ char	*pars_nm(char **str, int i, int fd)
 	{
 		if ((*str)[i] == '\0')
 		{
+			tmp = nm;
+			buf[0] = '\n';
+			nm = ft_strjoin(nm, buf);
+			free(tmp);
 			i = 0;
 			free(*str);
 			if (get_next_line(fd, str) < 1)
@@ -81,6 +85,10 @@ char	*pars_dc(char **str, int i, int fd)
 	{
 		if ((*str)[i] == '\0')
 		{
+			tmp = nm;
+			buf[0] = '\n';
+			nm = ft_strjoin(nm, buf);
+			free(tmp);
 			i = 0;
 			free(*str);
 			if (get_next_line(fd, str) < 1)

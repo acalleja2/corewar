@@ -6,7 +6,7 @@
 /*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/13 11:32:57 by acalleja          #+#    #+#             */
-/*   Updated: 2018/04/18 21:06:11 by acalleja         ###   ########.fr       */
+/*   Updated: 2018/04/21 15:27:29 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int		is_indirect2(char *str, t_instru *beg, t_label *lab, t_instru *tmp)
 		while (l)
 		{
 			if (!ft_strcmp(l->name, str) && beg != tmp)
-				return (ret_dir_ind(str, T_DIR));
+				return (ret_dir_ind(str, T_IND));
 			l = l->next;
 		}
 		beg = beg->next;
@@ -84,11 +84,11 @@ int		is_indirect2(char *str, t_instru *beg, t_label *lab, t_instru *tmp)
 	while (lab)
 	{
 		if (!ft_strcmp(lab->name, str))
-			return (ret_dir_ind(str, T_DIR));
+			return (ret_dir_ind(str, T_IND));
 		lab = lab->next;
 	}
 	if (tmp && tmp->lab && !ft_strcmp(str, tmp->lab->name))
-		return (ret_dir_ind(str, T_DIR));
+		return (ret_dir_ind(str, T_IND));
 	return (0);
 }
 

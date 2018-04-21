@@ -6,7 +6,7 @@
 /*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/11 11:11:51 by acalleja          #+#    #+#             */
-/*   Updated: 2018/04/20 20:28:08 by acalleja         ###   ########.fr       */
+/*   Updated: 2018/04/21 15:41:55 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,12 +74,13 @@ int					count_sep(char *str);
 void				free_lab(t_label **lab);
 void				free_param(t_param **par);
 void				free_instru(t_instru **ins);
-void				put_lab_value(t_instru *ins);
+void				put_lab_value(t_instru *ins, t_label *lab);
 void				rev_param(int nb_octet, int value, int fd);
 void				print_param_fd(t_instru *ins, int fd);
 void				add_value_param(t_param *par, int ret, t_instru *ins,
 					t_instru *cur);
-int					label_size(t_instru *ins, t_instru *cur, char *str);
+int					label_size(t_instru *ins, t_instru *cur, char *str,
+					t_label *lab);
 char				write_ocp(int ret, int i);
 void				rev_instruc(int size, int fd);
 int					count_size_tot(t_instru *tmp);

@@ -6,7 +6,7 @@
 /*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/12 21:02:36 by acalleja          #+#    #+#             */
-/*   Updated: 2018/04/20 19:32:31 by acalleja         ###   ########.fr       */
+/*   Updated: 2018/04/21 13:20:01 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,15 @@ void	check_header(char *str, int fd, header_t *head)
 	init_head(head);
 	while ((ret = get_next_line(fd, &str)))
 	{
-		check_header2(str);
 		if (str[0] != '\0')
 		{
 			if (!name)
 				name = pars_name(&str, head, fd);
 			if (!desc)
 				desc = pars_desc(&str, head, fd);
-			error_hd(name, desc, ++i);
+			check_header2(str);
+			if (str[0] != '\0')
+				error_hd(name, desc, ++i);
 		}
 		free(str);
 		if (name && desc)

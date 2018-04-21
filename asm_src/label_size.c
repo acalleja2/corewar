@@ -6,13 +6,13 @@
 /*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/15 15:21:06 by acalleja          #+#    #+#             */
-/*   Updated: 2018/04/18 20:57:17 by acalleja         ###   ########.fr       */
+/*   Updated: 2018/04/21 15:41:08 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-int		label_size(t_instru *ins, t_instru *cur, char *str)
+int		label_size(t_instru *ins, t_instru *cur, char *str, t_label *lab)
 {
 	t_instru	*tmp;
 	int			bol[3];
@@ -32,6 +32,12 @@ int		label_size(t_instru *ins, t_instru *cur, char *str)
 		if (bol[1] == 1 || bol[0] == 1)
 			bol[2] += tmp->size;
 		tmp = tmp->next;
+	}
+	while (lab)
+	{
+		if (!ft_strcmp(str, lab->name))
+			return (bol[2]);
+		lab = lab->next;
 	}
 	return (0);
 }
