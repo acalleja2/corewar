@@ -11,6 +11,7 @@
 void		ins_st(t_proc *process, t_data *data)
 {
 	int				p1;
+	int				p1_index;
 	int				p2;
 	int				offset;
 
@@ -22,16 +23,17 @@ void		ins_st(t_proc *process, t_data *data)
 	}
 	process->instruction_started = FALSE;
 	offset = get_ocp_2_direct_params(data, process, &p1, &p2);
+	p1_index = p1;
 	p1 = get_nth_register_value(process, p1);
 	if (is_second_param_register(data, process))
 		set_nth_register_value(process, p2, get_nth_register_value(process,
 					p1));
 	else
-		mem_set_int(data, process, p2, get_nth_register_value(process, p1));
+		mem_set_int(data, process, p2, p1);
 	process->carry = !get_nth_register_value(process, p1);
 	if (data->args->verbosity & V_OPERATIONS)
 		ft_printf("P   %2i | st r%i %i\n       | -> store %i to %i\n",
-				process->champion_id, p1, p2,
-				get_nth_register_value(process, p1), p2);
+				process->champion_id, p1_index, p2,
+				p1, p2);
 	increment_pc(data, process, offset);
 }

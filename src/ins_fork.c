@@ -31,7 +31,7 @@ void		ins_fork(t_proc *process, t_data *data)
 	position = mem_get_short_int(data, process, 1);
 	new = (t_proc*)ealloc(sizeof(t_proc));
 	proc_cpy(process, new);
-	new->pc = (process->pc + position) % IDX_MOD;
+	new->pc = process->pc + position;
 	new->next = data->procs;
 	data->procs = new;
 	if (data->args->verbosity & V_OPERATIONS)
