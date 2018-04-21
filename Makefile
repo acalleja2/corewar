@@ -89,6 +89,7 @@ ASM_SRC = add_empty_oct.c \
 		  create_param_lst.c \
 		  debug.c \
 		  del_pos.c \
+		  er_atoi.c \
 		  error_syntax.c \
 		  free_lst.c \
 		  free_tab.c \
