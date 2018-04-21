@@ -6,13 +6,27 @@
 /*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/15 15:21:06 by acalleja          #+#    #+#             */
-/*   Updated: 2018/04/21 15:41:08 by acalleja         ###   ########.fr       */
+/*   Updated: 2018/04/21 17:58:49 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-int		label_size(t_instru *ins, t_instru *cur, char *str, t_label *lab)
+static int	label_size3(t_label *t_lab, char *str, int size)
+{
+	t_label		*lab;
+
+	lab = t_lab;
+	while (lab)
+	{
+		if (!ft_strcmp(str, lab->name))
+			return (size);
+		lab = lab->next;
+	}
+	return (0);
+}
+
+int			label_size(t_instru *ins, t_instru *cur, char *str, t_label *lab)
 {
 	t_instru	*tmp;
 	int			bol[3];
@@ -33,16 +47,10 @@ int		label_size(t_instru *ins, t_instru *cur, char *str, t_label *lab)
 			bol[2] += tmp->size;
 		tmp = tmp->next;
 	}
-	while (lab)
-	{
-		if (!ft_strcmp(str, lab->name))
-			return (bol[2]);
-		lab = lab->next;
-	}
-	return (0);
+	return (label_size3(lab, str, bol[2]));
 }
 
-int		label_size2(t_instru *tmp, t_instru *cur, char *str, int *bol)
+int			label_size2(t_instru *tmp, t_instru *cur, char *str, int *bol)
 {
 	t_label		*lab;
 
