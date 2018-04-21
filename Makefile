@@ -66,6 +66,7 @@ COREWAR_SRC = champ_list_tools.c \
 			  ncurse_colors.c \
 			  ncurses_tools3.c \
 			  ncurse_tools4.c \
+			  ncurse_tools5.c
 			  # error_file.c
 COREWAR_SRCS = $(addprefix $(SRCDIR)/, $(COREWAR_SRC))
 COREWAR_OBJS = $(addprefix $(OBJDIR)/, $(COREWAR_SRC:.c=.o))

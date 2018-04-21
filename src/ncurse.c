@@ -15,10 +15,15 @@ void			print_control_pannel_misc(t_data *data, int i)
 			CYCLE_TO_DIE);
 	mvprintw(STARTY + 11 + i, WIDTH + STARTX + 20, " CYCLES DELTA\t\t%d",
 			CYCLE_DELTA);
-	mvprintw(STARTY + 13 + i, WIDTH + STARTX + 20, " CYCLES LEFT\t\t%d",
+	mvprintw(STARTY + 12 + i, WIDTH + STARTX + 20, " TTW         \t\t%d",
+			data->speed);
+	mvprintw(STARTY + 14 + i, WIDTH + STARTX + 20, " CURR CYCLE  \t\t%d     ",
+			data->curr_cycle);
+	mvprintw(STARTY + 15 + i, WIDTH + STARTX + 20, " CYCLES LEFT\t\t%d     ",
 			data->mem->cycle_to_die);
-	mvprintw(STARTY + 14 + i, WIDTH + STARTX + 20, " SINCE LAST CHECK\t\t%d",
+	mvprintw(STARTY + 16 + i, WIDTH + STARTX + 20, " SINCE LAST CHECK\t\t%d   ",
 			data->mem->since_last_check);
+	put_header(STARTY + 50 + i, WIDTH + STARTX + 20, data);
 }
 
 void			print_control_panel_processes(t_champion *curr, int i,
@@ -61,8 +66,9 @@ void			print_control_pannel(t_data *data)
 int				ncurses_main_loop(WINDOW *map, t_data *data)
 {
 	int			ch;
+	int			keep_going;
 
-	usleep(30);
+	keep_going = 1;
 	if (data->args->ncurses == -1 || !map)
 		return (-1);
 	if (data->colors)
@@ -74,6 +80,11 @@ int				ncurses_main_loop(WINDOW *map, t_data *data)
 	if (ch == 'q')
 		return (0);
 	if (ch == ' ')
-		ncurse_pause(map);
+		ncurse_pause(map, &keep_going);
+	if (!keep_going)
+		return (0);
+	change_speed(map, data, ch);
+	usleep(data->speed);
+	data->curr_cycle += 1;
 	return (1);
 }
