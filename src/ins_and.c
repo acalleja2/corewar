@@ -26,7 +26,7 @@ void		ins_and(t_proc *process, t_data *data)
 	if (is_second_param_register(data, process))
 		p2 = get_nth_register_value(process, p2);
 	set_nth_register_value(process, p3, p1 & p2);
-	process->carry = !(p1 + p2);
+	process->carry = !(p1 & p2);
 	if (data->args->verbosity & V_OPERATIONS)
 		ft_printf("P   %2i | and %i %i (= %i) r%i\n",
 				process->champion_id, p1, p2, p1 & p2, p3);

@@ -18,4 +18,6 @@ void		ins_zjmp(t_proc *process, t_data *data)
 		if (data->args->verbosity & V_OPERATIONS)
 			ft_printf("P   %2i | zjmp %i OK\n", process->champion_id, p);
 	}
+	else
+		increment_pc(data, process, 3);
 }
