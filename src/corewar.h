@@ -6,7 +6,7 @@
 /*   By: florenzo <florenzo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/14 17:10:11 by florenzo          #+#    #+#             */
-/*   Updated: 2018/04/21 13:56:51 by mschmitt         ###   ########.fr       */
+/*   Updated: 2018/04/21 15:42:28 by mschmitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct		s_args
 	int				*process;
 	int				champ_number;
 	int				talk;
+	int				rainbow;
 }					t_args;
 
 typedef struct		s_ch
@@ -208,6 +209,12 @@ void				print_args(t_args *args);
 void				ft_error_parse();
 void				ft_error_file(char *champ);
 int					ft_strisnumber(char *str);
+
+/*
+** parse_rainbow.c
+*/
+
+void		ft_rainbow(char *argv[], int *i, t_args *args);
 
 /*
 ** setup_champs.c

@@ -40,20 +40,22 @@ void		ft_parseargs(int argc, char *argv[], t_args *args)
 	{
 		if (!strcmp(argv[i], "-d"))
 			ft_d(argc, argv, &i, args);
-		else if (!strcmp(argv[i], "-s"))
+		else if (!ft_strcmp(argv[i], "-s"))
 			ft_s(argc, argv, &i, args);
-		else if (!strcmp(argv[i], "-v"))
+		else if (!ft_strcmp(argv[i], "-v"))
 			ft_v(argc, argv, &i, args);
-		else if (!strcmp(argv[i], "-b"))
+		else if (!ft_strcmp(argv[i], "-b"))
 			ft_b(argc, argv, &i, args);
-		else if (!strcmp(argv[i], "-n"))
+		else if (!ft_strcmp(argv[i], "-n"))
 			ft_n(argc, argv, &i, args);
-		else if (!strcmp(argv[i], "-t"))
+		else if (!ft_strcmp(argv[i], "-t"))
 			ft_t(argv, &i, args);
+		else if (!ft_strcmp(argv[i], "-r"))
+			ft_rainbow(argv, &i, args);
 		else if (args->index < MAX_PLAYERS)
 			ft_parse_name(argv, &i, args);
 		else
 			ft_error_parse();
 	}
-	print_args(args);
+	//print_args(args);
 }

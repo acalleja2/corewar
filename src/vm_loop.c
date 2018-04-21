@@ -100,7 +100,10 @@ void			print_cycle_start(t_data *data)
 	static char	buf[6] = "\e[30m";
 
 	buf[3] = 49 + data->mem->cycle % 6;
-	ft_printf("It is now cycle %s%i\n", buf, data->mem->cycle);
+	if (data->args->rainbow)
+		ft_printf("It is now cycle %s%i\n", buf, data->mem->cycle);
+	else
+		ft_printf("It is now cycle %i\n", data->mem->cycle);
 }
 
 void			print_cycle_end(t_data *data)
