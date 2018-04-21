@@ -21,7 +21,7 @@ WINDOW		*init_ncurse(t_data *data)
 	refresh_sleep(1);
 	map = create_newwin(HEIGHT + 2, WIDTH + 2, STARTX, STARTY);
 	nodelay(map, TRUE);
-	data->header->header = generate_header();
+	//data->header->header = generate_header();
 	return (map);
 }
 

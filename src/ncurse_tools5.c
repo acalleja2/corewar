@@ -46,6 +46,7 @@ void		init_header(t_data *data)
 	data->header->x = 93;
 	data->header->y = 10;
 	data->header->header = NULL;
+	data->header->header = generate_header();
 }
 
 void			put_header(int x_top_left, int y_top_left, t_data *d)
