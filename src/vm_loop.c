@@ -21,17 +21,17 @@ void			process_exec(t_data *data, t_proc *process)
 	switch_instruction(process, instruction, data);
 }
 
-void	desbugs(t_data *data)
-{
-	t_champion	*curr;
-
-	curr = data->champs;
-	while (curr)
-	{
-		ft_printf("%d, %d\n", curr->id, curr->last_seen_alive);
-		curr = curr->next;
-	}
-}
+/* void	desbugs(t_data *data) */
+/* { */
+/* 	t_champion	*curr; */
+/*  */
+/* 	curr = data->champs; */
+/* 	while (curr) */
+/* 	{ */
+/* 		ft_printf("%d, %d\n", curr->id, curr->last_seen_alive); */
+/* 		curr = curr->next; */
+/* 	} */
+/* } */
 
 /*
 ** Au cours du cycle on parcourt toute la liste des process
@@ -45,7 +45,7 @@ void			exec_cycle(t_data *data)
 	current = data->procs;
 	while (current != NULL)
 	{
-		//desbugs(data);
+		/* desbugs(data); */
 		process_exec(data, current);
 		current = current->next;
 	}
