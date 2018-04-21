@@ -21,6 +21,7 @@ WINDOW		*init_ncurse(t_data *data)
 	refresh_sleep(1);
 	map = create_newwin(HEIGHT + 2, WIDTH + 2, STARTX, STARTY);
 	nodelay(map, TRUE);
+	data->header->header = generate_header();
 	return (map);
 }
 
@@ -67,7 +68,7 @@ void		reinit_process_by_champion(t_data *data)
 	}
 }
 
-void		ncurse_pause(WINDOW *map)
+void		ncurse_pause(WINDOW *map, int *keep_going)
 {
 	int		ch;
 	int		cols;
@@ -79,7 +80,15 @@ void		ncurse_pause(WINDOW *map)
 	refresh();
 	ch = wgetch(map);
 	while (ch != ' ')
+	{
+		if (ch == 'q')
+		{
+			end_ncurses(map);
+			*keep_going = 0;
+			break ;
+		}
 		ch = wgetch(map);
+	}
 	nodelay(map, TRUE);
 	mvprintw(0, rows / 2, "COREWAR NCURSE OUTPUT MODE       \n");
 	refresh();

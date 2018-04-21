@@ -60,7 +60,6 @@ void		destroy_win(WINDOW *local_win)
 	wborder(local_win, ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ');
 	clear_win(local_win, cols - 2, rows - 2);
 	wrefresh(local_win);
-	sleep(1);
 	delwin(local_win);
 }
 

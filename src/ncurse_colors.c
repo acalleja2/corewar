@@ -62,6 +62,11 @@ void			champ_color_pair(int *colors, t_data *data)
 		i++;
 		curr_proc = data->procs;
 	}
+	while (i < 7)
+	{
+		init_pair(i, colors[i - 1], -1);
+		i++;
+	}
 }
 
 /*
