@@ -31,10 +31,10 @@ void		ins_fork(t_proc *process, t_data *data)
 	position = mem_get_short_int(data, process, 1);
 	new = (t_proc*)ealloc(sizeof(t_proc));
 	proc_cpy(process, new);
-	new->pc = process->pc + (position % IDX_MOD);
+	new->pc = (process->pc + position) % IDX_MOD;
 	new->next = data->procs;
 	data->procs = new;
 	if (data->args->verbosity & V_OPERATIONS)
-		ft_printf("P   %2i | forked\n", process->champion_id);
+		ft_printf("P   %2i | fork %i\n", process->champion_id, position);
 	increment_pc(data, process, 3);
 }

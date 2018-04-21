@@ -14,16 +14,15 @@ void		ins_lldi(t_proc *process, t_data *data)
 		return ;
 	}
 	process->instruction_started = FALSE;
-	offset = get_ocp_3_direct_params(data, process, &p1, &p2, &p3);
+	offset = get_ocp_3_indirect_params(data, process, &p1, &p2, &p3);
 	if (is_first_param_register(data, process))
 		p1 = get_nth_register_value(process, p1);
-	set_nth_register_value(process, p2, p1);
-	if (p1 == 0)
-		process->carry = 1;
+	set_nth_register_value(process, p3, mem_get_byte(data, process, p1 + p2));
+	process->carry = !mem_get_byte(data, process, p1 + p2);
 	if (data->args->verbosity & V_OPERATIONS)
-		ft_printf("P   %2i | lld r%i %i\n"
-				"       | -> store %i to %i\n",
-				process->champion_id, p1, p2,
-				 get_nth_register_value(process, p1), p2);
+		ft_printf("P   %2i | lldi %i %i\n"
+				"       | -> store %i to r%i\n",
+				process->champion_id, p1, p2, p3,
+				mem_get_byte(data, process, p1 + p2), p3);
 	increment_pc(data, process, offset);
 }
