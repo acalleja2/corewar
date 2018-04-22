@@ -23,6 +23,7 @@ COREWAR_SRC = champ_list_tools.c \
 			  ft_error_parse.c \
 			  ft_strisnumber.c \
 			  get_stuff.c \
+			  get_stuff2.c \
 			  increment_pc.c \
 			  init_t_args.c \
 			  ins_add.c \
