@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   vm_loop.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: florenzo <florenzo@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/04/22 13:51:15 by florenzo          #+#    #+#             */
+/*   Updated: 2018/04/22 13:51:15 by florenzo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "corewar.h"
 
 /*
@@ -31,13 +43,10 @@ void			exec_cycle(t_data *data)
 	t_proc		*current;
 
 	current = data->procs;
-	int i = 0;
 	while (current != NULL)
 	{
-		current->debug = i;
 		process_exec(data, current);
 		current = current->next;
-		i += 1;
 	}
 }
 
@@ -60,14 +69,14 @@ void			vm_loop(t_data *data)
 				break ;
 		exec_cycle(data);
 		if (data->mem->since_last_check == data->mem->cycle_to_die
-			&& (!mem_check_alive(data) || data->mem->cycle_to_die <= 0))
-			{
-				if (data->args->ncurses == -1)
-					ft_printf("The game ended after %i cycles :\n",
-							data->mem->cycle);
-				print_winner(data, map);
-				return ;
-			}
+				&& (!mem_check_alive(data) || data->mem->cycle_to_die <= 0))
+		{
+			if (data->args->ncurses == -1)
+				ft_printf("The game ended after %i cycles :\n",
+						data->mem->cycle);
+			print_winner(data, map);
+			return ;
+		}
 		data->mem->since_last_check += 1;
 		if (data->args->verbosity & V_CYCLES)
 			print_cycle_end(data);

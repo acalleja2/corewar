@@ -22,10 +22,7 @@ void			champ_list_append(t_data *data, t_champion *new)
 void			ft_print_champ_list(t_champion *champ)
 {
 	if (champ == NULL)
-	{
-		ft_printf("No valid champions found :/\n");
 		return ;
-	}
 	while (champ != NULL)
 	{
 		ft_printf("Champion %s from file %s has id %i and weights "

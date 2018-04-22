@@ -33,15 +33,12 @@ static void			setup_data(t_mem *mem, t_args *args, t_data *data)
 
 static void			free_stuff(t_data *data)
 {
-	ft_free_t_args(data->args);
+	champ_list_free(&(data->champs));
 	free(data->mem->map);
 	free(data->mem->owner);
-}
-
-static void	print_error_message(t_data *data)
-{
-	ft_printf("No valid champions found, aborting...\n");
-	champ_list_free(&(data->champs));
+	ft_free_header(data);
+	ft_free_t_args(data->args);
+	proc_list_free(data->procs);
 }
 
 int				main(int argc, char *argv[])
@@ -57,14 +54,12 @@ int				main(int argc, char *argv[])
 	ft_print_champ_list(data.champs);
 	if (args.champ_number == 0)
 	{
-		print_error_message(&data);
+		ft_printf("No valid champions found, aborting...\n");
+		free_stuff(&data);
 		return (1);
 	}
 	load_champs_and_setup_processes(&data);
 	vm_loop(&data);
-	proc_list_free(data.procs);
-	ft_free_header(&data);
-	champ_list_free(&(data.champs));
 	free_stuff(&data);
 	return (0);
 }
