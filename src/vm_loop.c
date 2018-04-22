@@ -6,7 +6,7 @@
 /*   By: florenzo <florenzo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/22 13:51:15 by florenzo          #+#    #+#             */
-/*   Updated: 2018/04/22 14:19:04 by mschmitt         ###   ########.fr       */
+/*   Updated: 2018/04/22 15:04:12 by mschmitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,11 @@ void			exec_cycle(t_data *data)
 
 void			vm_loop(t_data *data)
 {
-	WINDOW		*map;
-
+	WINDOW * map;
 	map = init_ncurse(data);
 	while (42)
 	{
-		print_cycle_start_vm_lopp(data);
+		print_cycle_start_vm_loop(data);
 		if (data->args->ncurses != -1)
 			if (!ncurses_main_loop(map, data))
 				break ;
@@ -70,14 +69,10 @@ void			vm_loop(t_data *data)
 		if (data->mem->since_last_check == data->mem->cycle_to_die
 				&& (!mem_check_alive(data) || data->mem->cycle_to_die <= 0))
 		{
-			if (data->args->ncurses == -1)
-				ft_printf("The game ended after %i cycles :\n",
-						data->mem->cycle);
-			print_winner(data, map);
+			print_end_game_vm_loop(data, map);
 			return ;
 		}
-		data->mem->since_last_check += 1;
-		print_cycle_end_vm_loop(data);
+		poubelle(data);
 		if (data->mem->cycle == data->args->dump)
 		{
 			print_mem(data->mem);

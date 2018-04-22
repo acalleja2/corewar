@@ -72,6 +72,7 @@ COREWAR_SRC = champ_list_tools.c \
 			  ncurses_tools3.c \
 			  ncurse_tools4.c \
 			  ncurse_tools5.c \
+			  ncurse_tools6.c \
 			  vm_loop_utilities.c
 			  # error_file.c
 COREWAR_SRCS = $(addprefix $(SRCDIR)/, $(COREWAR_SRC))

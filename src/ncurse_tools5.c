@@ -6,13 +6,13 @@
 /*   By: florenzo <florenzo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/22 13:57:57 by florenzo          #+#    #+#             */
-/*   Updated: 2018/04/22 13:57:57 by florenzo         ###   ########.fr       */
+/*   Updated: 2018/04/22 14:53:24 by mschmitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void		change_speed(WINDOW *map, t_data *data, int ch)
+void			change_speed(WINDOW *map, t_data *data, int ch)
 {
 	if (ch == '-' && data->speed > 0)
 		data->speed -= 500;
@@ -20,7 +20,7 @@ void		change_speed(WINDOW *map, t_data *data, int ch)
 		data->speed += 500;
 }
 
-char		**generate_header(void)
+char			**generate_header(void)
 {
 	char	**header;
 	int		col;
@@ -29,30 +29,21 @@ char		**generate_header(void)
 	col = 0;
 	line = 0;
 	header = (char **)ealloc(sizeof(char *) * 10);
-	header[0] = "    _______      ,-----.    .-------.        .-''-.  .--.    "
-		".--.   ____    .-------.     \0";
-	header[1] = "   /   __  \\   .'  .-,  '.  |  _ _   \\     .'_ _   ]\\ |  |_  "
-	"|  | .'  __ `. |  _ _   \\    \0";
-	header[2] = "  | ,_/  \\__) / ,-.|  \\ _ \\ | ( ' )  |    / ( ` )   '| _( )_ "
-	"|  |/   '  \\  \\| ( ' )  |    \0";
-	header[3] = ",-./  )      ;  \\  '_ /  | :|(_ o _) /   . (_ o _)  ||(_ o _)"
-		"|  ||___|  /  ||(_ o _) /    \0";
-	header[4] = "\\  '_ '`)    |  _`,/ \\ _/  || (_,_).' __ |  (_,_)___|| (_,_) "
-		"\\ |  |   _.-`   || (_,_).' __  \0";
-	header[5] = " > (_)  )  __: (  '\\_/ \\   ;|  |\\ \\  |  |'  \\   .---.|  |/   "
-		"\\|  |.'   _    ||  |\\ \\  |  | \0";
-	header[6] = "(  .  .-'_/  )\\ `\\\"/  \\  ) / |  | \\ `'   / \\  `-'    /|  ' "
-		"g  `  ||  _( )_  ||  | \\ `'   / \0";
-	header[7] = " `-'`-'     /  '. \\_/``\\\".'  |  |  \\    /   \\       / |    /"
-		"\\    |\\ (_ o _) /|  |  \\    /  \0";
-	header[8] = "   `._____.'     '-----'    ''-'   `'-'     `'-..-'  `---'   "
-		"`---` '.(_,_).' ''-'   `'-'   \0";
-	header[9] = "                                                            "
-		"";
+	header[0] = "    _______      ,-----.    .-------.        .-''-.  .--. "
+		"   .--.   ____    .-------.     \0";
+	header[1] = "   /   __  \\   .'  .-,  '.  |  _ _   \\     .'_ _   ]\\ |"
+		"|_  |  | .'  __ `. |  _ _   \\    \0";
+	header[2] = "  | ,_/  \\__) / ,-.|  \\ _ \\ | ( ' )  |    / ( ` )   '| _("
+		")_ |  |/   '  \\  \\| ( ' )  |    \0";
+	header[3] = ",-./  )      ;  \\  '_ /  | :|(_ o _) /   . (_ o _)  ||(_ o"
+		"_)|  ||___|  /  ||(_ o _) /    \0";
+	header[4] = "\\  '_ '`)    |  _`,/ \\ _/  || (_,_).' __ |  (_,_)___||"
+		"(_,_) \\ |  |   _.-`   || (_,_).' __  \0";
+	finish_header(header);
 	return (header);
 }
 
-void		init_header(t_data *data)
+void			init_header(t_data *data)
 {
 	data->header = (t_header*)ealloc(sizeof(t_header));
 	data->header->x = 93;

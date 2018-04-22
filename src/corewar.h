@@ -6,7 +6,7 @@
 /*   By: florenzo <florenzo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/14 17:10:11 by florenzo          #+#    #+#             */
-/*   Updated: 2018/04/22 14:19:49 by mschmitt         ###   ########.fr       */
+/*   Updated: 2018/04/22 15:01:02 by mschmitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -307,6 +307,8 @@ void				print_cycle_end(t_data *data);
 
 void				print_cycle_start_vm_loop(t_data *data);
 void				print_cycle_end_vm_loop(t_data *data);
+void				print_end_game_vm_loop(t_data *data, WINDOW *map);
+void				poubelle(t_data *data);
 
 /*
 ** parse_talk.c
@@ -402,6 +404,14 @@ void				change_speed(WINDOW *map, t_data *data, int ch);
 void				init_header(t_data *data);
 char				**generate_header(void);
 void				put_header(int x_top_left, int y_top_left, t_data *d);
+
+/*
+** ncurses_tools6.c
+*/
+
+void				init_proc_color(t_proc *curr_proc, int *colors, int i);
+void				finish_header(char **header);
+void				print_end_game(t_data *data);
 
 /*
 ** ocp_getters.c

@@ -6,7 +6,7 @@
 /*   By: florenzo <florenzo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/22 14:01:14 by florenzo          #+#    #+#             */
-/*   Updated: 2018/04/22 14:01:14 by florenzo         ###   ########.fr       */
+/*   Updated: 2018/04/22 14:43:43 by mschmitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,15 @@ int				check_process_colors(WINDOW *win, t_data *data, int pos)
 	return (0);
 }
 
+void			finish_initialization(int *colors, int i)
+{
+	while (i < 7)
+	{
+		init_pair(i, colors[i - 1], -1);
+		i++;
+	}
+}
+
 void			champ_color_pair(int *colors, t_data *data)
 {
 	t_champion	*curr_champ;
@@ -64,21 +73,14 @@ void			champ_color_pair(int *colors, t_data *data)
 		while (curr_proc)
 		{
 			if (curr_proc->champion_id == curr_champ->id)
-			{
-				curr_proc->proc_color = i + 6;
-				init_pair(i + 6, colors[i], -1);
-			}
+				init_proc_color(curr_proc, colors, i);
 			curr_proc = curr_proc->next;
 		}
 		curr_champ = curr_champ->next;
 		i++;
 		curr_proc = data->procs;
 	}
-	while (i < 7)
-	{
-		init_pair(i, colors[i - 1], -1);
-		i++;
-	}
+	finish_initialization(colors, i);
 }
 
 /*

@@ -6,7 +6,7 @@
 /*   By: florenzo <florenzo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/22 13:59:39 by florenzo          #+#    #+#             */
-/*   Updated: 2018/04/22 13:59:39 by florenzo         ###   ########.fr       */
+/*   Updated: 2018/04/22 14:37:33 by mschmitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ WINDOW		*init_ncurse(t_data *data)
 	refresh_sleep(1);
 	map = create_newwin(HEIGHT + 2, WIDTH + 2, STARTX, STARTY);
 	nodelay(map, TRUE);
-	//data->header->header = generate_header();
 	return (map);
 }
 
