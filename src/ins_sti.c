@@ -19,6 +19,8 @@ void		ins_sti(t_proc *process, t_data *data)
 	}
 	process->instruction_started = FALSE;
 	offset = get_ocp_3_indirect_params(data, process, &p1, &p2, &p3);
+	if (is_second_param_register(data, process))
+		p2 = get_nth_register_value(process, p2);
 	mem_set_int(data, process, p2 + p3, get_nth_register_value(process, p1));
 	process->carry = !get_nth_register_value(process, p1);
 	if (data->args->verbosity & V_OPERATIONS)
