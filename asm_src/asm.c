@@ -6,19 +6,26 @@
 /*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/11 18:24:23 by acalleja          #+#    #+#             */
-/*   Updated: 2018/04/18 15:20:08 by acalleja         ###   ########.fr       */
+/*   Updated: 2018/04/22 15:43:22 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-void	print_usage(void)
+void		print_usage(void)
 {
 	ft_printf("Usage: ./asm [FILE.s]\n");
-	exit(0);
+	exit(EXIT_FAILURE);
 }
 
-int		main(int argc, char **argv)
+static void	bad_file(char *filename)
+{
+	ft_printf("could not open file %s\n", filename);
+	perror("");
+	exit(EXIT_FAILURE);
+}
+
+int			main(int argc, char **argv)
 {
 	int			fd;
 	char		**name;
@@ -31,7 +38,7 @@ int		main(int argc, char **argv)
 	if (argc != 2)
 		print_usage();
 	if ((fd = open(argv[1], O_RDONLY)) < 0)
-		print_usage();
+		bad_file(argv[1]);
 	name = ft_strsplit(argv[1], '.');
 	if (ft_strcmp(name[len_tab(name) - 1], "s"))
 		print_usage();

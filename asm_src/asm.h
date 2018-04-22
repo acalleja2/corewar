@@ -6,14 +6,14 @@
 /*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/11 11:11:51 by acalleja          #+#    #+#             */
-/*   Updated: 2018/04/21 18:55:37 by acalleja         ###   ########.fr       */
+/*   Updated: 2018/04/22 15:45:34 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ASM_H
 # define ASM_H
 # include "../libft/libft.h"
-# include "../doc/op.h"
+# include "op.h"
 # include <fcntl.h>
 
 typedef struct		s_op
@@ -58,7 +58,7 @@ typedef struct		s_instru
 void				add_n(char *buf, char **nm, char **str);
 void				error_hd(int name, int desc, int i);
 void				magic(int ret, header_t *head);
-void				check_header2(char *str, int name, int desc, int i);
+void				check_header2(char *str, int name, int desc, int *i);
 void				init_head(header_t *head);
 void				pars_nm_dc(char *str, int i, char *name);
 void				line_reader2(char *line, t_label **lab, t_instru **ins);

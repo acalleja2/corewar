@@ -2,7 +2,7 @@ LIBFT = libft.a
 
 # Compilation
 CC = clang
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra  -g
 NCURSE = -lncurses
 
 # Directories
@@ -13,7 +13,7 @@ LIBDIR = ./libft
 
 ASM = asm
 COREWAR = corewar
-NAME = $(COREWAR) #$(ASM)
+NAME = $(COREWAR) $(ASM)
 COREWAR_SRC = champ_list_tools.c \
 			  champion_initialization.c \
 			  check_alive.c \
@@ -79,6 +79,8 @@ COREWAR_OBJS = $(addprefix $(OBJDIR)/, $(COREWAR_SRC:.c=.o))
 ASM_SRC = add_empty_oct.c \
 		  add_param_size.c \
 		  add_size.c \
+		  add_n.c\
+		  er_atoi.c\
 		  add_value_param.c \
 		  all_digit.c \
 		  check_ins.c \
