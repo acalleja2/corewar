@@ -6,13 +6,13 @@
 /*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/15 15:47:55 by acalleja          #+#    #+#             */
-/*   Updated: 2018/04/21 16:43:43 by acalleja         ###   ########.fr       */
+/*   Updated: 2018/04/22 15:53:06 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-void	add_value_param(t_param *par, int ret, t_instru *ins, t_instru *cur)
+void	add_value_param(t_param *par, int ret, t_instru *cur)
 {
 	int		rank;
 

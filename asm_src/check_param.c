@@ -6,7 +6,7 @@
 /*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/13 12:17:55 by acalleja          #+#    #+#             */
-/*   Updated: 2018/04/18 21:43:12 by acalleja         ###   ########.fr       */
+/*   Updated: 2018/04/22 15:54:36 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	check_param2(t_instru *ins, t_label *lab, t_instru *tmp, int rank)
 		free(str);
 		t_par->ret = ret;
 		add_param_size(&tmp, ret, rank);
-		add_value_param(t_par, ret, ins, tmp);
+		add_value_param(t_par, ret, tmp);
 		t_par = t_par->next;
 	}
 	if (g_op_tab[rank].ocp == 1)

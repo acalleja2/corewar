@@ -6,7 +6,7 @@
 /*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/11 11:11:51 by acalleja          #+#    #+#             */
-/*   Updated: 2018/04/22 15:45:34 by acalleja         ###   ########.fr       */
+/*   Updated: 2018/04/22 15:53:40 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ typedef struct		s_instru
 	unsigned char	ocp;
 }					t_instru;
 
+int					er_atoi(const char *str);
 void				add_n(char *buf, char **nm, char **str);
 void				error_hd(int name, int desc, int i);
 void				magic(int ret, header_t *head);
@@ -78,8 +79,7 @@ void				free_instru(t_instru **ins);
 void				put_lab_value(t_instru *ins, t_label *lab);
 void				rev_param(int nb_octet, int value, int fd);
 void				print_param_fd(t_instru *ins, int fd);
-void				add_value_param(t_param *par, int ret, t_instru *ins,
-					t_instru *cur);
+void				add_value_param(t_param *par, int ret, t_instru *cur);
 int					label_size(t_instru *ins, t_instru *cur, char *str,
 					t_label *lab);
 char				write_ocp(int ret, int i);
