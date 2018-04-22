@@ -19,7 +19,7 @@ int				find_colors(t_data *data, int id)
 ** couleurs background foreground.
 */
 
-int				check_process_colors(WINDOW *win, t_data *data)
+int				check_process_colors(WINDOW *win, t_data *data, int pos)
 {
 	t_proc		*proc;
 	int			x;
@@ -29,7 +29,7 @@ int				check_process_colors(WINDOW *win, t_data *data)
 	getyx(win, y, x);
 	while (proc)
 	{
-		if (proc->starting_pos == (y - 1) * 192 + x)
+		if (proc->pc + proc->starting_pos == -1)
 			return (proc->proc_color);
 		proc = proc->next;
 	}
@@ -54,8 +54,7 @@ void			champ_color_pair(int *colors, t_data *data)
 			if (curr_proc->champion_id == curr_champ->id)
 			{
 				curr_proc->proc_color = i + 6;
-				//init_pair(i + 6, colors[i], -1);
-				init_pair(i + 6, COLOR_BLACK, COLOR_CYAN);
+				init_pair(i + 6, colors[i], -1);
 			}
 			curr_proc = curr_proc->next;
 		}

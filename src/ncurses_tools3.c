@@ -10,7 +10,7 @@ void		print_color_char(WINDOW *win, t_data *data, int row, int col)
 
 	if (data->colors)
 	{
-		if (!(color_pair = check_process_colors(win, data)))
+		if (!(color_pair = check_process_colors(win, data, row * 64 + col)))
 			color_pair = find_colors(data,
 					data->mem->owner[row * 64 + col]);
 		wattron(win, COLOR_PAIR(color_pair));
