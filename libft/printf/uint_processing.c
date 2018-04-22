@@ -12,35 +12,6 @@
 
 #include "printf.h"
 
-/* static void		zero_case(t_info *info) */
-/* { */
-/* 	if (info->precision >= 0) */
-/* 	{ */
-/* 		if (info->leftjustify) */
-/* 		{ */
-/* 			put_nchars(info, info->precision, '0'); */
-/* 			put_nchars(info, info->field - info->precision, SPACE); */
-/* 		} */
-/* 		else */
-/* 		{ */
-/* 			put_nchars(info, info->field - info->precision, */
-/* 					info->zeroes ? '0' : SPACE); */
-/* 			put_nchars(info, info->precision, '0'); */
-/* 		} */
-/* 		return ; */
-/* 	} */
-/* 	if (info->leftjustify) */
-/* 	{ */
-/* 		addchar(info, '0'); */
-/* 		put_nchars(info, info->field - 1, SPACE); */
-/* 	} */
-/* 	else */
-/* 	{ */
-/* 		put_nchars(info, info->field - 1, info->zeroes ? '0' : SPACE); */
-/* 		addchar(info, '0'); */
-/* 	} */
-/* } */
-
 static void		precision_case(t_info *info, uintmax_t n)
 {
 	if (info->leftjustify)
@@ -112,8 +83,6 @@ void			process_uint(t_info *info, uintmax_t n)
 		if (info->precision == 0)
 			info->precision = 1;
 	}
-	/* if (n == 0) */
-		/* zero_case(info); */
 	else if (info->precision >= 0 && info->precision > info->charlen)
 		precision_case(info, n);
 	else
