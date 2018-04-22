@@ -6,7 +6,7 @@
 /*   By: florenzo <florenzo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/22 14:01:14 by florenzo          #+#    #+#             */
-/*   Updated: 2018/04/22 14:01:14 by florenzo         ###   ########.fr       */
+/*   Updated: 2018/04/22 15:40:39 by mschmitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	wrefresh_sleep(WINDOW *win, int sleep_time)
 **  Affiche l'usage.
 */
 
-void	print_usage(int rows, int cols)
+void	print_usage(int rows)
 {
 	mvprintw(0, rows / 2, "COREWAR NCURSE OUTPUT MODE\n");
 	mvprintw(2, STARTX, "q         quit\n");

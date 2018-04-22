@@ -6,7 +6,7 @@
 /*   By: florenzo <florenzo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/14 17:10:11 by florenzo          #+#    #+#             */
-/*   Updated: 2018/04/22 15:01:02 by mschmitt         ###   ########.fr       */
+/*   Updated: 2018/04/22 15:49:26 by mschmitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -214,7 +214,7 @@ int					ft_strisnumber(char *str);
 ** parse_rainbow.c
 */
 
-void				ft_rainbow(char *argv[], int *i, t_args *args);
+void				ft_rainbow(int *i, t_args *args);
 
 /*
 ** setup_champs.c
@@ -314,7 +314,7 @@ void				poubelle(t_data *data);
 ** parse_talk.c
 */
 
-void				ft_t(char *argv[], int *i, t_args *args);
+void				ft_t(int *i, t_args *args);
 
 /*
 ** check_alive.c
@@ -341,7 +341,7 @@ void				switch_instruction(t_proc *process,
 ** ncurses_tools.c
 */
 
-void				print_map(WINDOW *win, int height, int width, t_data *data);
+void				print_map(WINDOW *win, t_data *data);
 void				destroy_win(WINDOW *local_win);
 void				clear_win(WINDOW *win, int height, int width);
 WINDOW				*create_newwin(int height, int width, int starty,
@@ -351,10 +351,8 @@ void				ft_free_header(t_data *data);
 /*
 ** ncurse_colors.c
 */
-int					check_process_colors(WINDOW *win, t_data *data, int pos);
+int					check_process_colors(WINDOW *win, t_data *data);
 int					init_colors(t_data *data);
-void				print_map_colors(WINDOW *win, int height, int width,
-		t_data *data);
 int					find_colors(t_data *data, int id);
 void				champ_color_pair(int *colors, t_data *data);
 
@@ -363,11 +361,8 @@ void				champ_color_pair(int *colors, t_data *data);
 */
 
 int					init_colors(t_data *data);
-void				print_map_colors(WINDOW *win, int height, int width,
-		t_data *data);
-
 void				init_main_window(void);
-void				print_usage(int rows, int cols);
+void				print_usage(int rows);
 void				refresh_sleep(int sleep_time);
 void				ncurses_winner(char	*speak, t_data *data, WINDOW *map);
 void				wrefresh_sleep(WINDOW *win, int sleep_time);
@@ -379,14 +374,12 @@ void				wrefresh_sleep(WINDOW *win, int sleep_time);
 int					ncurses_main_loop(WINDOW *map, t_data *data);
 void				end_ncurses(WINDOW *map);
 WINDOW				*init_ncurse(t_data *data);
-void				print_map_colors(WINDOW *win, int height, int width,
-		t_data *data);
 
 /*
 ** ncurses_tools3.c
 */
-void				print_map_colors(WINDOW *win, int height, int width,
-		t_data *data);
+
+void				print_map_colors(WINDOW *win, t_data *data);
 
 /*
 ** ncurses_tools4.c
@@ -400,7 +393,7 @@ WINDOW				*init_ncurse(t_data *data);
 ** ncurses_tools5.c
 */
 
-void				change_speed(WINDOW *map, t_data *data, int ch);
+void				change_speed(t_data *data, int ch);
 void				init_header(t_data *data);
 char				**generate_header(void);
 void				put_header(int x_top_left, int y_top_left, t_data *d);

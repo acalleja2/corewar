@@ -6,7 +6,7 @@
 /*   By: florenzo <florenzo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/22 14:01:14 by florenzo          #+#    #+#             */
-/*   Updated: 2018/04/22 14:43:43 by mschmitt         ###   ########.fr       */
+/*   Updated: 2018/04/22 15:44:26 by mschmitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int				find_colors(t_data *data, int id)
 ** couleurs background foreground.
 */
 
-int				check_process_colors(WINDOW *win, t_data *data, int pos)
+int				check_process_colors(WINDOW *win, t_data *data)
 {
 	t_proc		*proc;
 	int			x;

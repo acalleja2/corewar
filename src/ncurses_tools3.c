@@ -6,7 +6,7 @@
 /*   By: florenzo <florenzo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/22 14:01:14 by florenzo          #+#    #+#             */
-/*   Updated: 2018/04/22 14:01:14 by florenzo         ###   ########.fr       */
+/*   Updated: 2018/04/22 15:45:36 by mschmitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	print_color_char(WINDOW *win, t_data *data, int row, int col)
 
 	if (data->colors)
 	{
-		if (!(color_pair = check_process_colors(win, data, row * 64 + col)))
+		if (!(color_pair = check_process_colors(win, data)))
 			color_pair = find_colors(data,
 					data->mem->owner[row * 64 + col]);
 		wattron(win, COLOR_PAIR(color_pair));
@@ -57,7 +57,7 @@ void	print_color_grid(WINDOW *win, t_data *data)
 	}
 }
 
-void	print_map_colors(WINDOW *win, int height, int width, t_data *data)
+void	print_map_colors(WINDOW *win, t_data *data)
 {
 	wprintw(win, " ");
 	wprintw(win, " ");

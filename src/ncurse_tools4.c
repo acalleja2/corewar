@@ -6,7 +6,7 @@
 /*   By: florenzo <florenzo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/22 13:59:39 by florenzo          #+#    #+#             */
-/*   Updated: 2018/04/22 14:37:33 by mschmitt         ###   ########.fr       */
+/*   Updated: 2018/04/22 15:48:54 by mschmitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ WINDOW		*init_ncurse(t_data *data)
 	init_main_window();
 	init_colors(data);
 	getmaxyx(stdscr, cols, rows);
-	print_usage(rows, cols);
+	print_usage(rows);
 	refresh_sleep(1);
 	map = create_newwin(HEIGHT + 2, WIDTH + 2, STARTX, STARTY);
 	nodelay(map, TRUE);
