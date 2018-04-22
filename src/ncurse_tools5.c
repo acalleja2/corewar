@@ -8,6 +8,7 @@ void		change_speed(WINDOW *map, t_data *data, int ch)
 		data->speed += 500;
 }
 
+/*
 char		**generate_header(void)
 {
 	char	**header;
@@ -74,7 +75,9 @@ void			put_header(int x_top_left, int y_top_left, t_data *d)
 		color++;
 	}
 }
+*/
 
+/*
 void			ft_free_header(t_data *data)
 {
 	int			i;
@@ -84,7 +87,7 @@ void			ft_free_header(t_data *data)
 	i = 0;
 	while (i < header->y)
 	{
-		/* ft_printf("%s\n", header->header[i]); */
+		//ft_printf("%s\n", header->header[i]);
 		header->header[i] = NULL;
 		i++;
 	}
@@ -93,3 +96,4 @@ void			ft_free_header(t_data *data)
 	free(data->header);
 	data->header = NULL;
 }
+*/

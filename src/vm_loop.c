@@ -45,6 +45,7 @@ void			exec_cycle(t_data *data)
 	current = data->procs;
 	int i = 0;
 	ft_printf("on appelle exec au cycle %i\n", data->mem->cycle);
+	//while (current->next != NULL) // on doit pas mettre le dernier maillon a NULL
 	while (current != NULL)
 	{
 		/* desbugs(data); */

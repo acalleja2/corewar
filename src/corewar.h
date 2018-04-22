@@ -6,7 +6,7 @@
 /*   By: florenzo <florenzo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/14 17:10:11 by florenzo          #+#    #+#             */
-/*   Updated: 2018/04/21 15:42:28 by mschmitt         ###   ########.fr       */
+/*   Updated: 2018/04/22 10:44:16 by mschmitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,10 @@ typedef struct		s_proc
 
 typedef struct		s_mem
 {
-	unsigned char	map[MEM_SIZE];
-	char			owner[MEM_SIZE];
+	// unsigned char	map[MEM_SIZE];
+	// char			owner[MEM_SIZE];
+	unsigned char	*map;
+	char			*owner;
 	int				cycle;
 	int				cycle_to_die;
 	int				since_last_check;
@@ -106,7 +108,7 @@ typedef struct		s_data
 	t_proc			*procs;
 	int				colors;
 	int				speed;
-	t_header		*header;
+	//t_header		*header;
 	int				curr_cycle;
 }					t_data;
 

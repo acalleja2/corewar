@@ -9,6 +9,7 @@
 void			mem_setup_byte(t_mem *mem, unsigned char const byte,
 		int const pos, int const id)
 {
+	ft_printf("La map existe toujours: %p\n", mem->map);
 	mem->map[pos % MEM_SIZE] = byte;
 	mem->owner[pos % MEM_SIZE] = id;
 }
@@ -38,6 +39,10 @@ void			mem_set_byte(t_data *data, t_proc *process, int offset,
 
 unsigned char	mem_get_byte(t_data *data, t_proc *process, int pos)
 {
+	ft_printf("process : %p\n", process);
+	ft_printf("process->starting_pos : %p\n", process->starting_pos);
+	ft_printf("process->pc : %p\n", process->pc);
+	ft_printf("pos : %p\n", pos);
 	return (data->mem->map[(process->starting_pos + process->pc + pos)
 			% MEM_SIZE]);
 }
