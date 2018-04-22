@@ -41,6 +41,7 @@ int		get_magic_number(int fd, t_champion *new, char *filename)
 	char	buf[4];
 	int		readres;
 
+	(void)new;
 	readres = read(fd, buf, 4);
 	if (error_reading(readres, 4, filename))
 		return (1);
@@ -76,6 +77,7 @@ int		no_null_byte(int fd, t_champion *new, char *filename)
 	char	buf[4];
 	int		readres;
 
+	(void)new;
 	readres = read(fd, buf, 4);
 	if (error_reading(readres, 4, filename))
 		return (1);
