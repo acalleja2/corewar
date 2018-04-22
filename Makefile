@@ -2,9 +2,7 @@ LIBFT = libft.a
 
 # Compilation
 CC = clang
-CFLAGS = -Wall -Wextra -g \
-		 -Wno-unused-parameter
-# -Werror
+CFLAGS = -Wall -Wextra -Werror -g 
 NCURSE = -lncurses
 
 # Directories
