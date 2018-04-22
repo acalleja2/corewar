@@ -78,7 +78,8 @@ void			print_mem(t_mem *mem)
 		col = 0;
 		while (col < 64 && row * 64 + col < MEM_SIZE)
 		{
-			offset += ft_sprintf(buffer + offset, "%.2x ", mem->map[row * 64 + col]);
+			offset += ft_sprintf(buffer + offset, "%.2x ",
+					mem->map[row * 64 + col]);
 			col += 1;
 		}
 		buffer[offset] = '\n';

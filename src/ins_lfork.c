@@ -30,6 +30,7 @@ void		ins_lfork(t_proc *process, t_data *data)
 	new->next = data->procs;
 	data->procs = new;
 	if (data->args->verbosity & V_OPERATIONS)
-		ft_printf("P   %2i | lforked at position %i\n", process->champion_id, position);
+		ft_printf("P   %2i | lforked at position %i\n",
+				process->champion_id, position);
 	increment_pc(data, process, 3);
 }

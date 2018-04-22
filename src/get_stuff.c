@@ -71,7 +71,7 @@ int		get_program_name(int fd, t_champion *new, char *filename)
 	return (0);
 }
 
-int			no_null_byte(int fd, t_champion *new, char *filename)
+int		no_null_byte(int fd, t_champion *new, char *filename)
 {
 	char	buf[4];
 	int		readres;

@@ -12,7 +12,7 @@
 
 #include "corewar.h"
 
-void			(*const g_tab[17])(t_proc *process, t_data *data) = {
+void				(*const g_tab[17])(t_proc *process, t_data *data) = {
 	NULL,
 	ins_live,
 	ins_ld,
@@ -53,7 +53,7 @@ static void			free_stuff(t_data *data)
 	proc_list_free(data->procs);
 }
 
-int				main(int argc, char *argv[])
+int					main(int argc, char *argv[])
 {
 	t_args		args;
 	t_mem		mem;
