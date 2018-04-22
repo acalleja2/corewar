@@ -21,14 +21,14 @@
 # define V_OPERATIONS 4
 # define V_DEATHS 8
 # define V_PC 16
-# define P1 
+# define P1
 # define P2 0x3
 # define P3 0xc0
 # define OCP_P1
 # define HEIGHT 	64
 # define WIDTH 192
-# define STARTX 10 
-# define STARTY 10 
+# define STARTX 10
+# define STARTY 10
 
 typedef struct		s_args
 {
@@ -98,7 +98,7 @@ typedef struct		s_header
 	char			**header;
 }					t_header;
 
-typedef struct		s_data 	
+typedef struct		s_data
 {
 	t_mem			*mem;
 	t_args			*args;
@@ -121,7 +121,7 @@ extern void			(*const g_tab[17])(t_proc *process,
 **         return ;
 **     }
 ** Ce bloc sera s'executera la premiere fois que le process est appele, ca lui
-** fera attendre n tours. Le -2 est la car on consomme un tour lorsqu'on lui 
+** fera attendre n tours. Le -2 est la car on consomme un tour lorsqu'on lui
 ** dit de repasser et un autre lorsqu'il execute reellement l'instruction.
 **
 ** Si on n'a pas declenche le bloc precedent c'est que le process avait attendu
@@ -163,7 +163,6 @@ void				ins_aff(t_proc *process, t_data *data);
 ** ins_fork.c
 */
 void				proc_cpy(t_proc *parent, t_proc *child);
-
 
 /*
 ** init_t_args.c
@@ -258,7 +257,7 @@ int					get_champ_code(int fd, t_champion *new, char *filename);
 */
 
 void				mem_load(t_mem *mem, t_champion *current, int starting_pos);
-void				add_process(t_data *data, t_champion *current, 
+void				add_process(t_data *data, t_champion *current,
 		int starting_pos);
 void				load_champs_and_setup_processes(t_data *data);
 
@@ -266,16 +265,16 @@ void				load_champs_and_setup_processes(t_data *data);
 ** mem_tools.c
 */
 
-void				mem_setup_byte(t_mem *mem, unsigned char const byte, 
+void				mem_setup_byte(t_mem *mem, unsigned char const byte,
 		int const pos, int const id);
-void				mem_set_byte(t_data *data, t_proc *process, int offset, 
+void				mem_set_byte(t_data *data, t_proc *process, int offset,
 		unsigned char value);
 void				print_mem(t_mem *mem);
 unsigned char		mem_get_byte(t_data *data, t_proc *process, int pos);
 int					mem_get_int(t_data *data, t_proc *process, int offset);
-int					mem_get_short_int(t_data *data, t_proc *process, 
+int					mem_get_short_int(t_data *data, t_proc *process,
 		int offset);
-void				mem_set_int(t_data *data, t_proc *process, int offset, 
+void				mem_set_int(t_data *data, t_proc *process, int offset,
 		int value);
 
 /*
@@ -326,7 +325,7 @@ void				print_winner(t_data *data, WINDOW *map);
 ** switch_instruction.c
 */
 
-void				switch_instruction(t_proc *process, 
+void				switch_instruction(t_proc *process,
 		unsigned char instruction, t_data *data);
 
 /*
@@ -336,7 +335,7 @@ void				switch_instruction(t_proc *process,
 void				print_map(WINDOW *win, int height, int width, t_data *data);
 void				destroy_win(WINDOW *local_win);
 void				clear_win(WINDOW *win, int height, int width);
-WINDOW				*create_newwin(int height, int width, int starty, 
+WINDOW				*create_newwin(int height, int width, int starty,
 		int startx);
 void				ft_free_header(t_data *data);
 
@@ -345,7 +344,7 @@ void				ft_free_header(t_data *data);
 */
 int					check_process_colors(WINDOW *win, t_data *data, int pos);
 int					init_colors(t_data *data);
-void				print_map_colors(WINDOW *win, int height, int width, 
+void				print_map_colors(WINDOW *win, int height, int width,
 		t_data *data);
 int					find_colors(t_data *data, int id);
 void				champ_color_pair(int *colors, t_data *data);
@@ -355,7 +354,7 @@ void				champ_color_pair(int *colors, t_data *data);
 */
 
 int					init_colors(t_data *data);
-void				print_map_colors(WINDOW *win, int height, int width, 
+void				print_map_colors(WINDOW *win, int height, int width,
 		t_data *data);
 
 void				init_main_window(void);
@@ -371,13 +370,13 @@ void				wrefresh_sleep(WINDOW *win, int sleep_time);
 int					ncurses_main_loop(WINDOW *map, t_data *data);
 void				end_ncurses(WINDOW *map);
 WINDOW				*init_ncurse(t_data *data);
-void				print_map_colors(WINDOW *win, int height, int width, 
+void				print_map_colors(WINDOW *win, int height, int width,
 		t_data *data);
 
 /*
 ** ncurses_tools3.c
 */
-void				print_map_colors(WINDOW *win, int height, int width, 
+void				print_map_colors(WINDOW *win, int height, int width,
 		t_data *data);
 
 /*
@@ -401,17 +400,17 @@ void		put_header(int x_top_left, int y_top_left, t_data *d);
 ** ocp_getters.c
 */
 
-int					ocp_get_param1(t_data *data, t_proc *process, int offset, 
+int					ocp_get_param1(t_data *data, t_proc *process, int offset,
 		int *var);
-int					ocp_get_param2(t_data *data, t_proc *process, int offset, 
+int					ocp_get_param2(t_data *data, t_proc *process, int offset,
 		int *var);
-int					ocp_get_param3(t_data *data, t_proc *process, int offset, 
+int					ocp_get_param3(t_data *data, t_proc *process, int offset,
 		int *var);
-int					ocp_get_param1_ind(t_data *data, t_proc *process, 
+int					ocp_get_param1_ind(t_data *data, t_proc *process,
 		int offset, int *var);
-int					ocp_get_param2_ind(t_data *data, t_proc *process, 
+int					ocp_get_param2_ind(t_data *data, t_proc *process,
 		int offset, int *var);
-int					ocp_get_param3_ind(t_data *data, t_proc *process, 
+int					ocp_get_param3_ind(t_data *data, t_proc *process,
 		int offset, int *var);
 
 /*

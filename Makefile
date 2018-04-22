@@ -44,10 +44,12 @@ COREWAR_SRC = champ_list_tools.c \
 			  main.c \
 			  mem_load.c \
 			  mem_tools.c \
+			  mem_tools2.c \
 			  ncurse.c \
 			  ncurses_tools.c \
 			  ncurses_tools2.c \
 			  ocp_getters.c \
+			  ocp_getters2.c \
 			  ocp_ifs.c \
 			  parse_binary_output_mode.c\
 			  parse_n.c \
@@ -60,6 +62,7 @@ COREWAR_SRC = champ_list_tools.c \
 			  print_winner.c \
 			  proc_list_tools.c \
 			  process_parameters.c \
+			  process_parameters2.c \
 			  setup_champs.c \
 			  stupid.c \
 			  switch_instruction.c \
