@@ -6,7 +6,7 @@
 /*   By: florenzo <florenzo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/14 17:10:11 by florenzo          #+#    #+#             */
-/*   Updated: 2018/04/22 13:16:14 by mschmitt         ###   ########.fr       */
+/*   Updated: 2018/04/22 14:19:49 by mschmitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -300,6 +300,13 @@ void				vm_loop(t_data *data);
 void				exec_cycle(t_data *data);
 void				print_cycle_start(t_data *data);
 void				print_cycle_end(t_data *data);
+
+/*
+** vm_loop_utilities.c
+*/
+
+void				print_cycle_start_vm_loop(t_data *data);
+void				print_cycle_end_vm_loop(t_data *data);
 
 /*
 ** parse_talk.c
