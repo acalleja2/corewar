@@ -6,7 +6,7 @@
 /*   By: acalleja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/12 21:02:36 by acalleja          #+#    #+#             */
-/*   Updated: 2018/04/21 18:03:15 by acalleja         ###   ########.fr       */
+/*   Updated: 2018/04/22 15:45:18 by acalleja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	check_header(char *str, int fd, header_t *head)
 				name = pars_name(&str, head, fd);
 			if (!desc)
 				desc = pars_desc(&str, head, fd);
-			check_header2(str, name, desc, ++i);
+			check_header2(str, name, desc, &i);
 		}
 		free(str);
 		if (name && desc)
@@ -46,14 +46,14 @@ void	init_head(header_t *head)
 	ft_bzero(head->comment, COMMENT_LENGTH);
 }
 
-void	check_header2(char *str, int name, int desc, int i)
+void	check_header2(char *str, int name, int desc, int *i)
 {
 	while (str[0] == ' ' || str[0] == '\t')
 		del_pos(str, 0);
 	str_replace(str, COMMENT_CHAR, '\0');
 	str_replace(str, ';', '\0');
 	if (str[0] != '\0')
-		error_hd(name, desc, ++i);
+		error_hd(name, desc, ++(*i));
 }
 
 void	magic(int ret, header_t *head)
