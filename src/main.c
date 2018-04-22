@@ -19,7 +19,7 @@ void			(*const g_tab[17])(t_proc *process, t_data *data) = {
 	ins_lfork,
 	ins_aff};
 
-void			setup_data(t_mem *mem, t_args *args, t_data *data)
+static void			setup_data(t_mem *mem, t_args *args, t_data *data)
 {
 	data->mem = mem;
 	data->args = args;
@@ -29,6 +29,19 @@ void			setup_data(t_mem *mem, t_args *args, t_data *data)
 	data->speed = 1000;
 	data->curr_cycle = 0;
 	init_header(data);
+}
+
+static void			free_stuff(t_data *data)
+{
+	ft_free_t_args(data->args);
+	free(data->mem->map);
+	free(data->mem->owner);
+}
+
+static void	print_error_message(t_data *data)
+{
+	ft_printf("No valid champions found, aborting...\n");
+	champ_list_free(&(data->champs));
 }
 
 int				main(int argc, char *argv[])
@@ -44,15 +57,14 @@ int				main(int argc, char *argv[])
 	ft_print_champ_list(data.champs);
 	if (args.champ_number == 0)
 	{
-		ft_printf("No valid champions found, aborting...\n");
+		print_error_message(&data);
 		return (1);
 	}
 	load_champs_and_setup_processes(&data);
-	print_proc_list(&data);
 	vm_loop(&data);
 	proc_list_free(data.procs);
-	champ_list_free(&data.champs);
-	ft_free_t_args(&args);
 	ft_free_header(&data);
+	champ_list_free(&(data.champs));
+	free_stuff(&data);
 	return (0);
 }
