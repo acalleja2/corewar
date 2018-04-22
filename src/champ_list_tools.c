@@ -19,7 +19,7 @@ void			champ_list_append(t_data *data, t_champion *new)
 	current->next = new;
 }
 
-void	ft_print_champ_list(t_champion *champ)
+void			ft_print_champ_list(t_champion *champ)
 {
 	if (champ == NULL)
 	{
