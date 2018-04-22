@@ -83,14 +83,12 @@ typedef struct		s_proc
 
 typedef struct		s_mem
 {
-	// unsigned char	map[MEM_SIZE];
-	// char			owner[MEM_SIZE];
 	unsigned char	*map;
-	char			*owner;
 	int				cycle;
 	int				cycle_to_die;
 	int				since_last_check;
 	int				checks_since_last_decrement;
+	char			*owner;
 }					t_mem;
 
 typedef struct		s_header
@@ -108,7 +106,7 @@ typedef struct		s_data
 	t_proc			*procs;
 	int				colors;
 	int				speed;
-	//t_header		*header;
+	t_header		*header;
 	int				curr_cycle;
 }					t_data;
 
@@ -340,6 +338,7 @@ void				destroy_win(WINDOW *local_win);
 void				clear_win(WINDOW *win, int height, int width);
 WINDOW				*create_newwin(int height, int width, int starty, 
 		int startx);
+void				ft_free_header(t_data *data);
 
 /*
 ** ncurse_colors.c

@@ -54,7 +54,8 @@ void			champ_color_pair(int *colors, t_data *data)
 			if (curr_proc->champion_id == curr_champ->id)
 			{
 				curr_proc->proc_color = i + 6;
-				init_pair(i + 6, colors[i], -1);
+				//init_pair(i + 6, colors[i], -1);
+				init_pair(i + 6, COLOR_BLACK, COLOR_CYAN);
 			}
 			curr_proc = curr_proc->next;
 		}

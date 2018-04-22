@@ -29,14 +29,9 @@ void			print_proc_list(t_data *data)
 {
 	t_proc		*current;
 
-	ft_printf("Printing process list :\n");
 	current = data->procs;
 	while (current != NULL)
-	{
-		ft_printf("Process id %i has his origin at %i\n",
-				current->champion_id, current->starting_pos);
 		current = current->next;
-	}
 }
 
 void			proc_list_free(t_proc *current)

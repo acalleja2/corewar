@@ -11,22 +11,10 @@ void		proc_cpy(t_proc *parent, t_proc *child)
 	child->live = parent->live;
 	child->time_to_wait = 0;
 	child->instruction_started = FALSE;
-	ft_memcpy(child->registers, parent->registers, 
+	ft_memcpy(child->registers, parent->registers,
 			sizeof(int) * (REG_NUMBER + 1));
 	child->carry = parent->carry;
 	child->next = NULL;
-}
-
-void		magic(t_data *data, t_proc *new)
-{
-	t_proc	*curr;
-
-	ft_printf("magic!\n");
-	curr = data->procs;
-	while (curr->next != NULL)
-		curr = curr->next;
-	curr->next = new;
-	new->next = NULL;
 }
 
 void		ins_fork(t_proc *process, t_data *data)
@@ -47,7 +35,6 @@ void		ins_fork(t_proc *process, t_data *data)
 	new->pc = process->pc + position;
 	new->next = data->procs;
 	data->procs = new;
-	//magic(data, new);
 	if (data->args->verbosity & V_OPERATIONS)
 		ft_printf("P   %2i | fork %i\n", process->champion_id, position);
 	increment_pc(data, process, 3);

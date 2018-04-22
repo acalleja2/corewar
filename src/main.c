@@ -28,7 +28,7 @@ void			setup_data(t_mem *mem, t_args *args, t_data *data)
 	data->colors = 0;
 	data->speed = 1000;
 	data->curr_cycle = 0;
-	//init_header(data);
+	init_header(data);
 }
 
 int				main(int argc, char *argv[])
@@ -53,6 +53,6 @@ int				main(int argc, char *argv[])
 	proc_list_free(data.procs);
 	champ_list_free(&data.champs);
 	ft_free_t_args(&args);
-	//ft_free_header(&data);
+	ft_free_header(&data);
 	return (0);
 }

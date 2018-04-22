@@ -30,7 +30,6 @@ int				count_all_lives(t_data *data)
 
 int				mem_check_alive(t_data *data)
 {
-	ft_printf("CHECK LIVES\n");
 	int			total_live_instructions;
 
 	data->mem->since_last_check = -1;
@@ -63,7 +62,6 @@ void			clean_dead_processes(t_data *data)
 	t_proc		*previous;
 	t_proc		*current;
 
-	ft_printf("MR PROPRE WAS HERE\n");
 	while (data->procs != NULL && data->procs->live == 0)
 	{
 		previous = data->procs->next;

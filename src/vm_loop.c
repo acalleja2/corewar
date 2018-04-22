@@ -21,18 +21,6 @@ void			process_exec(t_data *data, t_proc *process)
 	switch_instruction(process, instruction, data);
 }
 
-void	desbugs(t_data *data)
-{
-	t_champion	*curr;
-
-	curr = data->champs;
-	while (curr)
-	{
-		ft_printf("%d, %d\n", curr->id, curr->last_seen_alive);
-		curr = curr->next;
-	}
-}
-
 /*
 ** Au cours du cycle on parcourt toute la liste des process
 ** et on execute les instructions pour chaque
@@ -44,15 +32,10 @@ void			exec_cycle(t_data *data)
 
 	current = data->procs;
 	int i = 0;
-	ft_printf("on appelle exec au cycle %i\n", data->mem->cycle);
-	//while (current->next != NULL) // on doit pas mettre le dernier maillon a NULL
 	while (current != NULL)
 	{
-		/* desbugs(data); */
 		current->debug = i;
-		ft_printf("on execute le process %i, la verbosite est a %i ", i, data->args->verbosity);
 		process_exec(data, current);
-		ft_printf("maintenant elle est a %i\n", data->args->verbosity);
 		current = current->next;
 		i += 1;
 	}
@@ -70,7 +53,6 @@ void			vm_loop(t_data *data)
 	map = init_ncurse(data);
 	while (42)
 	{
-		ft_printf("verbosity = %i\n", data->args->verbosity);
 		if (data->args->verbosity & V_CYCLES)
 			print_cycle_start(data);
 		if (data->args->ncurses != -1)

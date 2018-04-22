@@ -15,13 +15,13 @@ void	ft_init_t_args(t_args *args, t_mem *mem)
 	args->process_curr = 0;
 	args->talk = 0;
 	args->rainbow = 0;
-	args->champions = (char **)ealloc(sizeof(char *) * MAX_PLAYERS);
-	ft_bzero(args->champions, sizeof(char *) * MAX_PLAYERS);
 	args->process = (int *)ealloc(sizeof(int) * MAX_PLAYERS);
 	ft_bzero(args->process, sizeof(int) * MAX_PLAYERS);
 	mem->map = ealloc(MEM_SIZE);
-	mem->owner = ealloc(MEM_SIZE);
 	ft_bzero(mem->map, MEM_SIZE);
+	args->champions = (char **)ealloc(sizeof(char *) * MAX_PLAYERS);
+	ft_bzero(args->champions, sizeof(char *) * MAX_PLAYERS);
+	mem->owner = ealloc(MEM_SIZE);
 	ft_memset(mem->owner, (char)-1, MEM_SIZE);
 	mem->cycle = 1;
 	mem->cycle_to_die = CYCLE_TO_DIE;

@@ -21,7 +21,6 @@ void			champ_list_append(t_data *data, t_champion *new)
 
 void	ft_print_champ_list(t_champion *champ)
 {
-	ft_printf("printing champ list :\n");
 	if (champ == NULL)
 	{
 		ft_printf("No valid champions found :/\n");
