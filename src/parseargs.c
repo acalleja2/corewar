@@ -30,7 +30,7 @@ int			ft_valid_process(int candidate, t_args *args)
 	return (TRUE);
 }
 
-void		chec_args(int argc)
+void		check_args(int argc)
 {
 	if (argc < 2)
 		ft_error_parse();
@@ -55,12 +55,8 @@ void		ft_parseargs(int argc, char *argv[], t_args *args)
 	{
 		if (!strcmp(argv[i], "-d"))
 			ft_d(argc, argv, &i, args);
-		else if (!ft_strcmp(argv[i], "-s"))
-			ft_s(argc, argv, &i, args);
 		else if (!ft_strcmp(argv[i], "-v"))
 			ft_v(argc, argv, &i, args);
-		else if (!ft_strcmp(argv[i], "-b"))
-			ft_b(argc, argv, &i, args);
 		else if (!ft_strcmp(argv[i], "-n"))
 			ft_n(argc, argv, &i, args);
 		else if (!ft_strcmp(argv[i], "-t"))
