@@ -2,7 +2,7 @@ LIBFT = libft.a
 
 # Compilation
 CC = clang
-CFLAGS = -Wall -Wextra -Werror -g 
+CFLAGS = -Wall -Wextra -Werror -g
 NCURSE = -lncurses
 
 # Directories
@@ -144,10 +144,10 @@ $(LIB):
 	make -C $(LIBDIR)
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c
-	$(CC) -c -o $@ $< $(CFLAGS)
+	$(CC) $(CFLAGS) -c -o $@ $<
 
 $(OBJDIR)/%.o: $(ASMDIR)/%.c
-	$(CC) -c -o $@ $< $(CFLAGS)
+	$(CC) $(CFLAGS) -c -o $@ $<
 
 clean:
 	make -C libft clean
