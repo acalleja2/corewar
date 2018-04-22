@@ -2,7 +2,7 @@ LIBFT = libft.a
 
 # Compilation
 CC = clang
-CFLAGS = -Wall -Wextra -Weverything -Wno-pedantic -Wno-padded -g \
+CFLAGS = -Wall -Wextra -g \
 		 -Wno-unused-parameter
 # -Werror
 NCURSE = -lncurses
