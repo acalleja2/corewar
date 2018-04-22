@@ -32,6 +32,6 @@ void		ins_lld(t_proc *process, t_data *data)
 		ft_printf("P   %2i | lld r%i %i\n"
 				"       | -> store %i to %i\n",
 				process->champion_id, p1, p2,
-				 get_nth_register_value(process, p2), p2);
+				get_nth_register_value(process, p2), p2);
 	increment_pc(data, process, offset);
 }
