@@ -28,7 +28,8 @@ void		increment_pc(t_data *data, t_proc *process, int offset)
 		i = 0;
 		while (i < offset)
 		{
-			pos += ft_sprintf(buf + pos, "%.2x ", mem_get_byte(data, process, i));
+			pos += ft_sprintf(buf + pos, "%.2x ", mem_get_byte(data, process,
+						i));
 			i += 1;
 		}
 		buf[pos] = '\n';
