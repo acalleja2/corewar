@@ -6,13 +6,13 @@
 /*   By: florenzo <florenzo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/22 13:57:57 by florenzo          #+#    #+#             */
-/*   Updated: 2018/04/22 14:53:24 by mschmitt         ###   ########.fr       */
+/*   Updated: 2018/04/22 15:49:16 by mschmitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void			change_speed(WINDOW *map, t_data *data, int ch)
+void			change_speed(t_data *data, int ch)
 {
 	if (ch == '-' && data->speed > 0)
 		data->speed -= 500;

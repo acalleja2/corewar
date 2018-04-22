@@ -6,7 +6,7 @@
 /*   By: florenzo <florenzo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/22 13:55:17 by florenzo          #+#    #+#             */
-/*   Updated: 2018/04/22 13:55:17 by florenzo         ###   ########.fr       */
+/*   Updated: 2018/04/22 15:43:12 by mschmitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,9 @@ void		ft_parseargs(int argc, char *argv[], t_args *args)
 		else if (!ft_strcmp(argv[i], "-n"))
 			ft_n(argc, argv, &i, args);
 		else if (!ft_strcmp(argv[i], "-t"))
-			ft_t(argv, &i, args);
+			ft_t(&i, args);
 		else if (!ft_strcmp(argv[i], "-r"))
-			ft_rainbow(argv, &i, args);
+			ft_rainbow(&i, args);
 		else if (args->index < MAX_PLAYERS)
 			ft_parse_name(argv, &i, args);
 		else

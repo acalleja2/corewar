@@ -6,7 +6,7 @@
 /*   By: florenzo <florenzo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/22 13:53:10 by florenzo          #+#    #+#             */
-/*   Updated: 2018/04/22 13:53:10 by florenzo         ###   ########.fr       */
+/*   Updated: 2018/04/22 15:38:57 by mschmitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ void		add_chars(int nbr, int *offset, char *buffer, ...)
 ** window), et on refresh la fenetre de la map.
 */
 
-void		print_map(WINDOW *win, int height, int width, t_data *data)
+void		print_map(WINDOW *win, t_data *data)
 {
 	int		row;
 	int		col;

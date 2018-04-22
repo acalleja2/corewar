@@ -6,7 +6,7 @@
 /*   By: florenzo <florenzo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/22 14:01:14 by florenzo          #+#    #+#             */
-/*   Updated: 2018/04/22 14:01:14 by florenzo         ###   ########.fr       */
+/*   Updated: 2018/04/22 15:49:39 by mschmitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,9 @@ int				ncurses_main_loop(WINDOW *map, t_data *data)
 	if (data->args->ncurses == -1 || !map)
 		return (-1);
 	if (data->colors)
-		print_map_colors(map, HEIGHT, WIDTH, data);
+		print_map_colors(map, data);
 	else
-		print_map(map, HEIGHT, WIDTH, data);
+		print_map(map, data);
 	print_control_pannel(data);
 	ch = wgetch(map);
 	if (ch == 'q')
@@ -95,7 +95,7 @@ int				ncurses_main_loop(WINDOW *map, t_data *data)
 		ncurse_pause(map, &keep_going);
 	if (!keep_going)
 		return (0);
-	change_speed(map, data, ch);
+	change_speed(data, ch);
 	usleep(data->speed);
 	data->curr_cycle += 1;
 	return (1);

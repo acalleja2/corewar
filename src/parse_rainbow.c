@@ -6,13 +6,13 @@
 /*   By: florenzo <florenzo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/22 13:54:48 by florenzo          #+#    #+#             */
-/*   Updated: 2018/04/22 13:54:48 by florenzo         ###   ########.fr       */
+/*   Updated: 2018/04/22 15:43:37 by mschmitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void		ft_rainbow(char *argv[], int *i, t_args *args)
+void		ft_rainbow(int *i, t_args *args)
 {
 	args->rainbow = 1;
 	*i += 1;
