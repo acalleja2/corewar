@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ins_sub.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: florenzo <florenzo@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/04/22 14:01:13 by florenzo          #+#    #+#             */
+/*   Updated: 2018/04/22 14:01:13 by florenzo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "corewar.h"
 
 void		ins_sub(t_proc *process, t_data *data)
@@ -20,7 +32,7 @@ void		ins_sub(t_proc *process, t_data *data)
 	set_nth_register_value(process, p3, p1 - p2);
 	process->carry = !(p1 - p2);
 	if (data->args->verbosity & V_OPERATIONS)
-		ft_printf("P   %2i | sub %i %i -> r%i = \n", 
+		ft_printf("P   %2i | sub %i %i -> r%i = \n",
 				process->champion_id, p1, p2, p3, p1 - p2);
 	increment_pc(data, process, offset);
 }

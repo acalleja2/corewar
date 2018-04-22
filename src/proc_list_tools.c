@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   proc_list_tools.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: florenzo <florenzo@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/04/22 14:01:16 by florenzo          #+#    #+#             */
+/*   Updated: 2018/04/22 14:01:16 by florenzo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "corewar.h"
 
-t_proc		*proc_new(int id, int starting_pos)
+t_proc			*proc_new(int id, int starting_pos)
 {
 	t_proc	*new;
 

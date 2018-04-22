@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_talk.c                                       :+:      :+:    :+:   */
+/*   process_parameters2.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: florenzo <florenzo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/22 13:59:07 by florenzo          #+#    #+#             */
-/*   Updated: 2018/04/22 13:59:07 by florenzo         ###   ########.fr       */
+/*   Created: 2018/04/22 14:09:38 by florenzo          #+#    #+#             */
+/*   Updated: 2018/04/22 14:09:38 by florenzo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-/*
-** Verifie aue l'optin -talk ne sit pas deja set. Si non, la set, si oui, error
-*/
-
-void		ft_t(char *argv[], int *i, t_args *args)
+int			get_nth_register_value(t_proc *process, int n)
 {
-	if (args->talk == 0)
-		args->talk = 1;
-	else
-		ft_error_parse();
-	*i += 1;
+	if (n <= 0 || n > REG_NUMBER)
+		return (0);
+	return (process->registers[n]);
+}
+
+void		set_nth_register_value(t_proc *process, int n, int value)
+{
+	if (n <= 0 || n > REG_NUMBER)
+		return ;
+	process->registers[n] = value;
 }

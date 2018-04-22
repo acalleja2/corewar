@@ -67,17 +67,3 @@ int			get_ocp_3_direct_params(t_data *data, t_proc *process,
 	offset += ocp_get_param3(data, process, offset, p3);
 	return (offset);
 }
-
-int			get_nth_register_value(t_proc *process, int n)
-{
-	if (n <= 0 || n > REG_NUMBER)
-		return (0);
-	return (process->registers[n]);
-}
-
-void		set_nth_register_value(t_proc *process, int n, int value)
-{
-	if (n <= 0 || n > REG_NUMBER)
-		return ;
-	process->registers[n] = value;
-}

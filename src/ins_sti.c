@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ins_sti.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: florenzo <florenzo@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/04/22 14:01:13 by florenzo          #+#    #+#             */
+/*   Updated: 2018/04/22 14:01:13 by florenzo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "corewar.h"
 
 /*
@@ -27,6 +39,6 @@ void		ins_sti(t_proc *process, t_data *data)
 		ft_printf("P   %2i | sti r%i %i %i\n"
 				"       | -> store %i to %i + %i = %i\n",
 				process->champion_id, p1, p2, p3,
-				 get_nth_register_value(process, p1), p2, p3, p2 + p3);
+				get_nth_register_value(process, p1), p2, p3, p2 + p3);
 	increment_pc(data, process, offset);
 }

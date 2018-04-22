@@ -13,9 +13,7 @@
 #include "corewar.h"
 
 /*
-**
 ** Verifie si le numero de process est valide. Si pas valide, lui attribue
-**
 */
 
 int			ft_valid_process(int candidate, t_args *args)

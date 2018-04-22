@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ncurses_tools3.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: florenzo <florenzo@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/04/22 14:01:14 by florenzo          #+#    #+#             */
+/*   Updated: 2018/04/22 14:01:14 by florenzo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "corewar.h"
 
 /*
 **  Pareil que print_map, mais avec des couleurs.
 */
 
-void		print_color_char(WINDOW *win, t_data *data, int row, int col)
+void	print_color_char(WINDOW *win, t_data *data, int row, int col)
 {
 	int		color_pair;
 
