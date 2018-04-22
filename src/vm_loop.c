@@ -6,7 +6,7 @@
 /*   By: florenzo <florenzo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/22 13:51:15 by florenzo          #+#    #+#             */
-/*   Updated: 2018/04/22 13:51:15 by florenzo         ###   ########.fr       */
+/*   Updated: 2018/04/22 14:19:04 by mschmitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,7 @@ void			vm_loop(t_data *data)
 	map = init_ncurse(data);
 	while (42)
 	{
-		if (data->args->verbosity & V_CYCLES)
-			print_cycle_start(data);
+		print_cycle_start_vm_lopp(data);
 		if (data->args->ncurses != -1)
 			if (!ncurses_main_loop(map, data))
 				break ;
@@ -78,8 +77,7 @@ void			vm_loop(t_data *data)
 			return ;
 		}
 		data->mem->since_last_check += 1;
-		if (data->args->verbosity & V_CYCLES)
-			print_cycle_end(data);
+		print_cycle_end_vm_loop(data);
 		if (data->mem->cycle == data->args->dump)
 		{
 			print_mem(data->mem);
