@@ -50,7 +50,7 @@ COREWAR_SRC = champ_list_tools.c \
 			  ncurses_tools.c \
 			  ncurses_tools2.c \
 			  ocp_getters.c \
-			  ocp_getters2.c \
+			  ocp_indirect_getters.c \
 			  ocp_ifs.c \
 			  parse_binary_output_mode.c\
 			  parse_n.c \
