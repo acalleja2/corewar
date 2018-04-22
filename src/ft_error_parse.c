@@ -27,8 +27,7 @@ void	more_printing(void)
 			"####         MISC        #########################################"
 			"##############\n"
 			"    -t        : talkative mode\n"
-			"    -r        : gay pride\n"
-			);
+			"    -r        : gay pride\n");
 }
 
 void	ft_error_parse(void)

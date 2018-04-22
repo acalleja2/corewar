@@ -6,7 +6,7 @@
 /*   By: florenzo <florenzo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/22 14:01:13 by florenzo          #+#    #+#             */
-/*   Updated: 2018/04/22 14:14:17 by mschmitt         ###   ########.fr       */
+/*   Updated: 2018/04/22 14:32:00 by mschmitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void		ins_lfork(t_proc *process, t_data *data)
 	new->next = data->procs;
 	data->procs = new;
 	if (data->args->verbosity & V_OPERATIONS)
-		ft_printf("P   %2i | lforked at position %i\n", process->champion_id,
-				position);
+		ft_printf("P   %2i | lforked at position %i\n",
+				process->champion_id, position);
 	increment_pc(data, process, 3);
 }

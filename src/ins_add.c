@@ -40,7 +40,7 @@ void		ins_add(t_proc *process, t_data *data)
 	set_nth_register_value(process, p3, p1 + p2);
 	process->carry = !(p1 + p2);
 	if (data->args->verbosity & V_OPERATIONS)
-		ft_printf("P   %2i | add %i %i %i\n", 
+		ft_printf("P   %2i | add %i %i %i\n",
 				process->champion_id, p1, p2, p1 + p2);
 	increment_pc(data, process, offset);
 }
