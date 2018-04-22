@@ -14,7 +14,7 @@
 
 void		ins_aff(t_proc *process, t_data *data)
 {
-	char 	c;
+	char	c;
 
 	if (!process->instruction_started)
 	{
