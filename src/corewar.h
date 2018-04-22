@@ -6,7 +6,7 @@
 /*   By: florenzo <florenzo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/14 17:10:11 by florenzo          #+#    #+#             */
-/*   Updated: 2018/04/22 10:44:16 by mschmitt         ###   ########.fr       */
+/*   Updated: 2018/04/22 13:16:14 by mschmitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -343,7 +343,7 @@ void				ft_free_header(t_data *data);
 /*
 ** ncurse_colors.c
 */
-int					check_process_colors(WINDOW *win, t_data *data);;
+int					check_process_colors(WINDOW *win, t_data *data, int pos);
 int					init_colors(t_data *data);
 void				print_map_colors(WINDOW *win, int height, int width, 
 		t_data *data);

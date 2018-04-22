@@ -20,6 +20,12 @@ int			ft_valid_process(int candidate, t_args *args)
 	return (TRUE);
 }
 
+void		chec_args(int argc)
+{
+	if (argc < 2)
+		ft_error_parse();
+}
+
 /*
 ** Recupere les arguments et les place dans t_args
 ** A chaque tour de boucle, verifie si arg est valide ou pas.
@@ -34,8 +40,7 @@ void		ft_parseargs(int argc, char *argv[], t_args *args)
 	int		i;
 
 	i = 1;
-	if (argc < 2)
-		ft_error_parse();
+	check_args(argc);
 	while (i < argc)
 	{
 		if (!strcmp(argv[i], "-d"))
@@ -57,5 +62,4 @@ void		ft_parseargs(int argc, char *argv[], t_args *args)
 		else
 			ft_error_parse();
 	}
-	//print_args(args);
 }

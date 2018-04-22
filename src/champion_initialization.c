@@ -2,8 +2,8 @@
 
 /*
 ** On
-** 
 */
+
 int				get_champ_data(t_champion *new, char *filename)
 {
 	int			fd;

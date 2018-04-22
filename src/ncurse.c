@@ -23,7 +23,7 @@ void			print_control_pannel_misc(t_data *data, int i)
 			data->mem->cycle_to_die);
 	mvprintw(STARTY + 16 + i, WIDTH + STARTX + 20, " SINCE LAST CHECK\t\t%d   ",
 			data->mem->since_last_check);
-	//put_header(STARTY + 50 + i, WIDTH + STARTX + 20, data);
+	put_header(STARTY + 50 + i, WIDTH + STARTX + 20, data);
 }
 
 void			print_control_panel_processes(t_champion *curr, int i,
