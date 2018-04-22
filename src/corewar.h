@@ -214,7 +214,7 @@ int					ft_strisnumber(char *str);
 ** parse_rainbow.c
 */
 
-void		ft_rainbow(char *argv[], int *i, t_args *args);
+void				ft_rainbow(char *argv[], int *i, t_args *args);
 
 /*
 ** setup_champs.c
@@ -391,10 +391,10 @@ WINDOW				*init_ncurse(t_data *data);
 ** ncurses_tools5.c
 */
 
-void		change_speed(WINDOW *map, t_data *data, int ch);
-void		init_header(t_data *data);
-char		**generate_header(void);
-void		put_header(int x_top_left, int y_top_left, t_data *d);
+void				change_speed(WINDOW *map, t_data *data, int ch);
+void				init_header(t_data *data);
+char				**generate_header(void);
+void				put_header(int x_top_left, int y_top_left, t_data *d);
 
 /*
 ** ocp_getters.c
@@ -417,10 +417,14 @@ int					ocp_get_param3_ind(t_data *data, t_proc *process,
 ** process_parameters.c
 */
 
-int					get_ocp_2_indirect_params(t_data *data, t_proc *process, int *p1, int *p2);
-int					get_ocp_2_direct_params(t_data *data, t_proc *process, int *p1, int *p2);
-int					get_ocp_3_indirect_params(t_data *data, t_proc *process, int *p1, int *p2, ...);
-int					get_ocp_3_direct_params(t_data *data, t_proc *process, int *p1, int *p2, ...);
+int					get_ocp_2_indirect_params(t_data *data, t_proc *process,
+		int *p1, int *p2);
+int					get_ocp_2_direct_params(t_data *data, t_proc *process,
+		int *p1, int *p2);
+int					get_ocp_3_indirect_params(t_data *data, t_proc *process,
+		int *p1, int *p2, ...);
+int					get_ocp_3_direct_params(t_data *data, t_proc *process,
+		int *p1, int *p2, ...);
 int					get_nth_register_value(t_proc *process, int n);
 void				set_nth_register_value(t_proc *process, int n, int value);
 
