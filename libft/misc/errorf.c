@@ -19,7 +19,6 @@
 ** errorf("Could not read from file %s", filename);
 */
 
-
 int				errorf(char *format, ...)
 {
 	va_list		args;

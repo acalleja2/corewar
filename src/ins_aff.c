@@ -14,4 +14,16 @@
 
 void		ins_aff(t_proc *process, t_data *data)
 {
+	char 	c;
+
+	if (!process->instruction_started)
+	{
+		process->time_to_wait = 2 - 2;
+		process->instruction_started = TRUE;
+		return ;
+	}
+	process->instruction_started = FALSE;
+	c = mem_get_byte(data, process, 1);
+	write(1, &c, 1);
+	increment_pc(data, process, 2);
 }
