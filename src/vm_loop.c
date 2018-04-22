@@ -63,7 +63,7 @@ void			vm_loop(t_data *data)
 			&& (!mem_check_alive(data) || data->mem->cycle_to_die <= 0))
 			{
 				if (data->args->ncurses == -1)
-					ft_printf("We got a winner after %i cycles :\n",
+					ft_printf("The game ended after %i cycles :\n",
 							data->mem->cycle);
 				print_winner(data, map);
 				return ;
